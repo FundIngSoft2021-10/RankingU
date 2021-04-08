@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 // facebook - interfaz y persistencia - cliente y servidor?
+import com.example.rankingu.ui.SignUp.SignUp;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -26,8 +27,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 // firebase - persistencia - cliente?
 import com.google.firebase.auth.AuthCredential;
@@ -39,12 +38,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
 // imports necesarios
 import com.example.rankingu.MainActivity;
 import com.example.rankingu.R;
-import com.google.firebase.auth.OAuthProvider;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -68,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         crearCuentaText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ccc = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent ccc = new Intent(LoginActivity.this, SignUp.class);
                 ccc.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(ccc);
             }

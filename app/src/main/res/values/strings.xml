@@ -7,7 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
+    <string name="menu_home">Inicio</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Tools</string>
@@ -25,12 +25,44 @@
     <string name="action_sign_in_short">Sign in</string>
     <string name="crearC"><u>Crea tu cuenta!</u></string>
     <string name="olvidarC"><u>¿Olvidaste tu contraseña?</u></string>
-    <string name="CUsuario">Crear Usuario</string>
+    <string name="Materia">Materia: </string>
     <string name="Crear">Crear</string>
     <string name="Correo">Correo</string>
     <string name="Semestre">Semestre</string>
     <string name="Nombre">Nombre</string>
+    <string name="Cancelar">Cancelar</string>
+    <string name="Descripcion">Descripcion</string>
+    <string name="Confirmar">Confirmar</string>
     <string name="Apellido">Apellido</string>
     <string name="Carrera">Carrera</string>
+
+    <string name="inicia_sesion"><u>Inicia sesion</u></string>
+    <string name="no_tienes_cuenta">¿No tienes cuenta?</string>
+    <string name="crea_cuenta"><u>Crea tu cuenta!</u></string>
+    <string name="usuario">Usuario:</string>
+    <string name="password">Contraseña:</string>
+    <string name="Mantener_sesion">Mantener sesion</string>
+    <string name="password_olvidada"><u>¿Olvidaste tu contraseña?</u></string>
+    <string name="iniciar">iniciar</string>
+    <string name="crear_usuario"><u>Crear Usuario</u></string>
+    <string name="correo_placeholder">example@javeriana.edu.co</string>
+    <string name="correo">Correo:</string>
+    <string name="nomrbe_de_usuario">Nombre de usuario</string>
+    <string name="Confirmar_contraseña">Confirmar contraseña</string>
+    <string name="password_placeholder">*********</string>
+    <string name="soy_un">Soy un...</string>
+    <string name="Estudiante">Estudiante</string>
+    <string name="Profesor">Profesor</string>
+    <string name="Continuar">Continuar</string>
+    <string name="Datos_personales"><u>Datos personales</u></string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido">Apellido</string>
+    <string name="Politicas_privacidad">Acepto las politicas de privacidad</string>
+    <string name="add_materia"><u>Añadir materias</u></string>
+    <string name="Nombre_materia">Nombre de la  materia</string>
+    <string name="Agregar">Agregar materia</string>
+    <string name="success_add_materia">Profe, La materia se agrego correctamente!</string>
+    <string name="add_otra_materia">Agregar otra materia</string>
+    <string name="Saltar">Saltar por ahora</string>
 
 </resources>
