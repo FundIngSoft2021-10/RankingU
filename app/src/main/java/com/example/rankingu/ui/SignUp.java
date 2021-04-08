@@ -1,7 +1,10 @@
 package com.example.rankingu.ui;
 
+<<<<<<< Updated upstream
 import androidx.appcompat.app.AppCompatActivity;
 
+=======
+>>>>>>> Stashed changes
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,9 +12,17 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+<<<<<<< Updated upstream
 import com.example.rankingu.R;
 
 public class    SignUp extends AppCompatActivity {
+=======
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.rankingu.R;
+
+public class SignUp extends AppCompatActivity {
+>>>>>>> Stashed changes
 
     private Spinner spRol;
     private EditText txtMail;

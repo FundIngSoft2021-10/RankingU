@@ -1,12 +1,20 @@
 package com.example.rankingu.ui;
 
+<<<<<<< Updated upstream
 import androidx.appcompat.app.AppCompatActivity;
 
+=======
+>>>>>>> Stashed changes
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+<<<<<<< Updated upstream
+=======
+import androidx.appcompat.app.AppCompatActivity;
+
+>>>>>>> Stashed changes
 import com.example.rankingu.R;
 
 public class landing extends AppCompatActivity {

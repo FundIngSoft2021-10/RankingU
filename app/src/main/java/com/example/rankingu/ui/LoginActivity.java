@@ -1,5 +1,6 @@
 package com.example.rankingu.ui;
 // mayormente inferfaz entonces cliente?
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-// facebook - interfaz y persistencia - cliente y servidor?
+
+import com.example.rankingu.R;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -18,7 +21,6 @@ import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-// google - interfaz y persistencia - cliente y servidor?
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -26,25 +28,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-// firebase - persistencia - cliente?
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+
+// facebook - interfaz y persistencia - cliente y servidor?
+// google - interfaz y persistencia - cliente y servidor?
+// firebase - persistencia - cliente?
 // imports necesarios
-import com.example.rankingu.MainActivity;
-import com.example.rankingu.R;
-import com.google.firebase.auth.OAuthProvider;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -57,6 +52,13 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
     public static final int SIGN_IN_CODE = 777;
 
+
+    public void changeToSignUp(View view)
+    {
+        Intent signup = new Intent(this, SignUp.class);
+        startActivity(signup);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,14 +67,19 @@ public class LoginActivity extends AppCompatActivity {
         olvidoContraText = findViewById(R.id.textOlvido);
         crearCuentaText = findViewById(R.id.textCrear);
 
+        /*
         crearCuentaText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ccc = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent ccc = new Intent(LoginActivity.this, SignUp.class);
+
                 ccc.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(ccc);
             }
         });
+        */
+
+
 
         // LOGIN PROPIO
         usernameEditText = findViewById(R.id.username);

@@ -104,6 +104,8 @@
         android:id="@+id/textCrear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="changeToSignUp"
         android:shadowColor="#FFFFFF"
         android:text="@string/crearC"
         android:textColor="#FFFFFF"

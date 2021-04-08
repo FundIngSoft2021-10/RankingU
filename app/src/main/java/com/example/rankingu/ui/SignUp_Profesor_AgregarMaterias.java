@@ -1,13 +1,21 @@
 package com.example.rankingu.ui;
 
+<<<<<<< Updated upstream
 import androidx.appcompat.app.AppCompatActivity;
 
+=======
+>>>>>>> Stashed changes
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.ScrollView;
 
+<<<<<<< Updated upstream
+=======
+import androidx.appcompat.app.AppCompatActivity;
+
+>>>>>>> Stashed changes
 import com.example.rankingu.R;
 
 public class SignUp_Profesor_AgregarMaterias extends AppCompatActivity {

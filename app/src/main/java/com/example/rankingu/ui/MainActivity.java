@@ -36,7 +36,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -52,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         hView = navigationView.getHeaderView(0);
+<<<<<<< Updated upstream
 
 
         TextView emailUser =  hView.findViewById(R.id.textView);
@@ -62,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
         //ImageView fotoUser = (ImageView)findViewById(R.id.fotoView);
 
 
+=======
+        TextView emailUser = hView.findViewById(R.id.textView);
+        TextView nombreUser = hView.findViewById(R.id.nombreView);
+        ImageView fotoUser = hView.findViewById(R.id.fotoView);
+>>>>>>> Stashed changes
         nombreUser.setText(user.getDisplayName());
         emailUser.setText(user.getEmail());
 
