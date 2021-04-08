@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.mainScreen"></activity>
+        <activity android:name=".ui.mainScreen" />
         <activity android:name=".ui.SignUp_Estudiante" />
         <activity android:name=".ui.SignUp_Profesor_AgregarMateriasSuccess" />
         <activity android:name=".ui.SignUp_Profesor_AgregarMaterias" />
