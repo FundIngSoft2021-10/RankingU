@@ -35,6 +35,7 @@
     <string name="Confirmar">Confirmar</string>
     <string name="Apellido">Apellido</string>
     <string name="Carrera">Carrera</string>
+    <string name="Comentario">Comentario:</string>
 
     <string name="inicia_sesion"><u>Inicia sesion</u></string>
     <string name="no_tienes_cuenta">¿No tienes cuenta?</string>

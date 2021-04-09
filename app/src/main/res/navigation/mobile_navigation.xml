@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.rankingu.ui.home.HomeFragment"
+        android:name="com.example.rankingu.ui.User_Main.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_user" />
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -31,13 +31,13 @@
 
     <fragment
         android:id="@+id/nav_share"
-        android:name="com.example.rankingu.ui.share.ShareFragment"
+        android:name="com.example.rankingu.ui.Support.ShareFragment"
         android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
+        tools:layout="@layout/fragment_support" />
 
     <fragment
         android:id="@+id/nav_send"
-        android:name="com.example.rankingu.ui.send.SendFragment"
+        android:name="com.example.rankingu.ui.Settings.SendFragment"
         android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+        tools:layout="@layout/fragment_settings" />
 </navigation>

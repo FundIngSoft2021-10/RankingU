@@ -1,4 +1,4 @@
-package com.example.rankingu.ui.send;
+package com.example.rankingu.ui.Settings;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
