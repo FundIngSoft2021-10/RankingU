@@ -1,6 +1,6 @@
 # RankingU
 ##Aplicacion para reseñar profesores
-###Pontificia universidad javeriana - Ingenieria de sistemas
+###Pontificia universidad javeriana
 
 [https://zombo.com/]
 
