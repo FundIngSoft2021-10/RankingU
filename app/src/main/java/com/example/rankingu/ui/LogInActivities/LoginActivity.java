@@ -1,4 +1,4 @@
-package com.example.rankingu.ui;
+package com.example.rankingu.ui.LogInActivities;
 // mayormente inferfaz entonces cliente?
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 // facebook - interfaz y persistencia - cliente y servidor?
-import com.example.rankingu.ui.SignUp;
+import com.example.rankingu.ui.SignUpActivities.SignUp;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;

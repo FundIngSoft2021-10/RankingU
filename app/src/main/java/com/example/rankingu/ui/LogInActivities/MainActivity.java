@@ -1,4 +1,4 @@
-package com.example.rankingu.ui;
+package com.example.rankingu.ui.LogInActivities;
 //CLASE NECESARIA
 import com.example.rankingu.R;
 // MAYORMENTE INTERFAZ OSEA CLIENTE SUPONGO
