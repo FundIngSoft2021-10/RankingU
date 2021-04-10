@@ -6,11 +6,10 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="17"
         android:targetSdkVersion="29" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
     <!-- <uses-sdk android:minSdkVersion="14" /> -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -24,18 +23,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.rankingu.ui.mainScreen" />
-        <activity android:name="com.example.rankingu.ui.SignUp_Estudiante" />
-        <activity android:name="com.example.rankingu.ui.SignUp_Profesor_AgregarMateriasSuccess" />
-        <activity android:name="com.example.rankingu.ui.SignUp_Profesor_AgregarMaterias" />
-        <activity android:name="com.example.rankingu.ui.SignUp_Profesor" />
-        <activity android:name="com.example.rankingu.ui.SignUp" />
-        <activity android:name="com.example.rankingu.ui.landing" />
-        <activity android:name="com.example.rankingu.ui.logIn" />
-        <activity android:name="com.example.rankingu.ui.RegisterActivity" />
-        <activity android:name="com.example.rankingu.ui.MainActivity" />
+        <activity android:name="com.example.rankingu.ui.SignUp.SignUp_Estudiante" />
+        <activity android:name="com.example.rankingu.ui.SignUp.SignUp_Profesor_AgregarMateriasSuccess" />
+        <activity android:name="com.example.rankingu.ui.SignUp.SignUp_Profesor_AgregarMaterias" />
+        <activity android:name="com.example.rankingu.ui.SignUp.SignUp_Profesor" />
+        <activity android:name="com.example.rankingu.ui.SignUp.SignUp" />
+        <activity android:name="com.example.rankingu.ui.Enroll.EnrollActivity" />
+        <activity android:name="com.example.rankingu.MainActivity" />
         <activity
             android:name="com.example.rankingu.ui.LoginActivity"
             android:label="@string/app_name"
