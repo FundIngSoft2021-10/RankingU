@@ -36,6 +36,10 @@
     <string name="Apellido">Apellido</string>
     <string name="Carrera">Carrera</string>
     <string name="Comentario">Comentario:</string>
+    <string name="ConflictoMateria">La materia no se puede inscribir debido a un conflicto de horario</string>
+    <string name="ContinuarInscripcion">¿Continuar la inscripción?, Se reemplazaran las materias</string>
+    <string name="exitoInscripcion">La materia fue inscrita de manera exitosa</string>
+    <string name="aceptar">Aceptar</string>
 
     <string name="inicia_sesion"><u>Inicia sesion</u></string>
     <string name="no_tienes_cuenta">¿No tienes cuenta?</string>
