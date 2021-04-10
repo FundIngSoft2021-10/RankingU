@@ -20,16 +20,21 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 // FIREBASE - SERVIDOR
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 // FACEBOOK - SERVIDOR
 import com.facebook.login.LoginManager;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private View hView;
     private AppBarConfiguration mAppBarConfiguration;
+    private FloatingActionButton btnBusqueda;
+    private ArrayList<ArrayList<TextView>> matrizHorario;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
@@ -38,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.floatBtnSearch);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +61,15 @@ public class MainActivity extends AppCompatActivity {
         ImageView fotoUser = hView.findViewById(R.id.fotoView);
         nombreUser.setText(user.getDisplayName());
         emailUser.setText(user.getEmail());
+        btnBusqueda = findViewById(R.id.floatBtnSearch);
+        matrizHorario = new ArrayList<>(12);
+        for(ArrayList<TextView> i:matrizHorario)
+        {
+            matrizHorario.add(new ArrayList<TextView>(8));
+        }
+
+
+
 
 
         Glide.with(this.getApplicationContext()).load(user.getPhotoUrl()).fitCenter().into(fotoUser);
@@ -103,5 +117,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+
+    private void updateUi(String msg) {
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
 }
