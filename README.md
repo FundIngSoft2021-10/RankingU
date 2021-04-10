@@ -1,6 +1,6 @@
-# RankingU
-## Aplicacion para reseñar profesores
-### Pontificia universidad javeriana - Ingenieria de sistemas
+# RankingU - Aplicacion para reseñar profesores
 
-[https://zombo.com/]
 
+#Bienvenidos
+
+Esta aplicacion desarrollada en android pretende ofrecer una plataforma en la que estudiantes y profesores de la Pontificia Universidad Javeriana puedan tener un canal de reseña y de retroalimentacion relativa a la docencia aplicada en la universidad.
