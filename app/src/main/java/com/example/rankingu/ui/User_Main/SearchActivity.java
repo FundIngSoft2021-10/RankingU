@@ -20,7 +20,7 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_Search);
+        setContentView(R.layout.activity_search);
 
         et1 = (EditText) findViewById(R.id.editTextBusqueda);
         tv1 = (TextView) findViewById(R.id.Buscarpor);
