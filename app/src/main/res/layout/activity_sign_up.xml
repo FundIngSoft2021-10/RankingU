@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SignUp">
+    tools:context=".ui.SignUp.SignUp">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/Buscarpor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -25,8 +25,8 @@
         android:layout_marginTop="24dp"
         android:text="@string/correo"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/Buscarpor"
+        app:layout_constraintTop_toBottomOf="@+id/Buscarpor" />
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
     <EditText
-        android:id="@+id/editTextUsuario"
+        android:id="@+id/editTextBusqueda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -68,8 +68,8 @@
         android:layout_marginTop="8dp"
         android:text="@string/password"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/editTextUsuario"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUsuario" />
+        app:layout_constraintStart_toStartOf="@+id/editTextBusqueda"
+        app:layout_constraintTop_toBottomOf="@+id/editTextBusqueda" />
 
     <EditText
         android:id="@+id/editTextPassword"

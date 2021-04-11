@@ -11,11 +11,11 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.SignUp_Estudiante" />
-        <activity android:name=".ui.SignUp_Profesor_AgregarMateriasSuccess" />
-        <activity android:name=".ui.SignUp_Profesor_AgregarMaterias" />
-        <activity android:name=".ui.SignUp_Profesor" />
-        <activity android:name=".ui.SignUp" />
+        <activity android:name=".ui.SignUp.SignUp_Estudiante" />
+        <activity android:name=".ui.SignUp.SignUp_Profesor_AgregarMateriasSuccess" />
+        <activity android:name=".ui.SignUp.SignUp_Profesor_AgregarMaterias" />
+        <activity android:name=".ui.SignUp.SignUp_Profesor" />
+        <activity android:name=".ui.SignUp.SignUp" />
         <activity android:name=".ui.Enroll.EnrollActivity" />
         <activity android:name=".ui.MainActivity" />
         <activity

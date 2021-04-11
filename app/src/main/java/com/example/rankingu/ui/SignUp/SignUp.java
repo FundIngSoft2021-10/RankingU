@@ -1,4 +1,4 @@
-package com.example.rankingu.ui;
+package com.example.rankingu.ui.SignUp;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +25,7 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         spRol = (Spinner)findViewById(R.id.spinnerRol);
         txtMail = (EditText) findViewById(R.id.editTextEmail);
-        txtUser = (EditText) findViewById(R.id.editTextUsuario);
+        txtUser = (EditText) findViewById(R.id.editTextBusqueda);
         txtPassword = (EditText) findViewById(R.id.editTextPassword);
         txtPassConfirm = (EditText) findViewById(R.id.editTextPasswordConfirm);
         String[] opcionesSpRol = {"Estudiante", "Profesor"};

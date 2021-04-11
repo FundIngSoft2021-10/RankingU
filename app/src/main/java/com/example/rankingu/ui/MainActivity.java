@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         hView = navigationView.getHeaderView(0);
-        TextView emailUser = hView.findViewById(R.id.textView);
+        TextView emailUser = hView.findViewById(R.id.Buscarpor);
         TextView nombreUser = hView.findViewById(R.id.nombreView);
         ImageView fotoUser = hView.findViewById(R.id.fotoView);
         nombreUser.setText(user.getDisplayName());

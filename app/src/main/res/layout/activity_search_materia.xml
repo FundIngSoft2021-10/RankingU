@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.SignUp">
+
+    <EditText
+        android:id="@+id/editTextBusqueda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="Busqueda"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/materiaB1"
+        app:layout_constraintEnd_toStartOf="@+id/BotonBuscar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/BotonBuscar"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="47dp"
+        android:text="Search"
+        app:layout_constraintBottom_toTopOf="@+id/materiaB1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/editTextBusqueda"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/materiaB1"
+        android:layout_width="244dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="26dp"
+        android:text="Materia 1"
+        app:layout_constraintBottom_toTopOf="@+id/materiaB2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextBusqueda" />
+
+    <Button
+        android:id="@+id/materiaB2"
+        android:layout_width="240dp"
+        android:layout_height="97dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="35dp"
+        android:text="Materia 2"
+        app:layout_constraintBottom_toTopOf="@+id/materiaB3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.558"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materiaB1" />
+
+    <Button
+        android:id="@+id/materiaB3"
+        android:layout_width="240dp"
+        android:layout_height="97dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="220dp"
+        android:text="Materia 3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materiaB2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
