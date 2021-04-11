@@ -23,8 +23,8 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_Search);
 
         et1 = (EditText) findViewById(R.id.editTextBusqueda);
-        tv1 = (TextView) findViewById(R.id.textView);
-        spinner1 = (Spinner)findViewById(R.id.spinner);
+        tv1 = (TextView) findViewById(R.id.Buscarpor);
+        spinner1 = (Spinner)findViewById(R.id.spinnerBuscar);
 
         String [] opciones = {"Profesor","Materia","Carrera"};
         ArrayAdapter <String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, opciones);
