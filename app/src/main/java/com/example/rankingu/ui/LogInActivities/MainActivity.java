@@ -27,6 +27,8 @@ import com.google.firebase.auth.FirebaseUser;
 // FACEBOOK - SERVIDOR
 import com.facebook.login.LoginManager;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private FloatingActionButton btnBusqueda;
     private ArrayList<ArrayList<TextView>> matrizHorario;
+    private TextView t;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
@@ -68,10 +71,6 @@ public class MainActivity extends AppCompatActivity {
             matrizHorario.add(new ArrayList<TextView>(8));
         }
 
-
-
-
-
         Glide.with(this.getApplicationContext()).load(user.getPhotoUrl()).fitCenter().into(fotoUser);
 
         // Passing each menu ID as a set of Ids because each
@@ -86,6 +85,12 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        t = findViewById(R.id.celda0);
+        //t.setClickable(true);
+
+
+
+
     }
 
     @Override
@@ -122,5 +127,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateUi(String msg) {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+    }
+
+    public void prueba_click(View view)
+    {
+        updateUi("click en una celda");
     }
 }

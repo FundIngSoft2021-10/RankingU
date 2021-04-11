@@ -139,6 +139,8 @@
                                 android:layout_width="51.925dp"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
+                                android:clickable="true"
+                                android:onClick="prueba_click"
                                 android:text="Calculo Integral"
                                 android:textAlignment="center"
                                 android:textAllCaps="true"
