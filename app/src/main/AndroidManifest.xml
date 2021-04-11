@@ -11,15 +11,15 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.SignUpActivities.SignUp_Estudiante" />
-        <activity android:name=".ui.SignUpActivities.SignUp_Profesor_AgregarMateriasSuccess" />
-        <activity android:name=".ui.SignUpActivities.SignUp_Profesor_AgregarMaterias" />
-        <activity android:name=".ui.SignUpActivities.SignUp_Profesor" />
-        <activity android:name=".ui.SignUpActivities.SignUp" />
+        <activity android:name=".ui.SignUp.SignUp_Estudiante" />
+        <activity android:name=".ui.SignUp.SignUp_Profesor_AgregarMateriasSuccess" />
+        <activity android:name=".ui.SignUp.SignUp_Profesor_AgregarMaterias" />
+        <activity android:name=".ui.SignUp.SignUp_Profesor" />
+        <activity android:name=".ui.SignUp.SignUp" />
         <activity android:name=".ui.Enroll.EnrollActivity" />
-        <activity android:name=".ui.LogInActivities.MainActivity" />
+        <activity android:name=".ui.MainActivity" />
         <activity
-            android:name=".ui.LogInActivities.LoginActivity"
+            android:name=".ui.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

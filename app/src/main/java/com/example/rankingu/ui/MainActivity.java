@@ -1,4 +1,4 @@
-package com.example.rankingu.ui.LogInActivities;
+package com.example.rankingu.ui;
 //CLASE NECESARIA
 import com.example.rankingu.R;
 // MAYORMENTE INTERFAZ OSEA CLIENTE SUPONGO
@@ -26,8 +26,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 // FACEBOOK - SERVIDOR
 import com.facebook.login.LoginManager;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
