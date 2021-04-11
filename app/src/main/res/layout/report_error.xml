@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText"
+        android:id="@+id/textError"
         android:layout_width="235dp"
         android:layout_height="332dp"
         android:hint="Comentenos su error."
@@ -54,7 +54,7 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/send_report" />
+        app:layout_constraintTop_toBottomOf="@+id/send_suggestion" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar3"

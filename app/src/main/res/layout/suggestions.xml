@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/send_report"
+        android:id="@+id/send_suggestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="116dp"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText"
+        android:id="@+id/textSuggestions"
         android:layout_width="235dp"
         android:layout_height="332dp"
         android:hint="Comentenos tus opiniones o sugerencias"
@@ -54,7 +54,7 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/send_report" />
+        app:layout_constraintTop_toBottomOf="@+id/send_suggestion" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar3"
