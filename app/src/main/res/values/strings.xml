@@ -37,6 +37,8 @@
     <string name="Carrera">Carrera</string>
     <string name="Comentario">Comentario:</string>
 
+    <string name="Asignatura">Asignatura</string>
+
     <string name="inicia_sesion"><u>Inicia sesion</u></string>
     <string name="no_tienes_cuenta">¿No tienes cuenta?</string>
     <string name="crea_cuenta"><u>Crea tu cuenta!</u></string>
