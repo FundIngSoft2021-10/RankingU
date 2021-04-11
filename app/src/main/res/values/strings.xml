@@ -37,8 +37,6 @@
     <string name="Carrera">Carrera</string>
     <string name="Comentario">Comentario:</string>
 
-    <string name="Asignatura">Asignatura</string>
-
     <string name="inicia_sesion"><u>Inicia sesion</u></string>
     <string name="no_tienes_cuenta">¿No tienes cuenta?</string>
     <string name="crea_cuenta"><u>Crea tu cuenta!</u></string>
@@ -67,5 +65,35 @@
     <string name="success_add_materia">Profe, La materia se agrego correctamente!</string>
     <string name="add_otra_materia">Agregar otra materia</string>
     <string name="Saltar">Saltar por ahora</string>
+
+    <!--HORARIO DIAS-->
+    <string name="hora">hora</string>
+    <string name="lunes">lun</string>
+    <string name="martes">mar</string>
+    <string name="miercoles">mie</string>
+    <string name="jueves">jue</string>
+    <string name="viernes">vie</string>
+    <string name="sabado">sab</string>
+    <string name="domingo">dom</string>
+    <!--HORARIO HORAS-->
+    <string name="siete_am">7:00</string>
+    <string name="ocho_am">8:00</string>
+    <string name="nueve_am">9:00</string>
+    <string name="diez_am">10:00</string>
+    <string name="once_am">11:00</string>
+    <string name="doce_pm">12:00</string>
+    <string name="una_pm">13:00</string>
+    <string name="dos_pm">14:00</string>
+    <string name="tres_pm">15:00</string>
+    <string name="cuatro_pm">16:00</string>
+    <string name="cinco_pm">17:00</string>
+    <string name="seis_pm">18:00</string>
+    <string name="siete_pm">19:00</string>
+    <string name="ocho_pm">20:00</string>
+    <string name="nueve_pm">21:00</string>
+    <string name="diez_pm">22:00</string>
+    <string name="aviso">AVISO</string>
+    <string name="al_elegir_dejar_una_rese_a_declaras_que_has_cursado_la_asignatura_previamente_con_este_docente_si_es_asi_da_clic_en_continuar_de_lo_contrario_abstente_de_dejar_la_rese_a_recuerda_que_es_para_el_bien_de_todos">Al elegir dejar una reseña declaras que has cursado la asignatura previamente con este docente, si es asi da clic en continuar, de lo contrario abstente de dejar la reseña, recuerda que es para el bien de todos</string>
+
 
 </resources>

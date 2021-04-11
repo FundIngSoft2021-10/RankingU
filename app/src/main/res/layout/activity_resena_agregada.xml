@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Reseña_agregada"
+        android:layout_width="297dp"
+        android:layout_height="82dp"
+        android:text="¡Reseña agrada!"
+        android:textColor="#11FF00"
+        android:textSize="36sp"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="134dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="330dp"
+        android:layout_height="257dp"
+        app:srcCompat="@mipmap/rrrrrrr"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="237dp" />
+
+    <TextView
+        android:id="@+id/Texto_gracias_comentarios"
+        android:layout_width="327dp"
+        android:layout_height="34dp"
+        android:text="Gracias por tus comentarios"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="534dp" />
+
+    <Button
+        android:id="@+id/button_continuar_reseña"
+        android:layout_width="133dp"
+        android:layout_height="52dp"
+        android:background="#00B0FF"
+        android:text="Continuar"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="139dp"
+        tools:layout_editor_absoluteY="607dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

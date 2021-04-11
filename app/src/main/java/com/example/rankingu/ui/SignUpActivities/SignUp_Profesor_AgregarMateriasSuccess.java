@@ -1,4 +1,4 @@
-package com.example.rankingu.ui;
+package com.example.rankingu.ui.SignUpActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
