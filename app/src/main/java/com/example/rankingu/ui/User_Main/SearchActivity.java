@@ -1,5 +1,6 @@
 package com.example.rankingu.ui.User_Main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -10,6 +11,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rankingu.R;
+import com.example.rankingu.ui.Search_Materia;
+import com.example.rankingu.ui.Search_Materia_Carrera;
+import com.example.rankingu.ui.Search_Profesor;
+import com.example.rankingu.ui.SignUp_Estudiante;
+import com.example.rankingu.ui.SignUp_Profesor;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -39,12 +45,21 @@ public class SearchActivity extends AppCompatActivity {
         String seleccion = spinner1.getSelectedItem().toString();
         if(seleccion.equals("Profesor")){
 
+            Intent searchProfesor = new Intent(this, Search_Profesor.class);
+            startActivity(searchProfesor);
+
         }
         else if(seleccion.equals("Materia")){
 
-        }
-     /*   else(seleccion.equals("Carrera")){
+            Intent searchMateria = new Intent(this, Search_Materia.class);
+            startActivity(searchMateria);
 
-        }*/
+        }
+        else if(seleccion.equals("Carrera")){
+
+            Intent searchCarrera = new Intent(this, Search_Materia_Carrera.class);
+            startActivity(searchCarrera);
+
+        }
     }
 }
