@@ -14,8 +14,6 @@ import com.example.rankingu.R;
 import com.example.rankingu.ui.Search_Materia;
 import com.example.rankingu.ui.Search_Materia_Carrera;
 import com.example.rankingu.ui.Search_Profesor;
-import com.example.rankingu.ui.SignUp_Estudiante;
-import com.example.rankingu.ui.SignUp_Profesor;
 
 public class SearchActivity extends AppCompatActivity {
 
