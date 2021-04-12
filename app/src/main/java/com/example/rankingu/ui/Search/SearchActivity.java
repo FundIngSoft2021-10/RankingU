@@ -1,4 +1,4 @@
-package com.example.rankingu.ui.User_Main;
+package com.example.rankingu.ui.Search;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,9 +11,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rankingu.R;
-import com.example.rankingu.ui.Search_Materia;
-import com.example.rankingu.ui.Search_Materia_Carrera;
-import com.example.rankingu.ui.Search_Profesor;
+import com.example.rankingu.ui.Search.Search_Materia;
+import com.example.rankingu.ui.Search.Search_Materia_Carrera;
+import com.example.rankingu.ui.Search.Search_Profesor;
 
 public class SearchActivity extends AppCompatActivity {
 
