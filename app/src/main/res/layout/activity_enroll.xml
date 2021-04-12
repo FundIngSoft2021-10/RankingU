@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".ui.LogInActivities.LoginActivity">
+    tools:context=".ui.LoginActivity">
 
     <Button
         android:id="@+id/login"
@@ -52,8 +52,8 @@
         android:id="@+id/textMateria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="32dp"
         android:shadowColor="#FFFFFF"
         android:text="@string/Materia"
         android:textColor="#000000"
@@ -63,26 +63,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/puntuacionView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:shadowColor="#FFFFFF"
-        android:textColor="#000000"
-        android:textColorHighlight="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/spinnerProfesor"
+    <Spinner
+        android:id="@+id/spinnerProfesor"
+        android:layout_width="185dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textMateria" />
 
     <TextView
         android:id="@+id/descripcionView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
         android:shadowColor="#FFFFFF"
         android:text="@string/Comentario"
         android:textColor="#000000"
@@ -90,15 +85,15 @@
         android:textColorHint="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/puntuacionView" />
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
     <TextView
         android:id="@+id/textDescripcion"
         android:layout_width="319dp"
         android:layout_height="270dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="28dp"
         android:shadowColor="#FFFFFF"
         android:text="@string/Descripcion"
         android:textColor="#000000"
@@ -124,16 +119,13 @@
         app:layout_constraintStart_toEndOf="@+id/textMateria"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinnerProfesor"
-        android:layout_width="185dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/puntuacionView"
-        app:layout_constraintHorizontal_bias="0.0"
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textMateria" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerProfesor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

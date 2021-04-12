@@ -1,16 +1,17 @@
-package com.example.rankingu.ui.Settings;
+
+package com.example.rankingu.ui.Suggestions;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SendViewModel extends ViewModel {
+public class Suggestions extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public SendViewModel() {
+    public Suggestions() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is send fragment");
+        mText.setValue("This is share fragment");
     }
 
     public LiveData<String> getText() {

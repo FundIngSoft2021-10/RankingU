@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ public class SearchActivity extends AppCompatActivity {
     private Spinner spinner1;
     private EditText et1;
     private TextView tv1;
+    private Button btnBuscar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +31,22 @@ public class SearchActivity extends AppCompatActivity {
         et1 = (EditText) findViewById(R.id.editTextBusqueda);
         tv1 = (TextView) findViewById(R.id.Buscarpor);
         spinner1 = (Spinner)findViewById(R.id.spinnerBuscar);
+        btnBuscar = findViewById(R.id.BotonBuscar);
 
         String [] opciones = {"Profesor","Materia","Carrera"};
         ArrayAdapter <String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, opciones);
         spinner1.setAdapter(adapter);
+
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Buscar();
+            }
+        });
     }
 
     //
-    public void Buscar(View view){
+    public void Buscar(){
 
         String valor1_String = et1.getText().toString();
 

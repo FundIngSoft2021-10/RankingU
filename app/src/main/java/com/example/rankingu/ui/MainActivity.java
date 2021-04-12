@@ -5,6 +5,7 @@ import com.example.rankingu.R;
 import android.content.Intent;
 import android.os.Bundle;
 import com.bumptech.glide.Glide;
+import com.example.rankingu.ui.Search.SearchActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import android.view.MenuItem;
@@ -48,8 +49,11 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "PROGRAMAR ALGO", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+               /* Snackbar.make(view, "PROGRAMAR ALGO", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -85,10 +89,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
         t = findViewById(R.id.celda0);
         //t.setClickable(true);
-
-
-
-
     }
 
     @Override

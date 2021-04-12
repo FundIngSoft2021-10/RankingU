@@ -1,5 +1,4 @@
-
-package com.example.rankingu.ui.User_Main;
+package com.example.rankingu.ui.Rankingtons;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.rankingu.R;
 
-public class HomeFragment extends Fragment {
+public class RankingtonsFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
+    private RankingtonsViewModel rankingtonsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_user, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(this, new Observer<String>() {
+        rankingtonsViewModel =
+                ViewModelProviders.of(this).get(RankingtonsViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_rankingtons, container, false);
+        final TextView textView = root.findViewById(R.id.text_slideshow);
+        rankingtonsViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

@@ -16,6 +16,10 @@
         <activity android:name=".ui.SignUp.SignUp_Profesor_AgregarMaterias" />
         <activity android:name=".ui.SignUp.SignUp_Profesor" />
         <activity android:name=".ui.SignUp.SignUp" />
+        <activity android:name=".ui.Search.SearchActivity" />
+        <activity android:name=".ui.Search.Search_Materia" />
+        <activity android:name=".ui.Search.Search_Materia_Carrera" />
+        <activity android:name=".ui.Search.Search_Profesor" />
         <activity android:name=".ui.Enroll.EnrollActivity" />
         <activity android:name=".ui.MainActivity" />
         <activity

@@ -1,16 +1,16 @@
-package com.example.rankingu.ui.share;
+package com.example.rankingu.ui.Rankingtons;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ShareViewModel extends ViewModel {
+public class RankingtonsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public ShareViewModel() {
+    public RankingtonsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is share fragment");
+        mText.setValue("Recomendaciones del horario");
     }
 
     public LiveData<String> getText() {
