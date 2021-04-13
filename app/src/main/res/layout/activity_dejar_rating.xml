@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -9,75 +9,101 @@
         android:id="@+id/nombre_materia"
         android:layout_width="125dp"
         android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
         android:text="Materia: "
         android:textColor="#000000"
         android:textSize="30sp"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="75dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar6" />
 
     <TextView
         android:id="@+id/nombre_materia2"
         android:layout_width="171dp"
         android:layout_height="36dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
         android:text="Pre-requisitos:"
         android:textColor="#000000"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="211dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boton_inscribir_materia" />
 
     <TextView
         android:id="@+id/nombre_materia3"
         android:layout_width="171dp"
         android:layout_height="36dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:text="Horario:"
         android:textColor="#000000"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="269dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombre_materia2" />
 
     <TextView
         android:id="@+id/nombre_materia4"
         android:layout_width="171dp"
         android:layout_height="36dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:text="Docente:"
         android:textColor="#000000"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="323dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombre_materia3" />
 
     <TextView
         android:id="@+id/nombre_materia5"
-        android:layout_width="171dp"
-        android:layout_height="36dp"
+        android:layout_width="98dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:text="Ratings:"
         android:textColor="#000000"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="380dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombre_materia4" />
 
     <Button
         android:id="@+id/boton_inscribir_materia"
         android:layout_width="164dp"
         android:layout_height="47dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:background="#008EFF"
         android:text="Inscribir materia"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="142dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombre_materia" />
 
     <Button
         android:id="@+id/boton_inscribir_materia2"
-        android:layout_width="162dp"
-        android:layout_height="37dp"
+        android:layout_width="163dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
         android:background="#008EFF"
         android:text="Dejar Rating"
-        tools:layout_editor_absoluteX="205dp"
-        tools:layout_editor_absoluteY="379dp" />
+        app:layout_constraintStart_toEndOf="@+id/boton_inscribir_materia"
+        app:layout_constraintTop_toBottomOf="@+id/nombre_materia" />
 
     <LinearLayout
         android:layout_width="382dp"
         android:layout_height="295dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="417dp"></LinearLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombre_materia5"></LinearLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
