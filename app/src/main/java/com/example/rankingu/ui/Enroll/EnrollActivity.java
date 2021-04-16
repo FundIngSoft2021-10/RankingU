@@ -1,5 +1,6 @@
 package com.example.rankingu.ui.Enroll;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rankingu.R;
+import com.example.rankingu.ui.Search.Search_Materia;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -53,6 +55,17 @@ public class EnrollActivity extends AppCompatActivity{
         consultaMateria("poo",opciones, ratins);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, opciones);
         profesor.setAdapter(adapter);
+
+        confirmar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EnrollActivity.this, ConflictActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+               /* Snackbar.make(view, "PROGRAMAR ALGO", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+            }
+        });
 
         //Selecciona profesor
         profesor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
