@@ -11,6 +11,10 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.Materia.GraciasActivity" />
+        <activity android:name=".ui.Materia.ReseñaActivity" />
+        <activity android:name=".ui.Materia.WarningActivity" />
+        <activity android:name=".ui.Materia.MateriaActivity" />
         <activity android:name=".ui.SignUp.SignUp_Estudiante" />
         <activity android:name=".ui.SignUp.SignUp_Profesor_AgregarMateriasSuccess" />
         <activity android:name=".ui.SignUp.SignUp_Profesor_AgregarMaterias" />
@@ -20,6 +24,7 @@
         <activity android:name=".ui.Search.Search_Materia" />
         <activity android:name=".ui.Search.Search_Materia_Carrera" />
         <activity android:name=".ui.Search.Search_Profesor" />
+        <activity android:name=".ui.Enroll.ConflictActivity" />
         <activity android:name=".ui.Enroll.EnrollActivity" />
         <activity android:name=".ui.MainActivity" />
         <activity
