@@ -1,5 +1,6 @@
 package com.example.rankingu.ui.Enroll;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,10 +13,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rankingu.R;
-import com.example.rankingu.ui.Search.Search_Materia;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -41,6 +42,7 @@ public class EnrollActivity extends AppCompatActivity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enroll);
+
         materia = findViewById(R.id.materiaView);
         descripcion = findViewById(R.id.textDescripcion);
         profesor = findViewById(R.id.spinnerProfesor);
@@ -48,10 +50,12 @@ public class EnrollActivity extends AppCompatActivity{
         calif.setEnabled(false);
         confirmar = findViewById(R.id.BtonConfirmar);
         cancelar = findViewById(R.id.BtonCancelar);
+
         final ArrayList<String> opciones = new ArrayList<>();
         final ArrayList<String> ratins = new ArrayList<>();
         ratins.add("5");
         opciones.add("Profesores");
+
         consultaMateria("poo",opciones, ratins);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, opciones);
         profesor.setAdapter(adapter);
@@ -59,11 +63,27 @@ public class EnrollActivity extends AppCompatActivity{
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Registrar materia
+                boolean x = false;
+                if(x){
                 Intent intent = new Intent(EnrollActivity.this, ConflictActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-               /* Snackbar.make(view, "PROGRAMAR ALGO", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
+                }
+                else{
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(EnrollActivity.this);
+                    alerta.setMessage("La materia fue inscrita de manera exitosa")
+                            .setCancelable(false)
+                            .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog exito = alerta.create();
+                    exito.setTitle("");
+                    exito.show();
+                }
             }
         });
 

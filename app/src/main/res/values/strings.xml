@@ -18,6 +18,20 @@
     <string name="facebook_app_id">190467239257312</string>
     <string name="fb_login_protocol_scheme">fb190467239257312</string>
 
+    <string name="Ajust">Ajustes</string>
+    <string name="BotonVolver">Volver</string>
+    <string name="BotonEliminar_cuenta">Eliminar Cuenta </string>
+    <string name="BotonCambiar_Contra">Cambiar contraseÃ±a </string>
+    <string name="Text_ingrese">Ingrese nueva contraseÃ±a </string>
+    <string name="Text_confirm">Confirme la nueva contraseÃ±a </string>
+    <string name="Text_Editarcorreo">Editar Correo </string>
+    <string name="Text_ingresecorreo">Ingrese el Nuevo correo ElectrÃ³nico </string>
+    <string name="Text_confirmecorreo">Confirme el Nuevo correo ElectrÃ³nico </string>
+    <string name="Text_confirm2">Confirmar </string>
+    <string name="BotonCerrarsecion">Cerrar sesiÃ³n </string>
+
+    <string name="Ajustes">Ajustes</string>
+
     <string name="Facebook">Facebook</string>
     <string name="prompt_email">Usuario</string>
     <string name="prompt_password">Contraseña</string>
