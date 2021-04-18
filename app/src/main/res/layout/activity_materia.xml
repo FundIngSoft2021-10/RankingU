@@ -10,7 +10,7 @@
         android:layout_width="125dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:text="Materia: "
         android:textColor="#000000"
         android:textSize="30sp"
@@ -67,10 +67,10 @@
 
     <Button
         android:id="@+id/boton_inscribir_materia"
-        android:layout_width="164dp"
-        android:layout_height="47dp"
+        android:layout_width="148dp"
+        android:layout_height="35dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:background="#008EFF"
         android:text="Inscribir materia"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,23 +78,14 @@
 
     <Button
         android:id="@+id/boton_inscribir_materia2"
-        android:layout_width="163dp"
-        android:layout_height="46dp"
+        android:layout_width="141dp"
+        android:layout_height="35dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:background="#008EFF"
         android:text="Dejar Rating"
         app:layout_constraintStart_toEndOf="@+id/boton_inscribir_materia"
         app:layout_constraintTop_toBottomOf="@+id/nombre_materia" />
-
-    <LinearLayout
-        android:layout_width="382dp"
-        android:layout_height="295dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre_materia5"></LinearLayout>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar6"
@@ -105,5 +96,29 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="383dp"
+        android:layout_height="252dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombre_materia5">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="138dp"
+                android:layout_height="match_parent"
+                android:text="TextView" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="229dp"
+                android:layout_height="44dp" />
+        </TableRow>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
