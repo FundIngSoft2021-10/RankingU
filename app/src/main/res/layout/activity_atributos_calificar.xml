@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,8 +10,8 @@
         android:id="@+id/Materia_atributos_calificar"
         android:layout_width="124dp"
         android:layout_height="42dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:text="Materia:"
         android:textColor="#000000"
         android:textSize="30sp"
@@ -23,8 +22,8 @@
         android:id="@+id/materia"
         android:layout_width="124dp"
         android:layout_height="42dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:text="Docente:"
         android:textColor="#000000"
         android:textSize="30sp"
@@ -33,10 +32,10 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="370dp"
-        android:layout_height="331dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="379dp"
+        android:layout_height="317dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materia">
 
@@ -138,35 +137,31 @@
 
     <Button
         android:id="@+id/boton_dejar_reseña"
-        android:layout_width="124dp"
-        android:layout_height="43dp"
-        android:layout_marginEnd="60dp"
+        android:layout_width="128dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="16dp"
         android:background="#00B0FF"
         android:text="Dejar reseña"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:layout_constraintVertical_bias="0.493" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/boton_dejar_reseña2"
         android:layout_width="124dp"
         android:layout_height="43dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="16dp"
         android:background="#00B0FF"
         android:text="Volver"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/boton_dejar_reseña"
-        app:layout_constraintHorizontal_bias="0.127"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:layout_constraintVertical_bias="0.493" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar4"

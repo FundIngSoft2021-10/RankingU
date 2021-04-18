@@ -20,8 +20,8 @@
 
     <TextView
         android:id="@+id/texto_aviso"
-        android:layout_width="327dp"
-        android:layout_height="142dp"
+        android:layout_width="329dp"
+        android:layout_height="95dp"
         android:shadowColor="#000000"
         android:text="Al elegir dejar una reseña declara que ha cursado la asignatura previamente con este docente, si es asi, continue, de lo contrario abstengase de dejar la reseña"
         android:textColor="#000000"
@@ -44,30 +44,29 @@
         android:id="@+id/boton_continuar"
         android:layout_width="98dp"
         android:layout_height="47dp"
-        android:layout_marginEnd="72dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="24dp"
         android:background="#00B0FF"
         android:text="Continuar"
         android:textAllCaps="false"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/texto_aviso"
-        app:layout_constraintVertical_bias="0.507" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/boton_continuar2"
         android:layout_width="98dp"
         android:layout_height="47dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="24dp"
         android:background="#00B0FF"
         android:text="Volver"
         android:textAllCaps="false"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/boton_continuar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/texto_aviso" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar5"
@@ -78,17 +77,5 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="boton_continuar2" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="boton_continuar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
