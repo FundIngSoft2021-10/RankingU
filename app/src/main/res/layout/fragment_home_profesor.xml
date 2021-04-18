@@ -1,99 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/ImageProfesor"
-            android:layout_width="104dp"
-            android:layout_height="118dp"
-            android:layout_marginTop="52dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.052"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+    <ImageView
+        android:id="@+id/ImageProfesor"
+        android:layout_width="104dp"
+        android:layout_height="118dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/NombreProfesor"
-            android:layout_width="0dp"
+    <TextView
+        android:id="@+id/NombreProfesor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="132dp"
+        android:text="NOMBRE"
+        android:textColor="#121111"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/TipoInicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="48dp"
+        android:text="Tipo"
+        android:textColor="#0E0E0E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Asignatura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="109dp"
+        android:layout_marginEnd="132dp"
+        android:text="@string/Asignatura"
+        android:textAlignment="center"
+        android:textColor="#0B0A0A"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NombreProfesor" />
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="410dp"
+        android:layout_height="175dp"
+        android:layout_marginBottom="148dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="144dp"
-            android:layout_marginBottom="186dp"
-            android:text="NOMBRE"
-            android:textColor="#121111"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.062"
-            tools:textAlignment="center" />
+            android:layout_marginBottom="168dp">
 
-        <TextView
-            android:id="@+id/TipoInicio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
-            android:layout_marginEnd="44dp"
-            android:text="Tipo"
-            android:textColor="#0E0E0E"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="402dp"
-            android:layout_height="161dp"
-            android:layout_marginBottom="204dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.444"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <TextView
-                android:id="@+id/textView21"
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:text="MATERIA1                                              *****"
-                android:textColor="#F40505"
-                android:textSize="18sp" />
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/textView22"
-                android:layout_width="match_parent"
-                android:layout_height="59dp"
-                android:text="MATERIA2                                              *****"
-                android:textColor="#F10606"
-                android:textSize="18sp" />
+                <Space
+                    android:layout_width="12dp"
+                    android:layout_height="match_parent" />
 
-            <TextView
-                android:id="@+id/textView26"
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:text="MATERIA3                                              *****"
-                android:textColor="#F10606"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/VistaMateriaProfe"
+                    android:layout_width="160dp"
+                    android:layout_height="match_parent"
+                    android:text="Materia"
+                    android:textColor="#0E0E0E" />
 
-        </LinearLayout>
+                <RatingBar
+                    android:id="@+id/RatingBarProfesor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
 
-        <TextView
-            android:id="@+id/Asignatura"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="120dp"
-            android:layout_marginBottom="55dp"
-            android:text="@string/Asignatura"
-            android:textAlignment="center"
-            android:textColor="#0B0A0A"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/NombreProfesor"
-            app:layout_constraintVertical_bias="0.725" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
