@@ -18,7 +18,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rankingu.Classes.Horario;
-import com.example.rankingu.Classes.Materia;
+import com.example.rankingu.Classes.MateriaDelMain;
 import com.example.rankingu.R;
 import com.example.rankingu.ui.Materia.MateriaActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -133,7 +133,7 @@ public class EnrollActivity extends AppCompatActivity{
             Horario hor = new Horario();
             hor.setDias("L-M");
             hor.setHoras("2-4");
-            Materia inscrip = new Materia(materia.getText().toString()
+            MateriaDelMain inscrip = new MateriaDelMain(materia.getText().toString()
                     , descripcion.getText().toString(), 4, 4.5, hor, null);
 
             //Añadir a la BD

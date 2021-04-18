@@ -2,11 +2,8 @@ package com.example.rankingu.ui.Horario;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,15 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rankingu.Classes.Materia;
+import com.example.rankingu.Classes.MateriaDelMain;
 import com.example.rankingu.Classes.SesionClase;
 import com.example.rankingu.Controller.ControllerHorario;
 import com.example.rankingu.R;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,7 +36,7 @@ public class HorarioFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private List<Materia> materias;
+    private List<MateriaDelMain> materias;
     ControllerHorario controladorHorario = new ControllerHorario();
 
     TableLayout tablaHorario;

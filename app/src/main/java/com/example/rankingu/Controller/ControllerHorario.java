@@ -1,20 +1,13 @@
 package com.example.rankingu.Controller;
 
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import com.example.rankingu.Classes.Materia;
 import com.example.rankingu.Classes.SesionClase;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import com.example.rankingu.Enum.EnumDias;
-import com.example.rankingu.Enum.EnumHoras;
 
 public class ControllerHorario {
     private List<Materia> materias;
