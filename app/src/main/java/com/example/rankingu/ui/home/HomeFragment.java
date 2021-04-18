@@ -13,25 +13,22 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.rankingu.R;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
-        String aux = "estudiante";
+        homeViewModel =
+                ViewModelProviders.of(this).get(HomeViewModel.class);
         View root=null;
-        if(aux.equalsIgnoreCase("Estudiante")){
+        //if(User.tipo.equals("Estudiante")){
          root = inflater.inflate(R.layout.fragment_home, container, false);
-        }
+        /* }
         else {
-            root = inflater.inflate(R.layout.fragment_home_profesor, container, false);
-        }
+            root = inflater.inflate(R.layout.activity_view_profesor, container, false);
+        }*/
         //final TextView textView = root.findViewById(R.id.text_home);
         homeViewModel.getText().observe(this, new Observer<String>() {
             @Override
