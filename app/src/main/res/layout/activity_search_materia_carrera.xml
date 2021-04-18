@@ -1,140 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SignUp">
+    android:orientation="vertical"
+    tools:context=".ui.Search_Materia_Carrera">
 
-    <EditText
-        android:id="@+id/editTextBusqueda"
-        android:layout_width="wrap_content"
+    <SearchView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="Busqueda"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/BotonBuscar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/carreraSearchView"
+        android:iconifiedByDefault="false"
+        android:queryHint="Materia Carrera"></SearchView>
 
-    <Button
-        android:id="@+id/BotonBuscar"
-        android:layout_width="90dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="24dp"
-        android:text="Search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/editTextBusqueda"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="413dp"
-        android:layout_height="584dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextBusqueda">
+    <ListView
+        android:id="@+id/carreraListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <Button
-                android:id="@+id/materia5"
-                android:layout_width="match_parent"
-                android:layout_height="99dp"
-                android:layout_marginTop="31dp"
-                android:layout_marginBottom="2dp"
-                android:text="Carrera Materia 1"
-                app:layout_constraintBottom_toTopOf="@+id/materia2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
-
-            <Button
-                android:id="@+id/materia6"
-                android:layout_width="match_parent"
-                android:layout_height="99dp"
-                android:layout_marginTop="31dp"
-                android:layout_marginBottom="2dp"
-                android:text="Carrera Materia 1"
-                app:layout_constraintBottom_toTopOf="@+id/materia2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
-
-            <Button
-                android:id="@+id/materia7"
-                android:layout_width="match_parent"
-                android:layout_height="99dp"
-                android:layout_marginTop="31dp"
-                android:layout_marginBottom="2dp"
-                android:text="Carrera Materia 1"
-                app:layout_constraintBottom_toTopOf="@+id/materia2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
-
-            <Button
-                android:id="@+id/materia8"
-                android:layout_width="match_parent"
-                android:layout_height="99dp"
-                android:layout_marginTop="31dp"
-                android:layout_marginBottom="2dp"
-                android:text="Carrera Materia 1"
-                app:layout_constraintBottom_toTopOf="@+id/materia2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
-
-            <Button
-                android:id="@+id/materia"
-                android:layout_width="match_parent"
-                android:layout_height="99dp"
-                android:layout_marginTop="31dp"
-                android:layout_marginBottom="2dp"
-                android:text="Carrera Materia 1"
-                app:layout_constraintBottom_toTopOf="@+id/materia2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
-
-            <Button
-                android:id="@+id/materia4"
-                android:layout_width="match_parent"
-                android:layout_height="99dp"
-                android:layout_marginTop="31dp"
-                android:layout_marginBottom="2dp"
-                android:text="Carrera Materia 1"
-                app:layout_constraintBottom_toTopOf="@+id/materia2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
-
-            <Button
-                android:id="@+id/materia1"
-                android:layout_width="match_parent"
-                android:layout_height="99dp"
-                android:layout_marginTop="31dp"
-                android:layout_marginBottom="2dp"
-                android:text="Carrera Materia 1"
-                app:layout_constraintBottom_toTopOf="@+id/materia2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
-
-        </LinearLayout>
-    </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

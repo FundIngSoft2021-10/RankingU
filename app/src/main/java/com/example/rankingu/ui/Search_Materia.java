@@ -8,6 +8,8 @@ import com.example.rankingu.R;
 
 public class Search_Materia extends AppCompatActivity {
 
+    private Recc
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
