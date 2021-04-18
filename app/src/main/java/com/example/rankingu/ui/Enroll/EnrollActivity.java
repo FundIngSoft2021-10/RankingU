@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -118,6 +119,37 @@ public class EnrollActivity extends AppCompatActivity{
                     }
                 });
     }
+
+    /*Cargar inscripción a la Base de datos
+    public void registrarGasto(){
+        String conductor = usuarioEditText.getText().toString();
+        String tipo = listaTipos.getSelectedItem().toString();
+        String descripcion = descripcionEditText.getText().toString();
+        String fecha = fechaEditText.getText().toString();
+        int precio, abono = 0;
+
+        if(!precioEditText.getText().toString().equalsIgnoreCase("")){
+            precio = Integer.parseInt(precioEditText.getText().toString());
+        }else{
+            precio = 0;
+        }
+
+        if(estado.equalsIgnoreCase("Abono")){
+            abono = Integer.parseInt(abonoEditText.getText().toString());
+        }
+
+        if(precio!=0 && estado!=""){
+            GastoClass gasto = new GastoClass(tipo, descripcion, conductor,
+                    fecha, estado, precio, abono);
+
+            //Añadir a la BD
+            db.collection("gastos").document(fecha).collection("conductor").add(gasto);
+
+            Toast.makeText(getContext(), "Gasto guardado", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(getContext(), "Introduzca todos los datos", Toast.LENGTH_LONG).show();
+        }
+    }*/
 
     //Consulta
     public void consultaProfes(String materia, final ArrayList<String> opciones, final ArrayList<String> ratins){
