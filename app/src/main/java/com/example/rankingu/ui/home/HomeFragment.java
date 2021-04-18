@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -27,7 +26,7 @@ public class HomeFragment extends Fragment {
         String aux = "estudiante";
         View root=null;
         if(aux.equalsIgnoreCase("Estudiante")){
-         root = inflater.inflate(R.layout.fragment_home, container, false);
+         root = inflater.inflate(R.layout.fragment_home_estudiante, container, false);
         }
         else {
             root = inflater.inflate(R.layout.fragment_home_profesor, container, false);

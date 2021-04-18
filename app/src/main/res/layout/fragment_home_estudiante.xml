@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    tools:context=".ui.Horario.HorarioFragment"
     android:layout_height="match_parent">
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -25,6 +27,7 @@
                     android:orientation="vertical">
 
                     <TableLayout
+                        android:id="@+id/horarioTable"
                         android:layout_width="413dp"
                         android:layout_height="731dp">
 
@@ -32,10 +35,10 @@
                         <TableRow
                             android:id="@+id/filaPrincipal"
                             android:layout_width="match_parent"
+
                             android:layout_height="87dp">
 
                             <TextView
-                                android:id="@+id/textView26"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
@@ -44,7 +47,6 @@
                                 android:textAllCaps="true" />
 
                             <TextView
-                                android:id="@+id/textView25"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
@@ -53,7 +55,6 @@
                                 android:textAllCaps="true" />
 
                             <TextView
-                                android:id="@+id/textView24"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
@@ -62,7 +63,6 @@
                                 android:textAllCaps="true" />
 
                             <TextView
-                                android:id="@+id/textView23"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
@@ -71,7 +71,6 @@
                                 android:textAllCaps="true" />
 
                             <TextView
-                                android:id="@+id/textView22"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
@@ -80,7 +79,6 @@
                                 android:textAllCaps="true" />
 
                             <TextView
-                                android:id="@+id/textView21"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
@@ -89,7 +87,6 @@
                                 android:textAllCaps="true" />
 
                             <TextView
-                                android:id="@+id/textView8"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
@@ -98,7 +95,6 @@
                                 android:textAllCaps="true" />
 
                             <TextView
-                                android:id="@+id/textView6"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
@@ -108,11 +104,11 @@
                         </TableRow>
 
                         <TableRow
+                            android:id="@+id/f_7"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
                             <TextView
-                                android:id="@+id/textView27"
                                 android:layout_width="51.925dp"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
@@ -125,9 +121,7 @@
                                 android:layout_width="51.925dp"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
-                                android:clickable="true"
-                                android:onClick="prueba_click"
-                                android:text="Calculo Integral"
+                                android:clickable="false"
                                 android:textAlignment="center"
                                 android:textAllCaps="true"
                                 android:textSize="12sp" />
@@ -184,6 +178,7 @@
                         </TableRow>
 
                         <TableRow
+                            android:id="@+id/f_8"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -210,7 +205,6 @@
                                 android:layout_width="51.925dp"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
-                                android:text="Calculo Integral"
                                 android:textAlignment="center"
                                 android:textAllCaps="true" />
 
@@ -256,6 +250,7 @@
                         </TableRow>
 
                         <TableRow
+                            android:id="@+id/f_9"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -290,7 +285,6 @@
                                 android:layout_width="51.925dp"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
-                                android:text="Calculo Integral"
                                 android:textAlignment="center"
                                 android:textAllCaps="true" />
 
@@ -328,6 +322,7 @@
                         </TableRow>
 
                         <TableRow
+                            android:id="@+id/f_10"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -370,7 +365,6 @@
                                 android:layout_width="51.925dp"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
-                                android:text="Calculo Integral"
                                 android:textAlignment="center"
                                 android:textAllCaps="true" />
 
@@ -400,6 +394,7 @@
                         </TableRow>
 
                         <TableRow
+                            android:id="@+id/f_11"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -450,7 +445,6 @@
                                 android:layout_width="51.925dp"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
-                                android:text="Calculo Integral"
                                 android:textAlignment="center"
                                 android:textAllCaps="true" />
 
@@ -472,6 +466,7 @@
                         </TableRow>
 
                         <TableRow
+                            android:id="@+id/f_12"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -530,7 +525,6 @@
                                 android:layout_width="51.925dp"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
-                                android:text="Calculo Integral"
                                 android:textAlignment="center"
                                 android:textAllCaps="true" />
 
@@ -544,6 +538,7 @@
                         </TableRow>
 
                         <TableRow
+                            android:id="@+id/f_13"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -610,12 +605,12 @@
                                 android:layout_width="51.925dp"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
-                                android:text="Calculo Integral"
                                 android:textAlignment="center"
                                 android:textAllCaps="true" />
                         </TableRow>
 
                         <TableRow
+                            android:id="@+id/f_14"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -686,6 +681,7 @@
                         </TableRow>
 
                         <TableRow
+                            android:id="@+id/f_15"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -757,6 +753,7 @@
                         </TableRow>
 
                         <TableRow
+                            android:id="@+id/f_16"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -797,7 +794,6 @@
                                 android:layout_width="51.925dp"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
-                                android:text="Calculo Integral"
                                 android:textAlignment="center"
                                 android:textAllCaps="true" />
 
@@ -827,6 +823,7 @@
                         </TableRow>
 
                         <TableRow
+                            android:id="@+id/f_17"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -896,6 +893,7 @@
                         </TableRow>
 
                         <TableRow
+                            android:id="@+id/f_18"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -966,6 +964,7 @@
                         </TableRow>
 
                         <TableRow
+                            android:id="@+id/f_19"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -1036,6 +1035,7 @@
                         </TableRow>
 
                         <TableRow
+                            android:id="@+id/f_20"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -1106,6 +1106,7 @@
                         </TableRow>
 
                         <TableRow
+                            android:id="@+id/f_21"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -1176,6 +1177,7 @@
                         </TableRow>
 
                         <TableRow
+                            android:id="@+id/f_22"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
