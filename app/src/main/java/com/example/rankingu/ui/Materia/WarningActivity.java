@@ -24,7 +24,6 @@ public class WarningActivity extends AppCompatActivity {
         continuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText( getApplicationContext(), "Tu reseña ha sido agregada satisfactoriamenete, gracias", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(WarningActivity.this, ReseñaActivity.class);
                 startActivity(intent);
             }

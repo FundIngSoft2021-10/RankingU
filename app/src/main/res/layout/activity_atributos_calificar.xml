@@ -82,7 +82,7 @@
                 android:id="@+id/Actitud"
                 android:layout_width="wrap_content"
                 android:layout_height="31dp"
-                android:text="Metodologia:"
+                android:text="Actitud:"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 tools:layout_editor_absoluteX="134dp"
