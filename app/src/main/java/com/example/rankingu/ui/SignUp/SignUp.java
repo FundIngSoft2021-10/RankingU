@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rankingu.R;
 
-public class    SignUp extends AppCompatActivity {
+public class SignUp extends AppCompatActivity {
 
     private Spinner spRol;
     private EditText txtMail;

@@ -1,43 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <TextView
-        android:id="@+id/Materia_atributos_calificar"
+        android:id="@+id/Materia"
         android:layout_width="124dp"
         android:layout_height="42dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
         android:text="Materia:"
         android:textColor="#000000"
         android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar4" />
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="119dp" />
 
     <TextView
         android:id="@+id/materia"
         android:layout_width="124dp"
         android:layout_height="42dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
         android:text="Docente:"
         android:textColor="#000000"
         android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Materia_atributos_calificar" />
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="189dp" />
+
 
     <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="379dp"
-        android:layout_height="317dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materia">
+        android:layout_width="374dp"
+        android:layout_height="291dp"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="260dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,7 +76,7 @@
                 android:id="@+id/Actitud"
                 android:layout_width="wrap_content"
                 android:layout_height="31dp"
-                android:text="Actitud:"
+                android:text="Metodologia:"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 tools:layout_editor_absoluteX="134dp"
@@ -112,19 +106,9 @@
                 tools:layout_editor_absoluteX="85dp"
                 tools:layout_editor_absoluteY="495dp" />
 
-            <TextView
-                android:id="@+id/Comentario_calificar_atributos"
-                android:layout_width="match_parent"
-                android:layout_height="31dp"
-                android:text="Comentario:"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                tools:layout_editor_absoluteX="134dp"
-                tools:layout_editor_absoluteY="449dp" />
-
             <EditText
                 android:id="@+id/Comentarios_reseña"
-                android:layout_width="348dp"
+                android:layout_width="match_parent"
                 android:layout_height="183dp"
                 android:ems="10"
                 android:inputType="textPersonName"
@@ -137,40 +121,26 @@
 
     <Button
         android:id="@+id/boton_dejar_reseña"
-        android:layout_width="128dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="139dp"
+        android:layout_height="48dp"
         android:background="#00B0FF"
         android:text="Dejar reseña"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        tools:layout_editor_absoluteX="219dp"
+        tools:layout_editor_absoluteY="610dp" />
 
     <Button
-        android:id="@+id/boton_dejar_reseña2"
-        android:layout_width="124dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="16dp"
+        android:id="@+id/boton_volver_reseña"
+        android:layout_width="113dp"
+        android:layout_height="49dp"
         android:background="#00B0FF"
         android:text="Volver"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="610dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

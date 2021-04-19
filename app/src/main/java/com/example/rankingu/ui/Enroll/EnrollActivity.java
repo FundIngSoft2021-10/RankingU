@@ -1,23 +1,11 @@
 package com.example.rankingu.ui.Enroll;
 
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.RatingBar;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rankingu.R;
+<<<<<<< HEAD
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -38,11 +26,17 @@ public class EnrollActivity extends AppCompatActivity{
     private Button confirmar;
     private Button cancelar;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+=======
+
+public class EnrollActivity extends AppCompatActivity{
+
+>>>>>>> parent of f45c126 (Merge branch 'main' into pruebas-Todos)
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enroll);
+<<<<<<< HEAD
 
         materia = findViewById(R.id.materiaView);
         descripcion = findViewById(R.id.textDescripcion);
@@ -169,5 +163,7 @@ public class EnrollActivity extends AppCompatActivity{
                         }
                     }
                 });
+=======
+>>>>>>> parent of f45c126 (Merge branch 'main' into pruebas-Todos)
     }
 }

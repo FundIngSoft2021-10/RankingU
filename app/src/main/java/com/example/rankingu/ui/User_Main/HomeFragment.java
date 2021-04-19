@@ -1,4 +1,5 @@
-package com.example.rankingu.ui.home;
+
+package com.example.rankingu.ui.User_Main;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,18 +23,12 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root=null;
-        //if(User.tipo.equals("Estudiante")){
-         root = inflater.inflate(R.layout.fragment_home, container, false);
-        /* }
-        else {
-            root = inflater.inflate(R.layout.activity_view_profesor, container, false);
-        }*/
-        //final TextView textView = root.findViewById(R.id.text_home);
+        View root = inflater.inflate(R.layout.fragment_user, container, false);
+        final TextView textView = root.findViewById(R.id.text_home);
         homeViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-              // textView.setText(s);
+                textView.setText(s);
             }
         });
         return root;
