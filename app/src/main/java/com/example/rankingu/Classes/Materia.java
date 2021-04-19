@@ -8,6 +8,7 @@ public class Materia {
     Integer puntaje, semestre, cupos;
     List<String> horarios;
     List<String> profesores;
+    List<SesionClase> sesiones_clase;
 
     public Materia() {
     }
@@ -19,6 +20,19 @@ public class Materia {
         this.cupos = cupos;
         this.horarios = horarios;
         this.profesores = profesores;
+    }
+
+    public Materia(String nombre, List<SesionClase> sesiones_clase) {
+        this.nombre = nombre;
+        this.sesiones_clase = sesiones_clase;
+    }
+
+    public List<SesionClase> getSesiones_clase() {
+        return sesiones_clase;
+    }
+
+    public void setSesiones_clase(List<SesionClase> sesiones_clase) {
+        this.sesiones_clase = sesiones_clase;
     }
 
     public String getNombre() {
@@ -67,5 +81,15 @@ public class Materia {
 
     public void setProfesores(List<String> profesores) {
         this.profesores = profesores;
+    }
+
+    public String toString()
+    {
+        String texto = this.nombre+"\n";
+        for(SesionClase s:this.sesiones_clase)
+        {
+            texto+=" "+s.toString();
+        }
+        return texto;
     }
 }
