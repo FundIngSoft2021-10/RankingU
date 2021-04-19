@@ -17,14 +17,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.rankingu.Classes.Horario;
-import com.example.rankingu.Classes.MateriaDelMain;
 import com.example.rankingu.R;
-import com.example.rankingu.ui.Materia.MateriaActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -43,7 +38,6 @@ public class EnrollActivity extends AppCompatActivity{
     private Button confirmar;
     private Button cancelar;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,8 +64,14 @@ public class EnrollActivity extends AppCompatActivity{
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean result = registrarInscripcion();
-                if(result){
+                //Registrar materia
+                boolean x = false;
+                if(x){
+                Intent intent = new Intent(EnrollActivity.this, ConflictActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                }
+                else{
                     AlertDialog.Builder alerta = new AlertDialog.Builder(EnrollActivity.this);
                     alerta.setMessage("La materia fue inscrita de manera exitosa")
                             .setCancelable(false)
@@ -79,17 +79,11 @@ public class EnrollActivity extends AppCompatActivity{
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.cancel();
-                                    Intent intent = new Intent(EnrollActivity.this, MateriaActivity.class);
-                                    startActivity(intent);
                                 }
                             });
                     AlertDialog exito = alerta.create();
                     exito.setTitle("");
                     exito.show();
-                }
-                else{
-                    Intent intent = new Intent(EnrollActivity.this, ConflictActivity.class);
-                    startActivity(intent);
                 }
             }
         });
@@ -98,7 +92,7 @@ public class EnrollActivity extends AppCompatActivity{
         profesor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                calif.setRating(Float.parseFloat(ratins.get(position)));
+                calif.setRating(Float.parseFloat(ratins.get(position)));// elemento = (String) profesor.getAdapter().getItem(position);
                 //Toast.makeText(getContext(), "selecciono: "+elemento,Toast.LENGTH_LONG).show();
             }
 
@@ -126,28 +120,36 @@ public class EnrollActivity extends AppCompatActivity{
                 });
     }
 
-    //Cargar inscripción a la Base de datos
-    public boolean registrarInscripcion(){
-        // acabar la funcion de validar
-        if(validarInscripcion()){
-            Horario hor = new Horario();
-            hor.setDias("L-M");
-            hor.setHoras("2-4");
-            MateriaDelMain inscrip = new MateriaDelMain(materia.getText().toString(), descripcion.getText().toString(), 4, 4.5, hor, null);
+    /*Cargar inscripción a la Base de datos
+    public void registrarGasto(){
+        String conductor = usuarioEditText.getText().toString();
+        String tipo = listaTipos.getSelectedItem().toString();
+        String descripcion = descripcionEditText.getText().toString();
+        String fecha = fechaEditText.getText().toString();
+        int precio, abono = 0;
+
+        if(!precioEditText.getText().toString().equalsIgnoreCase("")){
+            precio = Integer.parseInt(precioEditText.getText().toString());
+        }else{
+            precio = 0;
+        }
+
+        if(estado.equalsIgnoreCase("Abono")){
+            abono = Integer.parseInt(abonoEditText.getText().toString());
+        }
+
+        if(precio!=0 && estado!=""){
+            GastoClass gasto = new GastoClass(tipo, descripcion, conductor,
+                    fecha, estado, precio, abono);
 
             //Añadir a la BD
-            db.collection("Usuarios").document(user.getEmail()).collection("materias").add(inscrip);
-            Toast.makeText(this, "Materia inscrita", Toast.LENGTH_LONG).show();
-            return true;
-        }else{
-            Toast.makeText(this, "Introduzca todos los datos", Toast.LENGTH_LONG).show();
-            return false;
-        }
-    }
+            db.collection("gastos").document(fecha).collection("conductor").add(gasto);
 
-    public boolean validarInscripcion(){
-        return true;
-    }
+            Toast.makeText(getContext(), "Gasto guardado", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(getContext(), "Introduzca todos los datos", Toast.LENGTH_LONG).show();
+        }
+    }*/
 
     //Consulta
     public void consultaProfes(String materia, final ArrayList<String> opciones, final ArrayList<String> ratins){

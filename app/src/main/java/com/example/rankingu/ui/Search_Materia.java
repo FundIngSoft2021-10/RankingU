@@ -1,4 +1,4 @@
-package com.example.rankingu.ui.Search;
+package com.example.rankingu.ui;
 
 import android.os.Bundle;
 import android.widget.ListAdapter;
@@ -11,9 +11,9 @@ import com.example.rankingu.R;
 
 import java.util.ArrayList;
 
-public class Search_Profesor extends AppCompatActivity {
+public class Search_Materia extends AppCompatActivity {
 
-    public static ArrayList<ProfesorS> profesores = new ArrayList<ProfesorS>();
+    public static ArrayList<MateriaS> materias = new ArrayList<MateriaS>();
 
     private ListView listView;
 
@@ -31,7 +31,7 @@ public class Search_Profesor extends AppCompatActivity {
     }
 
     private void initSearchWidgets() {
-        searchView = (SearchView) findViewById(R.id.profesorSearchView);
+        searchView = (SearchView) findViewById(R.id.materiaSearchView);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -42,11 +42,11 @@ public class Search_Profesor extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String s) {
                 currentSearchText = s;
-                ArrayList<ProfesorS> filteredProfesorS = new ArrayList<ProfesorS>();
+                ArrayList<MateriaS> filteredMateriaS = new ArrayList<MateriaS>();
 
-                for (ProfesorS profesorS : profesores) {
-                    if (profesorS.getName().toLowerCase().contains(s.toLowerCase())) {
-                            filteredProfesorS.add(profesorS);
+                for (MateriaS materiaS : materias) {
+                    if (materiaS.getName().toLowerCase().contains(s.toLowerCase())) {
+                        filteredMateriaS.add(materiaS);
                     }
                 }
                 return false;
@@ -56,22 +56,22 @@ public class Search_Profesor extends AppCompatActivity {
 
 
     private void setupData() {
-        ProfesorS profesorS1 = new ProfesorS("Anabel Montero");
-        profesores.add(profesorS1);
+        MateriaS materiaS1 = new MateriaS("ADOO");
+        materias.add(materiaS1);
 
-        ProfesorS profesorS2 = new ProfesorS("Leonardo Florez");
-        profesores.add(profesorS2);
+        MateriaS materiaS2 = new MateriaS("POO");
+        materias.add(materiaS2);
 
-        ProfesorS profesorS3 = new ProfesorS("Julio Carreño");
-        profesores.add(profesorS3);
+        MateriaS materiaS3 = new MateriaS("IngeSoft");
+        materias.add(materiaS3);
 
-        ProfesorS profesorS4 = new ProfesorS("Camilo Cañon");
-        profesores.add(profesorS4);
+        MateriaS materiaS4 = new MateriaS("Intro Compu Grafica");
+        materias.add(materiaS4);
     }
 
     private void setUpList() {
-        listView = (ListView) findViewById(R.id.profesorListView);
+        listView = (ListView) findViewById(R.id.materiaListView);
 
-        listView.setAdapter((ListAdapter) profesores);
+        listView.setAdapter((ListAdapter) materias);
     }
 }
