@@ -5,7 +5,7 @@ import java.util.List;
 public class Profesor {
 
     String nombre;
-    List<Materia> materiasList;
+    List<MateriaDelMain> materiasList;
 
     public Profesor() {
     }
@@ -18,11 +18,11 @@ public class Profesor {
         this.nombre = nombre;
     }
 
-    public List<Materia> getMateriasList() {
+    public List<MateriaDelMain> getMateriasList() {
         return materiasList;
     }
 
-    public void setMateriasList(List<Materia> materiasList) {
+    public void setMateriasList(List<MateriaDelMain> materiasList) {
         this.materiasList = materiasList;
     }
 }

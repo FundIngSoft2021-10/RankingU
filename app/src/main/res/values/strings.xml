@@ -85,13 +85,13 @@
 
     <!--HORARIO DIAS-->
     <string name="hora">hora</string>
-    <string name="lunes">lun</string>
-    <string name="martes">mar</string>
-    <string name="miercoles">mie</string>
-    <string name="jueves">jue</string>
-    <string name="viernes">vie</string>
-    <string name="sabado">sab</string>
-    <string name="domingo">dom</string>
+    <string name="lunes">LUNES</string>
+    <string name="martes">MARTES</string>
+    <string name="miercoles">MIERCOLES</string>
+    <string name="jueves">JUEVES</string>
+    <string name="viernes">VIERNES</string>
+    <string name="sabado">SABADO</string>
+    <string name="domingo">DOMINGO</string>
     <!--HORARIO HORAS-->
     <string name="siete_am">7:00</string>
     <string name="ocho_am">8:00</string>
