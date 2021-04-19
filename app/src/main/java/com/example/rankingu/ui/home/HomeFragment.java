@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment {
         String aux = "estudiante";
         View root=null;
         if(aux.equalsIgnoreCase("Estudiante")){
-            root = inflater.inflate(R.layout.fragment_home_estudiante, container, false);
+            root = inflater.inflate(R.layout.fragment_home, container, false);
         }
         if(aux.equalsIgnoreCase("Profesor"))
         {
