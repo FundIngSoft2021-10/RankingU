@@ -120,6 +120,7 @@ public class EnrollActivity extends AppCompatActivity{
                 });
     }
 
+<<<<<<< Updated upstream
     /*Cargar inscripción a la Base de datos
     public void registrarGasto(){
         String conductor = usuarioEditText.getText().toString();
@@ -127,6 +128,17 @@ public class EnrollActivity extends AppCompatActivity{
         String descripcion = descripcionEditText.getText().toString();
         String fecha = fechaEditText.getText().toString();
         int precio, abono = 0;
+=======
+    //Cargar inscripción a la Base de datos
+    public boolean registrarInscripcion(){
+        // acabar la funcion de validar
+        if(validarInscripcion()){
+            Horario hor = new Horario();
+            hor.setDias("L-M");
+            hor.setHoras("2-4");
+            Materia inscrip = new Materia(materia.getText().toString()
+                    , descripcion.getText().toString(), 4, 4.5, hor, null,null);
+>>>>>>> Stashed changes
 
         if(!precioEditText.getText().toString().equalsIgnoreCase("")){
             precio = Integer.parseInt(precioEditText.getText().toString());
@@ -154,20 +166,20 @@ public class EnrollActivity extends AppCompatActivity{
     //Consulta
     public void consultaProfes(String materia, final ArrayList<String> opciones, final ArrayList<String> ratins){
         db.collection("Materias").document(materia).collection("profesores")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData().get("nombre").toString());
-                                opciones.add(document.getData().get("nombre").toString());
-                                ratins.add(document.getData().get("rating").toString());
-                            }
-                        } else {
-                            Log.d(TAG, "Error en la BD: ", task.getException());
+            .get()
+            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            Log.d(TAG, document.getId() + " => " + document.getData().get("nombre").toString());
+                            opciones.add(document.getData().get("nombre").toString());
+                            ratins.add(document.getData().get("rating").toString());
                         }
+                    } else {
+                        Log.d(TAG, "Error en la BD: ", task.getException());
                     }
-                });
+                }
+            });
     }
 }
