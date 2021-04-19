@@ -38,5 +38,4 @@
                 android:title="@string/menu_error" />
         </menu>
     </item>
-
 </menu>

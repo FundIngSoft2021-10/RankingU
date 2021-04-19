@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment {
         String aux = "profesor";
         View root=null;
         if(aux.equalsIgnoreCase("Estudiante")){
-            root = inflater.inflate(R.layout.fragment_home, container, false);
+            root = inflater.inflate(R.layout.fragment_home_estudiante, container, false);
             //tipovista.setText("Estudiante");
         }
         if(aux.equalsIgnoreCase("Profesor"))
@@ -71,7 +71,7 @@ public class HomeFragment extends Fragment {
             LlenarTabla(ratings,opciones);
         }
         //final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(this, new Observer<String>() {
+        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 // textView.setText(s);

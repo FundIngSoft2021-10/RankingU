@@ -82,9 +82,8 @@ public class HorarioFragment extends Fragment {
         vista = inflater.inflate(R.layout.fragment_home_estudiante, container, false);
 
         tablaHorario = (TableLayout) vista.findViewById(R.id.horarioTable);
-       // cleanHorario(tablaHorario,fila,textoCelda);
+        cleanHorario(tablaHorario,fila,textoCelda);
         construirHorario(tablaHorario,fila,textoCelda);
-
 
         // Inflate the layout for this fragment
         return vista;
