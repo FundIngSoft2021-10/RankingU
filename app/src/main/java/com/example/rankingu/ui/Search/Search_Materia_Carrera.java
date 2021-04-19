@@ -8,6 +8,7 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rankingu.R;
+import com.example.rankingu.ui.MateriaCarreraS;
 
 import java.util.ArrayList;
 
