@@ -28,16 +28,16 @@ public class EditPasswActivity extends AppCompatActivity {
 
 
     }
-    public void confirmeditcorreo(View view )
-    {String correo1= c1.getText().toString();
-        String Confirmacioncorreo2=c2.getText().toString();
-        if(correo1.equals(Confirmacioncorreo2))
+    public void confirmpasword(View view )
+    {String pasword1= c1.getText().toString();
+        String Confirmacionpassword2=c2.getText().toString();
+        if(pasword1.equals(Confirmacionpassword2))
         {
-            user.updateEmail(correo1);
+            user.updatePassword(pasword1);
 
         }
         else{
-            Toast.makeText(this,"Los correos no coinciden ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Las contraseñas no coinciden ", Toast.LENGTH_SHORT).show();
         }
 
 
