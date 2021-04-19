@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-
         hView = navigationView.getHeaderView(0);
         TextView emailUser = hView.findViewById(R.id.Buscarpor);
         TextView nombreUser = hView.findViewById(R.id.nombreView);

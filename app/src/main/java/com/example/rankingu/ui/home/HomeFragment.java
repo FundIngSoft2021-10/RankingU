@@ -23,7 +23,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -47,11 +46,11 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
-        String aux = "estudiante";
+        String aux = "profesor";
         View root=null;
         if(aux.equalsIgnoreCase("Estudiante")){
             root = inflater.inflate(R.layout.fragment_home, container, false);
-            tipovista.setText("Estudiante");
+            //tipovista.setText("Estudiante");
         }
         if(aux.equalsIgnoreCase("Profesor"))
         {
@@ -59,8 +58,8 @@ public class HomeFragment extends Fragment {
             calprofesor= root.findViewById(R.id.RatingBarProfesor);
             nombreprofesor= root.findViewById(R.id.NombreProfesor);
             tipovista=root.findViewById(R.id.TipoInicio);
-            imagenprofesor=root.findViewById(R.id.ImageProfesor);
             materiaprofesor=root.findViewById(R.id.VistaMateriaProfe);
+            tablaprofesor=root.findViewById(R.id.tablemateriasprofesor);
             // tipovista.setText(user.getClass().getName());
             final ArrayList<String> opciones = new ArrayList<>();
             final ArrayList<String> ratings = new ArrayList<>();
@@ -91,8 +90,7 @@ public class HomeFragment extends Fragment {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                               //  Log.d(TAG, document.getId() + " => " + document.getData().get("nombre").toString());
                                 opciones.add(document.getData().get("nombre").toString());
-                                consultaRating(profesor, opciones.get(opciones.size()),ratings);
-
+                                consultaRating(profesor, opciones.get(opciones.size()-1),ratings);
                             }
                         } else {
                             Log.d(TAG, "Error en la BD: ", task.getException());
@@ -100,7 +98,6 @@ public class HomeFragment extends Fragment {
                     }
                 });
     }
-
 
     public void consultaRating( String profesor, String opciones, final ArrayList<String> ratings){
         db.collection("Materias").document(opciones).collection("profesores").whereEqualTo("nombre",profesor)
@@ -120,26 +117,23 @@ public class HomeFragment extends Fragment {
                     }
                 });
     }
-    public void LlenarTabla(final ArrayList<String> ratings,final ArrayList<String> opciones){
 
+    public void LlenarTabla(final ArrayList<String> ratings,final ArrayList<String> opciones){
         int filas = tablaprofesor.getChildCount();
         tablaprofesor.removeViews(0, filas);
-        //System.out.println("XXXX " + filas);
-        if(ratings.size() > 0) {
+        if(ratings.size() > 0 && opciones.size() > 0) {
             for (int i = 0; i < ratings.size(); i++) {
                    TableRow fila1 = new TableRow(this.getContext());
                    TextView t1 = new TextView(this.getContext());
                    t1.setText(opciones.get(i));
                    fila1.addView(t1);
-                  // tablaprofesor.addView(fila1);
-                   ///////////////////////////////////
-              //  TableRow fila2 = new TableRow(this.getContext());
-                RatingBar t2 = new RatingBar(this.getContext());
-                t2.setRating(Float.parseFloat(ratings.get(i)));
-                fila1.addView(t2);
-                tablaprofesor.addView(fila1);
+
+                   RatingBar t2 = new RatingBar(this.getContext());
+                   t2.setRating(Float.parseFloat(ratings.get(i)));
+                   t2.setEnabled(false);
+                   fila1.addView(t2);
+                   tablaprofesor.addView(fila1);
             }
         }
     }
-
 }
