@@ -7,59 +7,75 @@
 
     <TextView
         android:id="@+id/Señal_de_aviso"
-        android:layout_width="104dp"
+        android:layout_width="126dp"
         android:layout_height="49dp"
-        android:layout_marginStart="153dp"
-        android:layout_marginBottom="9dp"
-        android:text="AVISO"
+        android:layout_marginTop="20dp"
+        android:text="¡AVISO!"
         android:textColor="#F80505"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/imagen_aviso"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar5" />
 
     <TextView
         android:id="@+id/texto_aviso"
         android:layout_width="329dp"
-        android:layout_height="151dp"
-        android:layout_marginBottom="84dp"
+        android:layout_height="95dp"
         android:shadowColor="#000000"
-        android:text="al_elegir_dejar_una_rese_a_declaras_que_has_cursado_la_asignatura_previamente_con_este_docente_si_es_asi_da_clic_en_continuar_de_lo_contrario_abstente_de_dejar_la_rese_a_recuerda_que_es_para_el_bien_de_todos"
+        android:text="Al elegir dejar una reseña declara que ha cursado la asignatura previamente con este docente, si es asi, continue, de lo contrario abstengase de dejar la reseña"
         android:textColor="#000000"
         android:textSize="18sp"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="46dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagen_aviso" />
 
     <ImageView
         android:id="@+id/imagen_aviso"
         android:layout_width="354dp"
         android:layout_height="280dp"
-        app:srcCompat="?android:attr/alertDialogIcon"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="169dp" />
-
-    <Button
-        android:id="@+id/boton_volver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#00B0FF"
-        android:text="Volver"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="607dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Señal_de_aviso"
+        app:srcCompat="?android:attr/alertDialogIcon" />
 
     <Button
         android:id="@+id/boton_continuar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="98dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="24dp"
         android:background="#00B0FF"
         android:text="Continuar"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="257dp"
-        tools:layout_editor_absoluteY="607dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/boton_continuar2"
+        android:layout_width="98dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="24dp"
+        android:background="#00B0FF"
+        android:text="Volver"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

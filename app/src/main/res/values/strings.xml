@@ -8,14 +8,29 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Inicio</string>
+    <string name="menu_error">Error</string>
     <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
+    <string name="menu_rankingtons">Rankingtons</string>
+    <string name="menu_help">Help</string>
+    <string name="menu_suggestions">Suggestions</string>
+    <string name="menu_settings">Settings</string>
 
     <string name="facebook_app_id">190467239257312</string>
     <string name="fb_login_protocol_scheme">fb190467239257312</string>
+
+    <string name="Ajust">Ajustes</string>
+    <string name="BotonVolver">Volver</string>
+    <string name="BotonEliminar_cuenta">Eliminar Cuenta </string>
+    <string name="BotonCambiar_Contra">Cambiar contraseÃ±a </string>
+    <string name="Text_ingrese">Ingrese nueva contraseÃ±a </string>
+    <string name="Text_confirm">Confirme la nueva contraseÃ±a </string>
+    <string name="Text_Editarcorreo">Editar Correo </string>
+    <string name="Text_ingresecorreo">Ingrese el Nuevo correo ElectrÃ³nico </string>
+    <string name="Text_confirmecorreo">Confirme el Nuevo correo ElectrÃ³nico </string>
+    <string name="Text_confirm2">Confirmar </string>
+    <string name="BotonCerrarsecion">Cerrar sesiÃ³n </string>
+
+    <string name="Ajustes">Ajustes</string>
 
     <string name="Facebook">Facebook</string>
     <string name="prompt_email">Usuario</string>
@@ -70,13 +85,13 @@
 
     <!--HORARIO DIAS-->
     <string name="hora">hora</string>
-    <string name="lunes">lun</string>
-    <string name="martes">mar</string>
-    <string name="miercoles">mie</string>
-    <string name="jueves">jue</string>
-    <string name="viernes">vie</string>
-    <string name="sabado">sab</string>
-    <string name="domingo">dom</string>
+    <string name="lunes">LUNES</string>
+    <string name="martes">MARTES</string>
+    <string name="miercoles">MIERCOLES</string>
+    <string name="jueves">JUEVES</string>
+    <string name="viernes">VIERNES</string>
+    <string name="sabado">SABADO</string>
+    <string name="domingo">DOMINGO</string>
     <!--HORARIO HORAS-->
     <string name="siete_am">7:00</string>
     <string name="ocho_am">8:00</string>
@@ -95,7 +110,11 @@
     <string name="nueve_pm">21:00</string>
     <string name="diez_pm">22:00</string>
 
-
+    <string name="SuggestionsTitle">Sugerencia</string>
+    <string name="ErrorTitle">Reportar error</string>
+    <string name="textSuggestion">Comentanos tus sugerencias</string>
+    <string name="textError">Comentanos tu error</string>
+    <string name="send">Enviar</string>
 
 
 

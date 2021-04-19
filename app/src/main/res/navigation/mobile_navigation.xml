@@ -9,7 +9,7 @@
         android:id="@+id/nav_home"
         android:name="com.example.rankingu.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home_estudiante" />
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -19,25 +19,31 @@
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.rankingu.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:name="com.example.rankingu.ui.Rankingtons.RankingtonsFragment"
+        android:label="@string/menu_rankingtons"
+        tools:layout="@layout/fragment_rankingtons" />
 
     <fragment
         android:id="@+id/nav_tools"
-        android:name="com.example.rankingu.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        android:name="com.example.rankingu.ui.help.HelpFragment"
+        android:label="@string/menu_help"
+        tools:layout="@layout/fragment_help" />
 
     <fragment
         android:id="@+id/nav_share"
-        android:name="com.example.rankingu.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
+        android:name="com.example.rankingu.ui.Suggestions.SuggestionsFragment"
+        android:label="@string/menu_suggestions"
+        tools:layout="@layout/fragment_suggestions" />
 
     <fragment
         android:id="@+id/nav_send"
-        android:name="com.example.rankingu.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+        android:name="com.example.rankingu.ui.Settings.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/nav_error"
+        android:name="com.example.rankingu.ui.Error.ErrorFragment"
+        android:label="@string/menu_error"
+        tools:layout="@layout/fragment_error" />
 </navigation>
