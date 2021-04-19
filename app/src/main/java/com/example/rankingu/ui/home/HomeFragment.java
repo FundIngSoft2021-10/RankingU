@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 
@@ -40,7 +38,6 @@ public class HomeFragment extends Fragment {
     private TextView tipovista;
     private ImageView imagenprofesor;
     private TextView materiaprofesor;
-    private TableLayout tablaprofesor;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -51,7 +48,6 @@ public class HomeFragment extends Fragment {
         View root=null;
         if(aux.equalsIgnoreCase("Estudiante")){
             root = inflater.inflate(R.layout.fragment_home, container, false);
-            tipovista.setText("Estudiante");
         }
         if(aux.equalsIgnoreCase("Profesor"))
         {
@@ -61,15 +57,6 @@ public class HomeFragment extends Fragment {
             tipovista=root.findViewById(R.id.TipoInicio);
             imagenprofesor=root.findViewById(R.id.ImageProfesor);
             materiaprofesor=root.findViewById(R.id.VistaMateriaProfe);
-            // tipovista.setText(user.getClass().getName());
-            final ArrayList<String> opciones = new ArrayList<>();
-            final ArrayList<String> ratings = new ArrayList<>();
-            ratings.add("5");
-            opciones.add("materias");
-            consultaMaterias("anabel",opciones,ratings);
-            nombreprofesor.setText("anabel");
-            tipovista.setText("Profesor");
-            LlenarTabla(ratings,opciones);
         }
         //final TextView textView = root.findViewById(R.id.text_home);
         homeViewModel.getText().observe(this, new Observer<String>() {
@@ -92,7 +79,6 @@ public class HomeFragment extends Fragment {
                               //  Log.d(TAG, document.getId() + " => " + document.getData().get("nombre").toString());
                                 opciones.add(document.getData().get("nombre").toString());
                                 consultaRating(profesor, opciones.get(opciones.size()),ratings);
-
                             }
                         } else {
                             Log.d(TAG, "Error en la BD: ", task.getException());
@@ -112,34 +98,12 @@ public class HomeFragment extends Fragment {
                             for(QueryDocumentSnapshot document : task.getResult())
                             {
                                 ratings.add(document.getData().get("rating").toString());
-                                //materiaprofesor.setText(document.getData().get("nombre").toString());
                             }
                         } else {
                             Log.d(TAG, "Error en la BD: ", task.getException());
                         }
                     }
                 });
-    }
-    public void LlenarTabla(final ArrayList<String> ratings,final ArrayList<String> opciones){
-
-        int filas = tablaprofesor.getChildCount();
-        tablaprofesor.removeViews(0, filas);
-        //System.out.println("XXXX " + filas);
-        if(ratings.size() > 0) {
-            for (int i = 0; i < ratings.size(); i++) {
-                   TableRow fila1 = new TableRow(this.getContext());
-                   TextView t1 = new TextView(this.getContext());
-                   t1.setText(opciones.get(i));
-                   fila1.addView(t1);
-                  // tablaprofesor.addView(fila1);
-                   ///////////////////////////////////
-              //  TableRow fila2 = new TableRow(this.getContext());
-                RatingBar t2 = new RatingBar(this.getContext());
-                t2.setRating(Float.parseFloat(ratings.get(i)));
-                fila1.addView(t2);
-                tablaprofesor.addView(fila1);
-            }
-        }
     }
 
 }
