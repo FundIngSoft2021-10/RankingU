@@ -1,10 +1,10 @@
 package com.example.rankingu.ui;
 
-    public class Profesor {
+    public class MateriaCarreraS {
 
         private String name;
 
-        public Profesor(String name) {
+        public MateriaCarreraS(String name) {
             this.name = name;
         }
 
@@ -15,3 +15,4 @@ package com.example.rankingu.ui;
         public void setName(String name) {
             this.name = name;
         }
+    }

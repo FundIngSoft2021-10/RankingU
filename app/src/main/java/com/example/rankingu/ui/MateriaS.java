@@ -1,10 +1,10 @@
 package com.example.rankingu.ui;
 
-public class MateriaCarrera {
+public class MateriaS {
 
     private String name;
 
-    public MateriaCarrera(String name) {
+    public MateriaS(String name) {
         this.name = name;
     }
 
@@ -12,6 +12,5 @@ public class MateriaCarrera {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String name) { this.name = name; }
     }
