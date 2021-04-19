@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/borde_horario"
+    android:padding="5dp"
     tools:context=".ui.Horario.HorarioFragment"
     android:layout_height="match_parent">
 
@@ -12,7 +14,7 @@
         android:layout_height="match_parent"
         tools:layout_editor_absoluteY="731dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
@@ -21,21 +23,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/linearLayout2"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent">
 
                     <TableLayout
                         android:id="@+id/horarioTable"
-                        android:layout_width="413dp"
-                        android:layout_height="731dp">
+                        android:layout_width="wrap_content"
+                        android:layout_height="731dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
 
                         <TableRow
                             android:id="@+id/filaPrincipal"
                             android:layout_width="match_parent"
-
                             android:layout_height="87dp">
 
                             <TextView
@@ -44,10 +47,11 @@
                                 android:background="@drawable/cell_shape"
                                 android:text="@string/hora"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="12dp" />
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="65dp"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:text="@string/lunes"
@@ -55,7 +59,7 @@
                                 android:textAllCaps="true" />
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="65dp"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:text="@string/martes"
@@ -71,7 +75,7 @@
                                 android:textAllCaps="true" />
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="65dp"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:text="@string/jueves"
@@ -79,7 +83,7 @@
                                 android:textAllCaps="true" />
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="65dp"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:text="@string/viernes"
@@ -95,7 +99,7 @@
                                 android:textAllCaps="true" />
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="65dp"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:text="@string/domingo"
@@ -124,7 +128,7 @@
                                 android:clickable="false"
                                 android:textAlignment="center"
                                 android:textAllCaps="true"
-                                android:textSize="12sp" />
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda1"
@@ -132,7 +136,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda2"
@@ -140,7 +145,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda3"
@@ -148,7 +154,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda4"
@@ -156,7 +163,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda5"
@@ -164,7 +172,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda6"
@@ -172,7 +181,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
 
                         </TableRow>
@@ -198,7 +208,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda9"
@@ -206,7 +217,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda10"
@@ -214,7 +226,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda11"
@@ -222,7 +235,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda12"
@@ -230,7 +244,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda13"
@@ -238,7 +253,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda14"
@@ -246,7 +262,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
                         </TableRow>
 
                         <TableRow
@@ -270,7 +287,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda16"
@@ -278,7 +296,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda17"
@@ -286,7 +305,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda18"
@@ -294,7 +314,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda19"
@@ -302,7 +323,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda20"
@@ -310,7 +332,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda21"
@@ -318,7 +341,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
                         </TableRow>
 
                         <TableRow
@@ -342,7 +366,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda23"
@@ -350,7 +375,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda24"
@@ -358,7 +384,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda25"
@@ -366,7 +393,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda26"
@@ -374,7 +402,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda27"
@@ -382,7 +411,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda28"
@@ -390,7 +420,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
                         </TableRow>
 
                         <TableRow
@@ -414,7 +445,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda30"
@@ -422,7 +454,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda31"
@@ -430,7 +463,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda32"
@@ -438,7 +472,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda33"
@@ -446,7 +481,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda34"
@@ -454,7 +490,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda35"
@@ -462,7 +499,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
                         </TableRow>
 
                         <TableRow
@@ -486,7 +524,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda37"
@@ -494,7 +533,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda38"
@@ -502,7 +542,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda39"
@@ -510,7 +551,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda40"
@@ -518,7 +560,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda41"
@@ -526,7 +569,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda42"
@@ -534,7 +578,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
                         </TableRow>
 
                         <TableRow
@@ -558,7 +603,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda44"
@@ -566,7 +612,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda45"
@@ -574,7 +621,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda46"
@@ -582,7 +630,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda47"
@@ -590,7 +639,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda48"
@@ -598,7 +648,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda49"
@@ -606,7 +657,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
                         </TableRow>
 
                         <TableRow
@@ -629,7 +681,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda51"
@@ -637,7 +690,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda52"
@@ -645,7 +699,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda53"
@@ -653,7 +708,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda54"
@@ -661,7 +717,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda55"
@@ -669,7 +726,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda56"
@@ -677,7 +735,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
                         </TableRow>
 
                         <TableRow
@@ -701,7 +760,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda58"
@@ -709,7 +769,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda59"
@@ -717,7 +778,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda60"
@@ -725,7 +787,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda61"
@@ -733,7 +796,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda62"
@@ -741,7 +805,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda63"
@@ -749,7 +814,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
                         </TableRow>
 
                         <TableRow
@@ -771,7 +837,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda65"
@@ -779,7 +846,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda66"
@@ -787,7 +855,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda67"
@@ -795,7 +864,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda68"
@@ -803,7 +873,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda69"
@@ -811,7 +882,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda70"
@@ -819,7 +891,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
                         </TableRow>
 
                         <TableRow
@@ -841,7 +914,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda72"
@@ -849,7 +923,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda73"
@@ -857,7 +932,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda74"
@@ -865,7 +941,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda75"
@@ -873,7 +950,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda76"
@@ -881,7 +959,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda77"
@@ -889,7 +968,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
                         </TableRow>
 
                         <TableRow
@@ -912,7 +992,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda79"
@@ -920,7 +1001,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda80"
@@ -928,7 +1010,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda81"
@@ -936,7 +1019,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda82"
@@ -944,7 +1028,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda83"
@@ -952,7 +1037,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda84"
@@ -960,7 +1046,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
                         </TableRow>
 
                         <TableRow
@@ -983,7 +1070,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda86"
@@ -991,7 +1079,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda87"
@@ -1007,7 +1096,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda89"
@@ -1015,7 +1105,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda90"
@@ -1023,7 +1114,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda91"
@@ -1031,7 +1123,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
                         </TableRow>
 
                         <TableRow
@@ -1054,7 +1147,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda93"
@@ -1062,7 +1156,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda94"
@@ -1070,7 +1165,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda95"
@@ -1078,7 +1174,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda96"
@@ -1086,7 +1183,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda97"
@@ -1094,7 +1192,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda98"
@@ -1102,7 +1201,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
                         </TableRow>
 
                         <TableRow
@@ -1125,7 +1225,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda100"
@@ -1133,7 +1234,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda101"
@@ -1149,7 +1251,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda103"
@@ -1157,7 +1260,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda104"
@@ -1173,7 +1277,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
                         </TableRow>
 
                         <TableRow
@@ -1196,7 +1301,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda107"
@@ -1204,7 +1310,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda108"
@@ -1212,7 +1319,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda109"
@@ -1220,7 +1328,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda110"
@@ -1228,7 +1337,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
 
@@ -1237,7 +1347,8 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
 
                             <TextView
                                 android:id="@+id/celda112"
@@ -1245,12 +1356,15 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:textAlignment="center"
-                                android:textAllCaps="true" />
+                                android:textAllCaps="true"
+                                android:textSize="8dp" />
                         </TableRow>
                     </TableLayout>
 
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </HorizontalScrollView>
-        </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
