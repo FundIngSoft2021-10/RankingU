@@ -5,11 +5,15 @@ import com.example.rankingu.R;
 import android.content.Intent;
 import android.os.Bundle;
 import com.bumptech.glide.Glide;
+import com.example.rankingu.ui.Horario.HorarioFragment;
 import com.example.rankingu.ui.Search.SearchActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+
 import android.view.MenuItem;
 import android.view.View;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -20,6 +24,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.ImageView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 // FIREBASE - SERVIDOR
@@ -37,12 +43,22 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton btnBusqueda;
     private ArrayList<ArrayList<TextView>> matrizHorario;
     private TextView t;
+    private TableLayout horario;
+    private TableRow f7;
+
+    FragmentTransaction transaction;
+    Fragment HorarioFragment;
+
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        HorarioFragment = new HorarioFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.nav_host_fragment, HorarioFragment).commit();
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.floatBtnSearch);
@@ -87,8 +103,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        t = findViewById(R.id.celda0);
-        //t.setClickable(true);
+
+
+
     }
 
     @Override
@@ -127,8 +144,5 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
 
-    public void prueba_click(View view)
-    {
-        updateUi("click en una celda");
-    }
+
 }
