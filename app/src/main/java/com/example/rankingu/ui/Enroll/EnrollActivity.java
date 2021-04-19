@@ -133,8 +133,7 @@ public class EnrollActivity extends AppCompatActivity{
             Horario hor = new Horario();
             hor.setDias("L-M");
             hor.setHoras("2-4");
-            MateriaDelMain inscrip = new MateriaDelMain(materia.getText().toString()
-                    , descripcion.getText().toString(), 4, 4.5, hor, null);
+            MateriaDelMain inscrip = new MateriaDelMain(materia.getText().toString(), descripcion.getText().toString(), 4, 4.5, hor, null);
 
             //Añadir a la BD
             db.collection("Usuarios").document(user.getEmail()).collection("materias").add(inscrip);

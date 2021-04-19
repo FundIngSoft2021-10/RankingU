@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,7 @@ public class HorarioFragment extends Fragment {
     ControllerHorario controladorHorario = new ControllerHorario();
 
     TableLayout tablaHorario;
-    TableRow f7;
+    TableRow fila;
     View vista;
     TextView textoCelda;
 
@@ -81,61 +82,78 @@ public class HorarioFragment extends Fragment {
         vista = inflater.inflate(R.layout.fragment_home_estudiante, container, false);
 
         tablaHorario = (TableLayout) vista.findViewById(R.id.horarioTable);
-        //f7 = (TableRow) vista.findViewById(tablaHorario.getChildAt(5).getId());
-        //f7 = (TableRow) vista.findViewById(R.id.f_7);
-        construirHorario(tablaHorario,f7,textoCelda);
+       // cleanHorario(tablaHorario,fila,textoCelda);
+        construirHorario(tablaHorario,fila,textoCelda);
 
-        /*
-        for(int i = 1;i<8;i++)
-        {
-            textoCelda =  vista.findViewById(f7.getChildAt(i).getId());
-            textoCelda.setText("soy la celda "+i);
 
-        }
-        */
         // Inflate the layout for this fragment
         return vista;
     }
 
 
-    private void cleanHorario()
+    private void cleanHorario(TableLayout tablaHorario, TableRow fila, TextView textoCelda)
     {
+        for(int i = 0;i<tablaHorario.getChildCount();i++)
+        {
+            fila = (TableRow) vista.findViewById(tablaHorario.getChildAt(i).getId());
+            for(int j=1;j<fila.getChildCount();j++)
+            {
+
+               //textoCelda =  (TextView) vista.findViewById();
+
+                //textoCelda.setTextSize(TypedValue.COMPLEX_UNIT_SP,14);
+                //textoCelda.setText("");
+            }
+        }
 
     }
     private void construirHorario(TableLayout tablaHorario, TableRow fila, TextView textoCelda)
     {
 
         Materia m1;
-        SesionClase s1_7a9, s2_2a4;
+        Materia m2;
+        List<Materia> materiaLista = new ArrayList<>();
+        List<Integer> dias = new ArrayList<>();
+        List<Integer> horasInicio= new ArrayList<>();
+        List<Integer> horasFin= new ArrayList<>();
+
+        SesionClase s1_7a9, s2_2a4, s3_Viernes;
         List<SesionClase> sesionesClase = new ArrayList<>();
+        List<SesionClase> sesion2 = new ArrayList<>();
         s1_7a9 = new SesionClase("lunes","7:00","9:00");
         s2_2a4 = new SesionClase("miercoles","14:00","16:00");
+        s3_Viernes = new SesionClase("domingo", "13:00","15:00");
         sesionesClase.add(s1_7a9);
 
         sesionesClase.add(s2_2a4);
+        sesion2.add(s3_Viernes);
 
 
         m1 = new Materia("Calculo",sesionesClase);
+        m2 = new Materia("Etica en la ingenieria", sesion2);
+        materiaLista.add(m1);
+        materiaLista.add(m2);
 
-
-        List<Integer> dias =  controladorHorario.getDiaHorario(m1);
-        List<Integer> horasInicio = controladorHorario.getHoraInicioHorario(m1);
-        List<Integer> horasFin = controladorHorario.getHoraFinHorario(m1);
-
-        updateUi("mensaje dias size: "+dias.size());
-
-        for(int i = 0; i<dias.size();i++)
+        //updateUi(String.valueOf(materiaLista.size()));
+        for(int j = 0;j<materiaLista.size();j++)
         {
+            dias =  controladorHorario.getDiaHorario(materiaLista.get(j));
+            horasInicio = controladorHorario.getHoraInicioHorario(materiaLista.get(j));
+            horasFin = controladorHorario.getHoraFinHorario(materiaLista.get(j));
+            for(int i = 0; i<dias.size();i++)
+            {
                 fila = (TableRow) vista.findViewById(tablaHorario.getChildAt(horasInicio.get(i)).getId());
                 textoCelda =  (TextView) vista.findViewById(fila.getChildAt(dias.get(i)).getId());
-                textoCelda.setText(m1.toString());
+                textoCelda.setBackgroundColor(30);
+                textoCelda.setTextSize(1,11);
+                //textoCelda.setText(materiaLista.get(j).toString());
                 fila = (TableRow) vista.findViewById(tablaHorario.getChildAt(horasFin.get(i)).getId());
                 textoCelda =  (TextView) vista.findViewById(fila.getChildAt(dias.get(i)).getId());
-                textoCelda.setText(m1.toString());
-
-
+                textoCelda.setText(materiaLista.get(j).toString());
+                textoCelda.setBackgroundColor(30);
+                textoCelda.setTextSize(1,11);
+            }
         }
-
     }
 
 
