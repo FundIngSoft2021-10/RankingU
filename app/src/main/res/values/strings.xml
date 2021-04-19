@@ -77,32 +77,11 @@
     <string name="apellido">Apellido</string>
     <string name="Politicas_privacidad">Acepto las politicas de privacidad</string>
     <string name="add_materia"><u>Añadir materias</u></string>
-    <string name="Nombre_materia">Nombre de la  materiaS</string>
-    <string name="Agregar">Agregar materiaS</string>
-    <string name="success_add_materia">Profe, La materiaS se agrego correctamente!</string>
-    <string name="add_otra_materia">Agregar otra materiaS</string>
+    <string name="Nombre_materia">Nombre de la  materia</string>
+    <string name="Agregar">Agregar materia</string>
+    <string name="success_add_materia">Profe, La materia se agrego correctamente!</string>
+    <string name="add_otra_materia">Agregar otra materia</string>
     <string name="Saltar">Saltar por ahora</string>
-    
-    <string-array name="lista_profesores">
-        <item>Anabel Montero</item>
-        <item>Leonardo Florez</item>
-        <item>Julio Carreno</item>
-        <item>Camilo Canon</item>
-    </string-array>
-
-    <string-array name="lista_materias">
-        <item>ADOO</item>
-        <item>POO</item>
-        <item>Intro Compu Grafica</item>
-        <item>Ingesoft</item>
-    </string-array>
-
-    <string-array name="lista_materias_carrera">
-        <item>Anabel Montero</item>
-        <item>Leonardo Florez</item>
-        <item>Julio Carreno</item>
-        <item>Camilo Canon</item>
-    </string-array>
 
     <!--HORARIO DIAS-->
     <string name="hora">hora</string>
