@@ -13,3 +13,4 @@
 .externalNativeBuild
 .cxx
 gradle/wrapper/gradle-wrapper.properties
+.idea/misc.xml
