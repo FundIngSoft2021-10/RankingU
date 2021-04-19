@@ -29,6 +29,4 @@ public class Search_Materia extends AppCompatActivity {
             }
         });
     }
-
-
 }

@@ -9,22 +9,33 @@ public class Materia {
     List<String> horarios;
     List<String> profesores;
     List<SesionClase> sesiones_clase;
+    List<Reseña> reseñas;
 
     public Materia() {
     }
 
-    public Materia(String nombre, Integer puntaje, Integer semestre, Integer cupos, List<String> horarios, List<String> profesores) {
+    public Materia(String nombre, Integer puntaje, Integer semestre, Integer cupos, List<String> horarios, List<String> profesores, List<SesionClase> sesiones_clase, List<Reseña> reseñas) {
         this.nombre = nombre;
         this.puntaje = puntaje;
         this.semestre = semestre;
         this.cupos = cupos;
         this.horarios = horarios;
         this.profesores = profesores;
+        this.sesiones_clase = sesiones_clase;
+        this.reseñas = reseñas;
     }
 
     public Materia(String nombre, List<SesionClase> sesiones_clase) {
         this.nombre = nombre;
         this.sesiones_clase = sesiones_clase;
+    }
+
+    public List<Reseña> getReseñas() {
+        return reseñas;
+    }
+
+    public void setReseñas(List<Reseña> reseñas) {
+        this.reseñas = reseñas;
     }
 
     public List<SesionClase> getSesiones_clase() {
