@@ -2,6 +2,7 @@ package com.example.rankingu.ui.Search;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -71,6 +72,12 @@ public class SearchActivity extends AppCompatActivity {
             startActivity(searchProfesor);
         } else if (seleccion.equals("Materia")) {
             Intent searchMateria = new Intent(this, Search_Materia.class);
+            Bundle myBundle = new Bundle();
+            System.out.println("profesor enviar: " + profesores.toString());
+            myBundle.putSerializable("ListaProfesores", profesores);
+
+            searchMateria.putExtras(myBundle);
+
             startActivity(searchMateria);
         } else if (seleccion.equals("Carrera")) {
             Intent searchCarrera = new Intent(this, Search_Materia_Carrera.class);
@@ -81,32 +88,32 @@ public class SearchActivity extends AppCompatActivity {
     //Consulta
     public void consultaMateria(final String materiae, final ArrayList<Profesor> opciones, final ArrayList<String> result) {
         Profesor opt;
-        db.collection("Materias").document(materiae)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        db.collection("Materias").document(materiae).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
                             Materia aux = new Materia();
                             consultaProfes(materiae, opciones);
-                            //Log.d(TAG, "xxxxYYYZZZZ" + opciones.size());
+
+                            Log.d(TAG, "xxxxYYYZZZZ " + opciones.size());
                             for (Profesor p : opciones) {
                                 aux.setPuntaje(p.getMateriasList().get(0).getPuntaje());
                                 p.getMateriasList().get(0).setDescripcion(task.getResult().getData().get("descripcion").toString());
                                 p.getMateriasList().get(0).setSemestre(Integer.parseInt(task.getResult().getData().get("semestre").toString()));
                             }
+                            System.out.println("pasamos el for");
                         } else {
                             Log.d(TAG, "Error en la BD: ", task.getException());
                         }
                     }
                 });
+
+        System.out.println("acabamos la funcion");
     }
 
     //Consulta
     public void consultaProfes(final String materia, final ArrayList<Profesor> opciones) {
-        db.collection("Materias").document(materia).collection("profesores")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("Materias").document(materia).collection("profesores").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
@@ -121,10 +128,19 @@ public class SearchActivity extends AppCompatActivity {
                                 profe.addMateria(mat);
                                 opciones.add(profe);
                             }
+                            Log.d(TAG, "adentro del if: " + opciones.size());
+
+                            System.out.println("profesor if afuera: " + profesores.toString());
                         } else {
                             Log.d(TAG, "Error en la BD: ", task.getException());
                         }
+                        Log.d(TAG, "afuera del if : "+ opciones.size());
+
+                        System.out.println("profesor if adentro: " + profesores.toString());
                     }
                 });
+        Log.d(TAG, "afuera de todo: "+ opciones.size());
+
+        System.out.println("profesor afeura dek tidi: " + profesores.toString());
     }
 }
