@@ -13,21 +13,11 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.rankingu.Classes.Materia;
 import com.example.rankingu.Classes.Profesor;
-import com.example.rankingu.Classes.SesionClase;
 import com.example.rankingu.R;
 import com.example.rankingu.ui.Materia.MateriaActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-
-import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class Search_Materia extends AppCompatActivity {
 

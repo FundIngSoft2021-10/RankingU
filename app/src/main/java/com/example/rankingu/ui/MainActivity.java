@@ -47,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
     private TableLayout horario;
     private TableRow f7;
 
-
-
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
@@ -57,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //HorarioFragment = new HorarioFragment();
         //getSupportFragmentManager().beginTransaction().add(R.id.nav_host_fragment, HorarioFragment).commit();
-
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -93,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
+                R.id.nav_home, R.id.nav_slideshow,
                 R.id.nav_tools, R.id.nav_share, R.id.nav_send , R.id.nav_error)
                 .setDrawerLayout(drawer)
                 .build();
@@ -116,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_settings:
                 FirebaseAuth.getInstance().signOut();

@@ -90,9 +90,9 @@ public class LoginActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateUi("PROXIMAMENTE...");
-                //Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-                //startActivityForResult(signInIntent, SIGN_IN_CODE);
+                //updateUi("PROXIMAMENTE...");
+                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                startActivityForResult(signInIntent, SIGN_IN_CODE);
             }
         });
 
@@ -152,7 +152,7 @@ public class LoginActivity extends AppCompatActivity {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
         }else {
-            //callbackManager.onActivityResult(requestCode, resultCode, data);
+            callbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
 

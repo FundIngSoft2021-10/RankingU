@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
-        String aux = "Profesor";
+        String aux = "profesor";
         View root=null;
         if(aux.equalsIgnoreCase("Estudiante")){
             root = inflater.inflate(R.layout.fragment_home_estudiante, container, false);
@@ -74,7 +74,7 @@ public class HomeFragment extends Fragment {
             final ArrayList<String> ratings = new ArrayList<>();
             ratings.add("5");
             opciones.add("materias");
-            consultaMaterias("anabel",opciones,ratings);
+            consultaMaterias("Anabel",opciones,ratings);
             nombreprofesor.setText("anabel");
             tipovista.setText("Profesor");
             LlenarTabla(ratings,opciones);
