@@ -20,8 +20,8 @@
 
     <TextView
         android:id="@+id/materia"
-        android:layout_width="124dp"
-        android:layout_height="42dp"
+        android:layout_width="131dp"
+        android:layout_height="40dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:text="Docente:"
@@ -179,6 +179,8 @@
         android:layout_width="184dp"
         android:layout_height="41dp"
         android:layout_marginTop="16dp"
+        android:textColor="#000000"
+        android:textSize="30sp"
         app:layout_constraintStart_toEndOf="@+id/Materia_atributos_calificar"
         app:layout_constraintTop_toBottomOf="@+id/toolbar4" />
 
@@ -187,6 +189,8 @@
         android:layout_width="182dp"
         android:layout_height="42dp"
         android:layout_marginTop="16dp"
+        android:textColor="#000000"
+        android:textSize="30sp"
         app:layout_constraintStart_toEndOf="@+id/materia"
         app:layout_constraintTop_toBottomOf="@+id/materia_calificar_atributos" />
 
