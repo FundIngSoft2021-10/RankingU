@@ -31,7 +31,8 @@ public class MateriaActivity extends AppCompatActivity {
         ratingV = findViewById(R.id.textView23);
 
         Bundle myBundle = this.getIntent().getExtras();
-        Profesor x = (Profesor)myBundle.getSerializable("materia");
+        final Profesor x = (Profesor) myBundle.getSerializable("materia");
+
 
         materia.setText(x.getMateriasList().get(0).getNombre());
         docente.setText(x.getMateriasList().get(0).getProfesores());
@@ -41,6 +42,11 @@ public class MateriaActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MateriaActivity.this, WarningActivity.class);
+
+                Bundle myBundle = new Bundle();
+                myBundle.putSerializable("materia", x);
+                intent.putExtras(myBundle);
+
                 startActivity(intent);
             }
         });

@@ -7,11 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.rankingu.Classes.Profesor;
 import com.example.rankingu.R;
 import com.example.rankingu.ui.Enroll.ConflictActivity;
 import com.example.rankingu.ui.Enroll.EnrollActivity;
@@ -29,6 +31,7 @@ public class ReseñaActivity extends AppCompatActivity {
     private RatingBar ratingStar3;
     private RatingBar ratingStar4;
     private float result = 0;
+    private TextView materia, docente;
 
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -45,14 +48,21 @@ public class ReseñaActivity extends AppCompatActivity {
         ratingStar3 = findViewById(R.id.ratingBar_actitud);
         ratingStar4 = findViewById(R.id.ratingBar_organizado);
         comentarios = (EditText)findViewById(R.id.Comentarios_reseña);
+        materia = findViewById(R.id.materia_calificar_atributos);
+        docente = findViewById(R.id.docente_calificar_atributos);
 
+        Bundle myBundleRecibir = this.getIntent().getExtras();
+        final Profesor x = (Profesor) myBundleRecibir.getSerializable("materia");
+
+        materia.setText(x.getMateriasList().get(0).getNombre());
+        docente.setText(x.getMateriasList().get(0).getProfesores());
 
         BtonDejar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             //Registrar materia
-            boolean x = false;
-            if(x){
+            boolean y = false;
+            if(y){
                 Intent intent = new Intent(ReseñaActivity.this, ConflictActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
@@ -66,8 +76,10 @@ public class ReseñaActivity extends AppCompatActivity {
                     }else{
                         Intent myIntent = new Intent(ReseñaActivity.this, GraciasActivity.class);
                         Bundle mybundle = new Bundle();
+
                         mybundle.putString("comentario",coment);
                         mybundle.putFloat("calificacion", result);
+                        mybundle.putSerializable("materia",x);
 
                         myIntent.putExtras(mybundle);
                         startActivity(myIntent);
