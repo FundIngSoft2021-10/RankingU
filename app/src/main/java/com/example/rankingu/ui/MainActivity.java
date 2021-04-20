@@ -47,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private TableLayout horario;
     private TableRow f7;
 
-    FragmentTransaction transaction;
-    Fragment HorarioFragment;
+
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 

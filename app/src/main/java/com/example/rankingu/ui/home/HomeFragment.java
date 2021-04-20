@@ -15,10 +15,12 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.rankingu.R;
+import com.example.rankingu.ui.Horario.HorarioFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -43,13 +45,20 @@ public class HomeFragment extends Fragment {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+    FragmentTransaction transaction;
+    Fragment HorarioFragment;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
-        String aux = "profesor";
+        String aux = "Profesor";
         View root=null;
         if(aux.equalsIgnoreCase("Estudiante")){
             root = inflater.inflate(R.layout.fragment_home_estudiante, container, false);
+            HorarioFragment = new HorarioFragment();
+            transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            root = inflater.inflate(R.layout.fragment_home_estudiante, container, false);
+            transaction.replace(R.id.nav_host_fragment,HorarioFragment).commit();
             //tipovista.setText("Estudiante");
         }
         if(aux.equalsIgnoreCase("Profesor"))
