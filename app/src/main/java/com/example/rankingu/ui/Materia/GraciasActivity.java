@@ -33,9 +33,4 @@ public class GraciasActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
-
 }
