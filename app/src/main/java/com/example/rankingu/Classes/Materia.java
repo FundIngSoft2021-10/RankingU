@@ -1,8 +1,9 @@
 package com.example.rankingu.Classes;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Materia {
+public class Materia implements Serializable {
 
     String nombre , descripcion;
     Integer semestre;
@@ -11,6 +12,18 @@ public class Materia {
     String profesores;
 
     public Materia() {
+    }
+
+    @Override
+    public String toString() {
+        return "Materia{" +
+                "nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", semestre=" + semestre +
+                ", puntaje=" + puntaje +
+                ", sesiones_clase=" + sesiones_clase +
+                ", profesores='" + profesores + '\'' +
+                '}';
     }
 
     public Materia(String nombre, String descripcion, Integer semestre, Double puntaje, List<SesionClase> sesiones_clase, String profesores) {
@@ -75,13 +88,5 @@ public class Materia {
         this.profesores = profesores;
     }
 
-    public String toString()
-    {
-        String texto = this.nombre+"\n";
-        for(SesionClase s:this.sesiones_clase)
-        {
-            texto+=" "+s.toString();
-        }
-        return texto;
-    }
+
 }

@@ -22,6 +22,7 @@ public class Profesor implements Serializable {
     public String toString() {
         return "Profesor{" +
                 "nombre='" + nombre + '\'' +
+                ", materiasList=" + materiasList +
                 '}';
     }
 
