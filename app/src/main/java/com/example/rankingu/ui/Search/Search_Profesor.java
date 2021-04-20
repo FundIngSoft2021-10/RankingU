@@ -11,7 +11,7 @@ import com.example.rankingu.R;
 
 import java.util.ArrayList;
 
-public class Search_Profesor extends AppCompatActivity {
+public class Search_Profesor extends AppCompatActivity {/*
 
     public static ArrayList<ProfesorS> profesores = new ArrayList<ProfesorS>();
 
@@ -46,7 +46,7 @@ public class Search_Profesor extends AppCompatActivity {
 
                 for (ProfesorS profesorS : profesores) {
                     if (profesorS.getName().toLowerCase().contains(s.toLowerCase())) {
-                            filteredProfesorS.add(profesorS);
+                        filteredProfesorS.add(profesorS);
                     }
                 }
                 return false;
@@ -73,5 +73,5 @@ public class Search_Profesor extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.profesorListView);
 
         listView.setAdapter((ListAdapter) profesores);
-    }
+    }*/
 }

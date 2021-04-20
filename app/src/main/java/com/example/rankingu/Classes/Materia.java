@@ -4,22 +4,30 @@ import java.util.List;
 
 public class Materia {
 
-    String nombre;
-    Integer puntaje, semestre, cupos;
-    List<String> horarios;
-    List<String> profesores;
+    String nombre , descripcion;
+    Integer semestre;
+    Double puntaje;
     List<SesionClase> sesiones_clase;
+    List<String> profesores;
 
     public Materia() {
     }
 
-    public Materia(String nombre, Integer puntaje, Integer semestre, Integer cupos, List<String> horarios, List<String> profesores) {
+    public Materia(String nombre, String descripcion, Double puntaje, Integer semestre, List<String> profesores, List<SesionClase> sesiones_clase) {
         this.nombre = nombre;
+        this.descripcion = descripcion;
         this.puntaje = puntaje;
         this.semestre = semestre;
-        this.cupos = cupos;
-        this.horarios = horarios;
         this.profesores = profesores;
+        this.sesiones_clase = sesiones_clase;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Materia(String nombre, List<SesionClase> sesiones_clase) {
@@ -43,11 +51,11 @@ public class Materia {
         this.nombre = nombre;
     }
 
-    public Integer getPuntaje() {
+    public Double getPuntaje() {
         return puntaje;
     }
 
-    public void setPuntaje(Integer puntaje) {
+    public void setPuntaje(Double puntaje) {
         this.puntaje = puntaje;
     }
 
@@ -57,22 +65,6 @@ public class Materia {
 
     public void setSemestre(Integer semestre) {
         this.semestre = semestre;
-    }
-
-    public Integer getCupos() {
-        return cupos;
-    }
-
-    public void setCupos(Integer cupos) {
-        this.cupos = cupos;
-    }
-
-    public List<String> getHorarios() {
-        return horarios;
-    }
-
-    public void setHorarios(List<String> horarios) {
-        this.horarios = horarios;
     }
 
     public List<String> getProfesores() {

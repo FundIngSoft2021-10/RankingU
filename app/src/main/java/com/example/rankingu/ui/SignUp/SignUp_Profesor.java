@@ -16,8 +16,6 @@ public class SignUp_Profesor extends AppCompatActivity {
     private TextView txtApellido;
     private CheckBox chkPolicies;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

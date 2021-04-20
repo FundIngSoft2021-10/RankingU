@@ -11,7 +11,7 @@ import com.example.rankingu.R;
 
 import java.util.ArrayList;
 
-public class Search_Materia_Carrera extends AppCompatActivity {
+public class Search_Materia_Carrera extends AppCompatActivity {/*
 
     public static ArrayList<MateriaCarreraS> carreras = new ArrayList<MateriaCarreraS>();
 
@@ -74,4 +74,5 @@ public class Search_Materia_Carrera extends AppCompatActivity {
 
         listView.setAdapter((ListAdapter) carreras);
     }
+    */
 }
