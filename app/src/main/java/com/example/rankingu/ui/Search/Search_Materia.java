@@ -44,8 +44,15 @@ public class Search_Materia extends AppCompatActivity {
         listView = findViewById(R.id.materiaListView);
         ArrayList<Profesor> profesores = new ArrayList<>();
 
-        arrayAdaptar = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, profesores);
+        Bundle myBundle = this.getIntent().getExtras();
+
+        profesores = (ArrayList<Profesor>) myBundle.getSerializable("ListaProfesores");
+        System.out.println("profesor llegada: "+profesores.toString());
+
+
+        //arrayAdaptar = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, profesores.toString());
         listView.setAdapter(arrayAdaptar);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -70,3 +77,5 @@ public class Search_Materia extends AppCompatActivity {
         });
     }
 }
+
+

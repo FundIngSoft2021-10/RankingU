@@ -1,9 +1,10 @@
 package com.example.rankingu.Classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Profesor {
+public class Profesor implements Serializable {
 
     String nombre;
     List<Materia> materiasList;
@@ -15,6 +16,13 @@ public class Profesor {
     public Profesor(String nombre, List<Materia> materiasList) {
         this.nombre = nombre;
         this.materiasList = materiasList;
+    }
+
+    @Override
+    public String toString() {
+        return "Profesor{" +
+                "nombre='" + nombre + '\'' +
+                '}';
     }
 
     public void addMateria(Materia materia){
@@ -36,4 +44,5 @@ public class Profesor {
     public void setMateriasList(List<Materia> materiasList) {
         this.materiasList = materiasList;
     }
+
 }

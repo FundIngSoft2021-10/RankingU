@@ -110,9 +110,7 @@ public class EnrollActivity extends AppCompatActivity{
 
     //Consulta
     public void consultaMateria(final String materiae, final ArrayList<String> opciones, final ArrayList<String> ratins){
-        db.collection("Materias").document(materiae)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        db.collection("Materias").document(materiae).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
