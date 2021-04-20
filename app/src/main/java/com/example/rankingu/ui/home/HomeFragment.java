@@ -64,7 +64,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
-        String aux = "profesor";
+        String aux = "estudiante";
         View root=null;
         HorarioFragment = new HorarioFragment();
         if(aux.equalsIgnoreCase("Estudiante")){
