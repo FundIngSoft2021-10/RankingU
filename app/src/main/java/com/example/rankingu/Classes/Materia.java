@@ -16,14 +16,9 @@ public class Materia implements Serializable {
 
     @Override
     public String toString() {
-        return "Materia{" +
-                "nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", semestre=" + semestre +
-                ", puntaje=" + puntaje +
-                ", sesiones_clase=" + sesiones_clase +
-                ", profesores='" + profesores + '\'' +
-                '}';
+        return "\nMateria: " +
+                nombre +
+                ", sesiones_clase=" + sesiones_clase;
     }
 
     public Materia(String nombre, String descripcion, Integer semestre, Double puntaje, List<SesionClase> sesiones_clase, String profesores) {

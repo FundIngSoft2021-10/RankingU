@@ -20,10 +20,9 @@ public class Profesor implements Serializable {
 
     @Override
     public String toString() {
-        return "Profesor{" +
-                "nombre='" + nombre + '\'' +
-                ", materiasList=" + materiasList +
-                '}';
+        return "Profesor: " +
+                 nombre +
+                 materiasList;
     }
 
     public void addMateria(Materia materia){

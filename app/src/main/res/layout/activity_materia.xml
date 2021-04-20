@@ -19,11 +19,10 @@
 
     <TextView
         android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_width="221dp"
+        android:layout_height="47dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:textColor="#000000"
         android:textSize="30sp"
         app:layout_constraintStart_toEndOf="@+id/nombre_materia"
         app:layout_constraintTop_toBottomOf="@+id/toolbar6" />
@@ -33,7 +32,7 @@
         android:layout_width="171dp"
         android:layout_height="36dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:text="Pre-requisitos:"
         android:textColor="#000000"
         android:textSize="24sp"
@@ -42,8 +41,8 @@
 
     <TextView
         android:id="@+id/nombre_materia3"
-        android:layout_width="171dp"
-        android:layout_height="36dp"
+        android:layout_width="98dp"
+        android:layout_height="35dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
         android:text="Horario:"
@@ -54,8 +53,8 @@
 
     <TextView
         android:id="@+id/nombre_materia4"
-        android:layout_width="171dp"
-        android:layout_height="36dp"
+        android:layout_width="105dp"
+        android:layout_height="34dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
         android:text="Docente:"
@@ -66,7 +65,7 @@
 
     <TextView
         android:id="@+id/nombre_materia5"
-        android:layout_width="98dp"
+        android:layout_width="103dp"
         android:layout_height="35dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
@@ -117,7 +116,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/textView36"
@@ -127,30 +126,27 @@
 
             <RatingBar
                 android:id="@+id/ratingBar"
-                android:layout_width="229dp"
+                android:layout_width="wrap_content"
                 android:layout_height="44dp" />
         </TableRow>
     </ScrollView>
 
     <TextView
         android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="TextView"
+        android:layout_width="184dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/nombre_materia4"
-        app:layout_constraintTop_toBottomOf="@+id/boton_inscribir_materia2"
-        app:layout_constraintVertical_bias="0.311" />
+        app:layout_constraintTop_toBottomOf="@+id/nombre_materia3" />
 
     <TextView
         android:id="@+id/textView23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_width="193dp"
+        android:layout_height="35dp"
         android:layout_marginTop="20dp"
-        android:text="TextView"
+        android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/nombre_materia5"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />

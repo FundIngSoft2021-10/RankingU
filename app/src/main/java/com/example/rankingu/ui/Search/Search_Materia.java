@@ -26,6 +26,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
@@ -92,6 +93,8 @@ public class Search_Materia extends AppCompatActivity {
                         aux.setPuntaje(p.getMateriasList().get(0).getPuntaje());
                         p.getMateriasList().get(0).setDescripcion(task.getResult().getData().get("descripcion").toString());
                         p.getMateriasList().get(0).setSemestre(Integer.parseInt(task.getResult().getData().get("semestre").toString()));
+                        ////////////////////agrege esto
+                        p.getMateriasList().get(0).setSesiones_clase((List<SesionClase>) task.getResult().getData().get("horarios"));
                     }
                 } else {
                     Log.d(TAG, "Error en la BD: ", task.getException());
@@ -110,6 +113,7 @@ public class Search_Materia extends AppCompatActivity {
                         Profesor profe = new Profesor();
                         Materia mat = new Materia();
                         ArrayList<SesionClase> listaSesion = (ArrayList<SesionClase>) document.getData().get("horarios");
+                        //System.out.println(listaSesion.toString());
                         profe.setNombre(document.getData().get("nombre").toString());
                         mat.setProfesores(profe.getNombre());
                         mat.setSesiones_clase(listaSesion);
