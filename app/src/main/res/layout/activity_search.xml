@@ -6,51 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".ui.SignUp">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/Buscarpor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="240dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginTop="24dp"
         android:text="Buscar por:"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerBuscar"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
     <Button
         android:id="@+id/BotonBuscar"
-        android:layout_width="90dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="261dp"
-        android:layout_marginEnd="57dp"
-        android:layout_marginBottom="343dp"
+        android:layout_width="109dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="16dp"
+        android:background="#FFFFFF"
         android:text="Search"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextBusqueda"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerBuscar" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextBusqueda"
+        tools:background="#DB442B" />
 
     <EditText
         android:id="@+id/editTextBusqueda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="260dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="343dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="424dp"
         android:ems="10"
         android:hint="ADOO"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/BotonBuscar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerBuscar" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerBuscar"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Spinner
         android:id="@+id/spinnerBuscar"
@@ -59,8 +62,6 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="77dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/BotonBuscar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

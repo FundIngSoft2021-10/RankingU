@@ -119,9 +119,9 @@ public class HorarioFragment extends Fragment {
         SesionClase s1_7a9, s2_2a4, s3_Viernes;
         List<SesionClase> sesionesClase = new ArrayList<>();
         List<SesionClase> sesion2 = new ArrayList<>();
-        s1_7a9 = new SesionClase("lunes","7:00","9:00");
-        s2_2a4 = new SesionClase("miercoles","14:00","16:00");
-        s3_Viernes = new SesionClase("domingo", "13:00","15:00");
+        s1_7a9 = new SesionClase("lunes","7:00","9:00","20");
+        s2_2a4 = new SesionClase("miercoles","14:00","16:00","20");
+        s3_Viernes = new SesionClase("domingo", "13:00","15:00","20");
         sesionesClase.add(s1_7a9);
 
         sesionesClase.add(s2_2a4);
