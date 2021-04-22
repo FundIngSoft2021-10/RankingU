@@ -29,7 +29,7 @@
 
     <TextView
         android:id="@+id/nombre_materia2"
-        android:layout_width="171dp"
+        android:layout_width="wrap_content"
         android:layout_height="36dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
@@ -143,6 +143,15 @@
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/nombre_materia4"
         app:layout_constraintTop_toBottomOf="@+id/nombre_materia3" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/nombre_materia3"
+        app:layout_constraintTop_toBottomOf="@+id/boton_inscribir_materia2" />
 
     <TextView
         android:id="@+id/textView23"

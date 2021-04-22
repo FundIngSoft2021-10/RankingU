@@ -17,7 +17,7 @@ public class MateriaActivity extends AppCompatActivity {
 
     private Button rating;
     private Button inscribir;
-    private TextView materia, docente, ratingV;
+    private TextView materia, docente, ratingV, horario;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

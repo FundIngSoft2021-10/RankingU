@@ -57,7 +57,17 @@ public class LoginActivity extends AppCompatActivity {
         olvidoContraText = findViewById(R.id.textOlvido);
         crearCuentaText = findViewById(R.id.textCrear);
 
+        // CREAR NUEVA CUENTA
         crearCuentaText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ccc = new Intent(LoginActivity.this, SignUp.class);
+                startActivity(ccc);
+            }
+        });
+
+        // OLVIDE MI CONTRASEÑA
+        olvidoContraText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent ccc = new Intent(LoginActivity.this, SignUp.class);
@@ -134,7 +144,9 @@ public class LoginActivity extends AppCompatActivity {
                                                CargaProc.setMessage("Verificando con la Base de datos...");
                                                CargaProc.show();
                                                if(!usernameEditText.getText().toString().trim().isEmpty() && !passwordEditText.getText().toString().trim().isEmpty()) {
-                                                   InicioUser(usernameEditText.getText().toString().trim(),
+                                                   String usu = usernameEditText.getText().toString().trim();
+                                                   usu = usu.concat("@javeriana.edu.co");
+                                                   InicioUser(usu,
                                                            passwordEditText.getText().toString().trim());
                                                }else{
                                                    CargaProc.setMessage("Datos incompletos");
@@ -186,7 +198,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     // LOGIN CON EMAIL Y PASSWORD
-    private void InicioUser(String email, String password){
+    private void InicioUser(final String email, String password){
         miAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
