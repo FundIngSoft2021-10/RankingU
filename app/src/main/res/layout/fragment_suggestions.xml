@@ -16,31 +16,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textSuggestions" />
 
-    <TextView
-        android:id="@+id/suggestionTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:clickable="false"
-        android:fontFamily="sans-serif-black"
-        android:text="@string/SuggestionsTitle"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textSuggestions"
-        android:layout_width="235dp"
-        android:layout_height="332dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="285dp"
+        android:layout_height="336dp"
+        android:layout_marginTop="42dp"
         android:hint="@string/textSuggestion"
         android:inputType="text"
         android:singleLine="false"
         android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/suggestionTitle" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

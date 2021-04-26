@@ -16,7 +16,11 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
+import androidx.navigation.NavController.OnDestinationChangedListener;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -53,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     private TableLayout horario;
     private TableRow f7;
     private ImageView fotoUser;
+    private TextView nombreUser;
 
     private String imgDef = "";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -65,37 +70,25 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.floatBtnSearch);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                startActivity(intent);
-               /* Snackbar.make(view, "PROGRAMAR ALGO", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
-            }
-        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-
         hView = navigationView.getHeaderView(0);
         TextView emailUser = hView.findViewById(R.id.Buscarpor);
-        TextView nombreUser = hView.findViewById(R.id.nombreView);
+        nombreUser = hView.findViewById(R.id.nombreView);
         fotoUser = hView.findViewById(R.id.fotoView);
-        nombreUser.setText(user.getDisplayName());
         emailUser.setText(user.getEmail());
-        btnBusqueda = findViewById(R.id.floatBtnSearch);
         matrizHorario = new ArrayList<>(12);
         for(ArrayList<TextView> i:matrizHorario)
         {
             matrizHorario.add(new ArrayList<TextView>(8));
         }
-
-        consultaImg(this.getApplicationContext());
-        //Glide.with(this.getApplicationContext()).load(imgDef).fitCenter().into(fotoUser);
-
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+        if(user.getPhotoUrl()!=null && user.getDisplayName()!=null){
+            Glide.with(this.getApplicationContext()).load(user.getPhotoUrl()).fitCenter().into(fotoUser);
+            nombreUser.setText(user.getDisplayName());
+        }
+        else{
+            consultaLogin(this.getApplicationContext());
+        }
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_slideshow,
@@ -104,29 +97,36 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.nav_host_fragment);
+               .findFragmentById(R.id.nav_host_fragment);
         NavController navController = navHostFragment.getNavController();
         //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        navigationView.getMenu().findItem(R.id.nav_exit).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                FirebaseAuth.getInstance().signOut();
+                LoginManager.getInstance().logOut();
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return true;
+            }
+        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        menu.findItem(R.id.action_settings).setTitle("Cerrar Sesion");
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                FirebaseAuth.getInstance().signOut();
-                LoginManager.getInstance().logOut();
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            case R.id.action_search:
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(intent);
                 return true;
             default:
@@ -135,11 +135,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Consulta
-    public void consultaImg(final Context x){
+    public void consultaLogin(final Context x){
         db.collection("Usuarios").document(user.getEmail()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     Glide.with(x).load(task.getResult().getData().get("foto").toString()).fitCenter().into(fotoUser);
+                    nombreUser.setText(task.getResult().getData().get("usuario").toString());
                 } else {
                     Log.d(TAG, "Error en la BD: ", task.getException());
                 }

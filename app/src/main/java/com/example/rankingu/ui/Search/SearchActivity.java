@@ -31,11 +31,9 @@ public class SearchActivity extends AppCompatActivity {
         tv1 = findViewById(R.id.Buscarpor);
         spinner1 = findViewById(R.id.spinnerBuscar);
         btnBuscar = findViewById(R.id.BotonBuscar);
-
         String[] opciones = {"Profesor", "Materia", "Carrera"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, opciones);
         spinner1.setAdapter(adapter);
-
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
