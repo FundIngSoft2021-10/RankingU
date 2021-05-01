@@ -1,7 +1,5 @@
-# RankingU - Apartado de Daniel Morales
+# RankingU
 
-Actualmente trabajando en:
 
-Diseño de ui Horario.
 
 
