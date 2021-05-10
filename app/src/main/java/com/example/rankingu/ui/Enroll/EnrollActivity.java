@@ -58,8 +58,6 @@ public class EnrollActivity extends AppCompatActivity{
         confirmar = findViewById(R.id.BtonConfirmar);
         cancelar = findViewById(R.id.BtonCancelar);
 
-
-
         final ArrayList<String> opciones = new ArrayList<>();
         final ArrayList<String> ratins = new ArrayList<>();
         ratins.add("5");

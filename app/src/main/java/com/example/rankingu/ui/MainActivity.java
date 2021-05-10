@@ -1,13 +1,18 @@
 package com.example.rankingu.ui;
 //CLASE NECESARIA
 
+import com.example.rankingu.Classes.Horario;
+import com.example.rankingu.Classes.MateriaDelMain;
 import com.example.rankingu.R;
 // MAYORMENTE INTERFAZ OSEA CLIENTE SUPONGO
+import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
@@ -16,6 +21,8 @@ import com.example.rankingu.ui.Enroll.EnrollActivity;
 import com.example.rankingu.ui.Materia.MateriaActivity;
 import com.example.rankingu.ui.Search.SearchActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -45,6 +52,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.View.OnLongClickListener;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -58,6 +66,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.facebook.login.LoginManager;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -74,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
     private TableRow f7;
     private ImageView fotoUser;
     private TextView nombreUser;
-    private ImageView image;
 
     private String imgDef = "";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -94,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         nombreUser = hView.findViewById(R.id.nombreView);
         fotoUser = hView.findViewById(R.id.fotoView);
         emailUser.setText(user.getEmail());
-        image = (ImageView) findViewById(R.id.goProDialogImage);
+        final ArrayList<String> imgs = new ArrayList<>();
         matrizHorario = new ArrayList<>(12);
         for (ArrayList<TextView> i : matrizHorario) {
             matrizHorario.add(new ArrayList<TextView>(8));
@@ -105,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             consultaLogin(this.getApplicationContext());
         }
+
+        consultaImgs(MainActivity.this, imgs);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_slideshow,
@@ -120,24 +131,36 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         fotoUser.setOnLongClickListener(new View.OnLongClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public boolean onLongClick(View v) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setPositiveButton("Get Pro", new DialogInterface.OnClickListener() {
+                final Dialog dialog = new Dialog(MainActivity.this);
+                dialog.setContentView(R.layout.activity_cambio_img);
+
+                final int[] i = {0};
+                final ImageView img = dialog.findViewById(R.id.goProDialogImage);
+                img.setImageURI(Uri.parse(imgs.get(i[0])));
+
+                Button sig = dialog.findViewById(R.id.button8);
+                sig.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                }).setNegativeButton("No thanks", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        image.setImageResource(R.drawable.borde_horario);
+                    public void onClick(View view) {
+                        img.setImageURI(Uri.parse(imgs.get(i[0])));
+                        if(i[0]+1<imgs.size())
+                            i[0] = i[0]++;
+                        else
+                            i[0] = 0;
                     }
                 });
-                final AlertDialog dialog = builder.create();
-                LayoutInflater inflater = getLayoutInflater();
-                View dialogLayout = inflater.inflate(R.layout.activity_cambio_img, null);
-                dialog.setView(dialogLayout);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+                Button guardar = dialog.findViewById(R.id.button7);
+                guardar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        guardarImg(MainActivity.this, imgs.get(i[0]));
+                        consultaLogin(MainActivity.this);
+                    }
+                });
 
                 dialog.show();
                 return true;
@@ -175,6 +198,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Consulta IMGS
+    public void consultaImgs(final Context x, final ArrayList<String> imgs) {
+        db.collection("Imagenes")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData().get("dir").toString());
+                                imgs.add(document.getData().get("dir").toString());
+                            }
+                        } else {
+                            Log.d(TAG, "Error en la BD: ", task.getException());
+                        }
+                    }
+                });
+    }
+
     //Consulta
     public void consultaLogin(final Context x) {
         db.collection("Usuarios").document(user.getEmail()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -187,6 +229,24 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    //Guardar BD
+    public void guardarImg(final Context x, String img) {
+        //Añadir a la BD
+        db.collection("Usuarios").document(user.getEmail()).update("foto", img)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(x, "Imagen guardada.", Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(x, "Vuelva a intentarlo.", Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 
     @Override
