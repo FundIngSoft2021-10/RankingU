@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.SearchView;
@@ -25,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
@@ -39,6 +41,7 @@ public class MateriaActivity extends AppCompatActivity {
     ArrayAdapter<SesionClase> adapatar;
     private ArrayList<SesionClase> sesiones= new ArrayList<>();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    SesionClase horarioEnviar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,27 +54,25 @@ public class MateriaActivity extends AppCompatActivity {
         docente = findViewById(R.id.textView22);
         ratingV = findViewById(R.id.textView23);
         horario = findViewById(R.id.spinner_horario);
-        seleccion = findViewById(R.id.horario_spinner);
+        //seleccion = findViewById(R.id.horario_spinner);
 
         Bundle myBundle = this.getIntent().getExtras();
         final Profesor x = (Profesor) myBundle.getSerializable("materia");
-
 
         materia.setText(x.getMateriasList().get(0).getNombre());
         docente.setText(x.getMateriasList().get(0).getProfesores());
         ratingV.setText(String.valueOf(x.getMateriasList().get(0).getPuntaje()));
 
+        SesionClase aux = new SesionClase();
+        sesiones.add(aux);
         consultarHorarios(x.getMateriasList().get(0).getNombre(),sesiones,x.getMateriasList().get(0).getProfesores());
-
         adapatar = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sesiones);
         horario.setAdapter(adapatar);
 
-
-
-        if(horario.getSelectedItem().toString() != "") {
+        /*if(horario.getSelectedItem().toString() != "") {
             final String escogido = horario.getSelectedItem().toString();
             seleccion.setText(horario.getSelectedItem().toString());
-        }
+        }*/
 
         rating.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,21 +87,31 @@ public class MateriaActivity extends AppCompatActivity {
             }
         });
 
+        //Selecciona horario
+        horario.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                horarioEnviar = (SesionClase) horario.getItemAtPosition(position);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
         inscribir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MateriaActivity.this, EnrollActivity.class);
 
+                Intent intent = new Intent(MateriaActivity.this, EnrollActivity.class);
+                System.out.println(horarioEnviar.toString());
                 Bundle myBundle = new Bundle();
                 myBundle.putSerializable("materia", x);
-                //myBundle.putSerializable("horario",escogido);
+                myBundle.putSerializable("horario", horarioEnviar);
                 intent.putExtras(myBundle);
 
                 startActivity(intent);
             }
         });
-
-
     }
 
 
@@ -121,8 +132,6 @@ public class MateriaActivity extends AppCompatActivity {
                         ses.setDia(document.getData().get("dia").toString());
                         ses.sethFin(document.getData().get("hFin").toString());
                         ses.sethInicio(document.getData().get("hInicio").toString());
-                        System.out.println(ses.toString());
-
                         sesions.add(ses);
                     }
                 } else {
@@ -132,8 +141,4 @@ public class MateriaActivity extends AppCompatActivity {
         });
 
     }
-
-
-
-
 }

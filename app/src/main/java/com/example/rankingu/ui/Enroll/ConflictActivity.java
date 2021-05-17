@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.rankingu.Classes.Materia;
 import com.example.rankingu.Classes.MateriaDelMain;
 import com.example.rankingu.R;
 import com.example.rankingu.ui.MainActivity;
@@ -31,15 +32,15 @@ public class ConflictActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enroll_conflict);
 
-        cancelar.findViewById(R.id.BtonConfirmar);
-        confirmar.findViewById(R.id.BtonCancelar);
+        cancelar = findViewById(R.id.BtonConfirmar);
+        confirmar = findViewById(R.id.BtonCancelar);
 
-        materia1.findViewById(R.id.textConflicto);
-        materia2.findViewById(R.id.textMaterias);
+        materia1 =findViewById(R.id.textConflicto);
+        materia2 = findViewById(R.id.textMaterias);
 
         Bundle myBundle = this.getIntent().getExtras();
-        final MateriaDelMain x = (MateriaDelMain) myBundle.getSerializable("decidir");
-        final MateriaDelMain y = (MateriaDelMain) myBundle.getSerializable("eliminar");
+        final Materia x = (Materia) myBundle.getSerializable("decidir");
+        final Materia y = (Materia) myBundle.getSerializable("eliminar");
 
         materia1.setText("Actual: "+ y.getNombre());
         materia1.setText("A inscribir: "+ x.getNombre());
@@ -62,13 +63,13 @@ public class ConflictActivity extends AppCompatActivity {
         });
     }
 
-    public void registrarMateria(MateriaDelMain x){
+    public void registrarMateria(Materia x){
         //Añadir a la BD
         db.collection("Usuarios").document(user.getEmail()).collection("materias").add(x);
         Toast.makeText(this, "Materia inscrita", Toast.LENGTH_LONG).show();
     }
 
-    public void eliminarMateria(MateriaDelMain elim, final MateriaDelMain x){
+    public void eliminarMateria(Materia elim, final Materia x){
         //Sacar de la BD
         db.collection("Usuarios").document(user.getEmail()).collection("materias").document(elim.getNombre().toLowerCase())
                 .delete()

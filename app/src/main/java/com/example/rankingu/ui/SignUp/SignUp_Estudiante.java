@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +16,8 @@ import com.example.rankingu.ui.Materia.MateriaActivity;
 public class SignUp_Estudiante extends AppCompatActivity {
 
     private Button continuar;
+    private EditText nombre;
+    private EditText Apellido;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,8 @@ public class SignUp_Estudiante extends AppCompatActivity {
 
 
         continuar = findViewById(R.id.Volver_login_estudiante);
+
+
 
         continuar.setOnClickListener(new View.OnClickListener() {
             @Override

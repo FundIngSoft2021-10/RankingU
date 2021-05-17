@@ -26,6 +26,7 @@ import com.example.rankingu.R;
 import com.example.rankingu.ui.MainActivity;
 import com.example.rankingu.ui.Materia.MateriaActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -65,11 +66,15 @@ public class EnrollActivity extends AppCompatActivity{
         cancelar = findViewById(R.id.BtonCancelar);
 
         Bundle myBundle = this.getIntent().getExtras();
-        final Profesor x = (Profesor) myBundle.getSerializable("profesor");
+        final Profesor x = (Profesor) myBundle.getSerializable("materia");
+        final SesionClase horarioRecibido = (SesionClase) myBundle.getSerializable("horario");
+
         final Materia elim = null;
 
         final ArrayList<String> opciones = new ArrayList<>();
         final ArrayList<String> ratins = new ArrayList<>();
+        final ArrayList<Materia> materiaCruce = new ArrayList<>();
+        materiaCruce.add(elim);
         //ratins.add("5");
         opciones.add(x.getNombre());
 
@@ -80,7 +85,7 @@ public class EnrollActivity extends AppCompatActivity{
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean result = registrarInscripcion(x, elim);
+                boolean result = registrarInscripcion(x, materiaCruce, horarioRecibido);
                 if(result){
                     AlertDialog.Builder alerta = new AlertDialog.Builder(EnrollActivity.this);
                     alerta.setMessage("La materia fue inscrita de manera exitosa")
@@ -100,13 +105,8 @@ public class EnrollActivity extends AppCompatActivity{
                 else{
                     Intent intent = new Intent(EnrollActivity.this, ConflictActivity.class);
 
-                    SesionClase hor = new SesionClase();
-                    hor.setCupos("21");
-                    hor.setDia("l-m");
-                    hor.sethFin("13:00");
-                    hor.sethInicio("11:00");
                     List<SesionClase> horarios = new ArrayList<>();
-                    horarios.add(hor);
+                    horarios.add(horarioRecibido);
                     Materia mt = new Materia(materia.getText().toString(), descripcion.getText().toString(), Integer.parseInt(semestre), (double) calif.getRating(), horarios, x.getNombre());
 
                     Bundle myBundle = new Bundle();
@@ -149,16 +149,11 @@ public class EnrollActivity extends AppCompatActivity{
     }
 
     //Cargar inscripción a la Base de datos
-    public boolean registrarInscripcion(Profesor x, Materia cruce){
+    public boolean registrarInscripcion(Profesor x, ArrayList<Materia> cruce, SesionClase horarioRecibido){
         // acabar la funcion de validar
-        if(validarInscripcion(cruce)){
-            SesionClase hor = new SesionClase();
-            hor.setCupos("21");
-            hor.setDia("l-m");
-            hor.sethFin("13:00");
-            hor.sethInicio("11:00");
+        if(validarInscripcion(cruce, horarioRecibido)){
             List<SesionClase> horarios = new ArrayList<>();
-            horarios.add(hor);
+            horarios.add(horarioRecibido);
             Materia inscrip = new Materia(materia.getText().toString(), descripcion.getText().toString(), Integer.parseInt(semestre), (double) calif.getRating(), horarios, x.getNombre());
 
             //Añadir a la BD
@@ -171,17 +166,19 @@ public class EnrollActivity extends AppCompatActivity{
         }
     }
 
-    public boolean validarInscripcion(Materia cruce){
-        consultaCruces(cruce);
-        if(cruce.getNombre().isEmpty())
+    public boolean validarInscripcion(ArrayList<Materia> cruce, SesionClase horarioRecibido){
+        consultaCruces(cruce, horarioRecibido);
+        if(cruce.get(0) != null)
             return true;
         else
             return false;
     }
 
     //Consulta
-    public void consultaCruces(final Materia cruce){
-        db.collection("Usuarios").document(user.getEmail()).collection("materias").get()
+    public void consultaCruces(final ArrayList<Materia> cruce , final SesionClase horarioRecibido){
+
+        db.collection("Usuarios").document(user.getEmail()).collection("materias")
+                .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -189,14 +186,17 @@ public class EnrollActivity extends AppCompatActivity{
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 //Log.d(TAG, document.getId() + " => " + document.getData().get("nombre").toString());
                                 ArrayList <SesionClase> aux = (ArrayList<SesionClase>) document.getData().get("sesiones_clase");
-                                if(aux.get(0).getDia().equalsIgnoreCase("horario")){
-                                    if(aux.get(0).gethInicio().equalsIgnoreCase("horario") ||aux.get(0).gethFin().equalsIgnoreCase("horario") ){
-                                        cruce.setNombre(document.getData().get("nombre").toString());
-                                        cruce.setDescripcion(document.getData().get("descripcion").toString());
-                                        cruce.setProfesores(document.getData().get("profesores").toString());
-                                        cruce.setPuntaje((Double) document.getData().get("puntaje"));
-                                        cruce.setSemestre((Integer) document.getData().get("semestre"));
-                                        cruce.setSesiones_clase(aux);
+                                if(aux.get(0).getDia().equalsIgnoreCase(horarioRecibido.getDia())){
+                                    if(aux.get(0).gethInicio().equalsIgnoreCase(horarioRecibido.gethInicio()) || aux.get(0).gethFin().equalsIgnoreCase(horarioRecibido.gethFin()) ){
+                                        Materia var = (Materia) document.getData();
+                                        cruce.add(var);
+                                        /*
+                                        cruce.get(0).setNombre(document.getData().get("nombre").toString());
+                                        cruce.get(0).setDescripcion(document.getData().get("descripcion").toString());
+                                        cruce.get(0).setProfesores(document.getData().get("profesores").toString());
+                                        cruce.get(0).setPuntaje((Double) document.getData().get("puntaje"));
+                                        cruce.get(0).setSemestre((Integer) document.getData().get("semestre"));
+                                        cruce.get(0).setSesiones_clase(aux);*/
                                     }
                                 }
                             }
@@ -204,7 +204,9 @@ public class EnrollActivity extends AppCompatActivity{
                             Log.d(TAG, "Error en la BD: ", task.getException());
                         }
                     }
-                });
+
+                })
+                ;
     }
 
     //Consulta
