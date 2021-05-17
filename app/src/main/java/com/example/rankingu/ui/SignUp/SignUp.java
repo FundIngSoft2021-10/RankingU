@@ -58,12 +58,16 @@ public class SignUp extends AppCompatActivity {
             firebase.createUserWithEmailAndPassword(txtMail.getText().toString(), txtPassword.getText().toString());
 
             //Intento iniciar de nuevo el usuario
-            firebase.signInWithEmailAndPassword(txtMail.getText().toString(), txtPassword.getText().toString());
+            //firebase.signInWithEmailAndPassword(txtMail.getText().toString(), txtPassword.getText().toString());
 
             ///aqui esta el fallo
-            user = firebase.getCurrentUser();
-            user.sendEmailVerification();
-
+            /*user = firebase.getCurrentUser();
+            if(user == null){
+                System.out.println("usuario nulo");
+            }else {
+                user.sendEmailVerification();
+            }
+            System.out.println("peto");*/
 
             ////Se cambia de pantalla si es estudiante o profesor
             if (spRol.getSelectedItem().toString().compareTo("Estudiante") == 0) {

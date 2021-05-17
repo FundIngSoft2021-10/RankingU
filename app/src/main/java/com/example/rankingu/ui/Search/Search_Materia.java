@@ -57,12 +57,14 @@ public class Search_Materia extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
                 Profesor x = (Profesor) adapterView.getItemAtPosition(i);
                 Intent intent = new Intent(Search_Materia.this, MateriaActivity.class);
                 Bundle myBundle = new Bundle();
                 myBundle.putSerializable("materia", x);
                 intent.putExtras(myBundle);
                 startActivity(intent);
+
             }
         });
 

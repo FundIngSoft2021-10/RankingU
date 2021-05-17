@@ -46,6 +46,7 @@ public class SesionClase {
         this.hFin = hFin;
     }
 
+    @Override
     public String toString()
     {
         return this.dia+": "+this.hInicio+"-"+this.hFin;
