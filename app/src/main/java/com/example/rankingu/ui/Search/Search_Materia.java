@@ -50,7 +50,7 @@ public class Search_Materia extends AppCompatActivity {
         Bundle myBundle = this.getIntent().getExtras();
         currentSearchText = (String)myBundle.getSerializable("palabra");
 
-        consultaMateria(currentSearchText, profesores);
+        consultaMateria(currentSearchText.toLowerCase(), profesores);
         arrayAdaptar = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, profesores);
         listView.setAdapter(arrayAdaptar);
 

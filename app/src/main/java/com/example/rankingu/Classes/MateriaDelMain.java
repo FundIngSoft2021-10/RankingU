@@ -7,13 +7,19 @@ public class MateriaDelMain {
     String nombre, descripcion;
     Integer semestre;
     Double rating;
-    Horario horarios;
-    List<String> profesoresList;
+    List<Horario> horarios;
+    String profesoresList;
 
     public MateriaDelMain() {
     }
 
-    public MateriaDelMain(String nombre, String descripcion, Integer semestre, Double rating, Horario horarios, List<String> profesoresList) {
+    @Override
+    public String toString() {
+        return "\nMateria: " +
+                nombre + horarios;
+    }
+
+    public MateriaDelMain(String nombre, String descripcion, Integer semestre, Double rating, List<Horario> horarios, String profesoresList) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.semestre = semestre;
@@ -54,19 +60,19 @@ public class MateriaDelMain {
         this.descripcion = descripcion;
     }
 
-    public List<String> getProfesoresList() {
+    public String getProfesoresList() {
         return profesoresList;
     }
 
-    public void setProfesoresList(List<String> profesoresList) {
+    public void setProfesoresList(String profesoresList) {
         this.profesoresList = profesoresList;
     }
 
-    public Horario getHorarios() {
+    public List<Horario> getHorarios() {
         return horarios;
     }
 
-    public void setHorarios(Horario horarios) {
+    public void setHorarios(List<Horario> horarios) {
         this.horarios = horarios;
     }
 }

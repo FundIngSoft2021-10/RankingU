@@ -33,7 +33,6 @@ public class MateriaActivity extends AppCompatActivity {
         Bundle myBundle = this.getIntent().getExtras();
         final Profesor x = (Profesor) myBundle.getSerializable("materia");
 
-
         materia.setText(x.getMateriasList().get(0).getNombre());
         docente.setText(x.getMateriasList().get(0).getProfesores());
         ratingV.setText(String.valueOf(x.getMateriasList().get(0).getPuntaje()));
@@ -55,6 +54,9 @@ public class MateriaActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MateriaActivity.this, EnrollActivity.class);
+                Bundle myBundle = new Bundle();
+                myBundle.putSerializable("profesor", x);
+                intent.putExtras(myBundle);
                 startActivity(intent);
             }
         });
