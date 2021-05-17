@@ -139,17 +139,19 @@ public class MainActivity extends AppCompatActivity {
 
                 final int[] i = {0};
                 final ImageView img = dialog.findViewById(R.id.goProDialogImage);
-                img.setImageURI(Uri.parse(imgs.get(i[0])));
+                //img.setImageURI(Uri.parse(imgs.get(i[0])));
+                Glide.with(MainActivity.this).load(Uri.parse(imgs.get(i[0]))).fitCenter().into(img);
 
                 Button sig = dialog.findViewById(R.id.button8);
                 sig.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        img.setImageURI(Uri.parse(imgs.get(i[0])));
                         if(i[0]+1<imgs.size())
-                            i[0] = i[0]++;
+                            i[0] = i[0]+1;
                         else
                             i[0] = 0;
+                        Glide.with(MainActivity.this).load(Uri.parse(imgs.get(i[0]))).fitCenter().into(img);
+                        //img.setImageURI(Uri.parse(imgs.get(i[0])));
                     }
                 });
 
