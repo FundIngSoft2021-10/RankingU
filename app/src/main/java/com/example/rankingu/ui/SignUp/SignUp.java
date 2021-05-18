@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.rankingu.Classes.Usuario;
 import com.example.rankingu.R;
 import com.example.rankingu.ui.Enroll.ConflictActivity;
 import com.example.rankingu.ui.LoginActivity;
@@ -32,7 +33,7 @@ public class SignUp extends AppCompatActivity {
     private EditText txtUser;
     private EditText txtPassword;
     private EditText txtPassConfirm;
-    private FirebaseAuth firebase;
+    FirebaseAuth firebase = FirebaseAuth.getInstance();
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
     private Button next;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -64,21 +65,33 @@ public class SignUp extends AppCompatActivity {
                             Toast.makeText(SignUp.this, "Las contraseñas deben ser iguales", Toast.LENGTH_LONG).show();
                         } else {
 
-                            /// Se añade el usuario en la base de datos Usuarios
-                            db.collection("Usuarios").document(txtMail.getText().toString());
-                            //db.collection("Usuarios").add(txtMail.getText().toString());
-                            //db.collection("Usuarios").document(txtMail.getText().toString()).set(txtUser);
+                            //Crear el usuario
+                            Usuario usu = new Usuario();
+                            usu.setCorreo(txtMail.getText().toString());
+                            usu.setUsuario(txtUser.getText().toString());
+                            usu.setCarrera("Sistemas");
+                            usu.setFoto("https://images.vexels.com/media/users/3/147102/isolated/preview/082213cb0f9eabb7e6715f59ef7d322a-icono-de-perfil-de-instagram-by-vexels.png");
+                            usu.setTipo(spRol.getSelectedItem().toString());
 
-
-
+                            //Agrega a la BD
+                            db.collection("Usuarios").document(txtMail.getText().toString()).set(usu);
 
                             ////Se crea en la base de datos
-                            firebase = FirebaseAuth.getInstance();
+                            //firebase = FirebaseAuth.getInstance();
+                            //firebase.createUserWithEmailAndPassword(txtMail.getText().toString(), txtPassword.getText().toString());
                             firebase.createUserWithEmailAndPassword(txtMail.getText().toString(), txtPassword.getText().toString());
+
+                            firebase.signInWithEmailAndPassword(txtMail.getText().toString(), txtPassword.getText().toString());
+
+                            /*user = FirebaseAuth.getInstance().getCurrentUser();
+                            user.sendEmailVerification();*/
 
                             //Ir a la pantalla dependiendo el tipo
                             if (spRol.getSelectedItem().toString().compareTo("Estudiante") == 0) {
                                 Intent signEstudiante = new Intent(SignUp.this, SignUp_Estudiante.class);
+                                Bundle mybundle = new Bundle();
+                                mybundle.putSerializable("usuario",usu);
+                                signEstudiante.putExtras(mybundle);
                                 startActivity(signEstudiante);
                             } else if (spRol.getSelectedItem().toString().compareTo("Profesor") == 0) {
                                 Intent signProfesor = new Intent(SignUp.this, SignUp_Profesor.class);
