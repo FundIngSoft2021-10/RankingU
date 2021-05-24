@@ -67,20 +67,11 @@ public class RankingtonsFragment extends Fragment {
                 }
         );
         nombreUsu =(TextView) root.findViewById(R.id.Buscarpor);
-        updateUi(nombreUsu.getText().toString());
+
         lista = (ListView) root.findViewById(R.id.lista_rankington);
-        //Jalar datos de bd
-
-        //
-
-        //ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getActivity().getBaseContext(), R.layout.rankington_item, Materias);
-        //consultaMateria("poo", profesores);
-        //lista.setAdapter(adaptador);
 
         adaptador = new ArrayAdapter<Profesor>(getActivity().getBaseContext(), android.R.layout.simple_list_item_1, android.R.id.text1, profesores);
         Profesor pr = new Profesor();
-        //pr.setNombre("Juan el caballo");
-        //adaptador.add(pr);
         consultaMateria("poo", profesores,adaptador,db);
 
         lista.setAdapter(adaptador);
@@ -101,6 +92,17 @@ public class RankingtonsFragment extends Fragment {
 
         return root;
     }
+
+    public ArrayList<Materia> consultarMateriasEstudiante(final FirebaseFirestore db)
+    {
+        ArrayList<Materia> materiasEstu = new ArrayList<>();
+
+        //db.collection("Usuarios")
+        return null;
+
+    }
+
+
 
     //Consulta
     public void consultaMateria(final String materiae, final ArrayList<Profesor> opciones, final ArrayAdapter<Profesor> adapt, final FirebaseFirestore db) {
@@ -132,23 +134,10 @@ public class RankingtonsFragment extends Fragment {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         Profesor profe = new Profesor();
-                        //Materia mat = new Materia();
-                        //ArrayList<SesionClase> listaSesion = (ArrayList<SesionClase>) document.getData().get("horarios");
-                       //updateUi("listasesion "+listaSesion.size());
                         profe.setNombre(document.getData().get("nombre").toString());
                         mat.setProfesores(profe.getNombre());
-
-                        //mat.setSesiones_clase(listaSesion);
-                        //mat.setNombre(materia);
                         mat.setPuntaje(Double.parseDouble(document.getData().get("rating").toString()));
-
-
                         consultaSesion(materia,opciones,adapt, db,document.getId(), mat, profe);
-                        //profe.addMateria(mat);
-                        //updateUi((profe.getMateriasList().get(0).getSesiones_clase().get(0).getDia()));
-                       //opciones.add(profe);
-                       // adapt.add(profe);
-
                     }
                 } else {
                     Log.d(TAG, "Error en la BD: ", task.getException());
@@ -178,11 +167,8 @@ public class RankingtonsFragment extends Fragment {
                         sesion.setDia(document.getData().get("dia").toString());
                         sesion.sethFin(document.getData().get("hFin").toString());
                         sesion.sethInicio(document.getData().get("hInicio").toString());
-                        //lista.add(sesion);
-                        //mat.addSesionClase(sesion);
-                        //updateUi(String.valueOf(mat.getSesiones_clase().size()));
                         profe.addMateria(mat);
-                        //updateUi(profe.toString());
+
                        adapt.add(profe);
 
 

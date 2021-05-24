@@ -162,6 +162,24 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    public ArrayList<Materia> busquedaHorarioEst(final FirebaseFirestore db){
+
+        db.collection("Usuarios").document("aux@javeriana.edu.co").collection("materias").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful())
+                {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        updateUi(document.getData().toString());
+                    }
+                }
+            }
+        });
+
+
+        return null;
+    }
+
     //Metodos Horario
     private void construirHorario(TableLayout tablaHorario, TableRow fila, TextView textoCelda,View vista)
     {
