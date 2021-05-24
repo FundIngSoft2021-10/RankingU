@@ -46,7 +46,7 @@ public class RankingtonsFragment extends Fragment {
 
     private RankingtonsViewModel rankingtonsViewModel;
     private ListView lista;
-    private TextView texto;
+    private TextView nombreUsu;
     private ArrayList<Profesor> profesores = new ArrayList<>();
     private ArrayList<String> resultados = new ArrayList<>();
     private ArrayAdapter<Profesor>adaptador;
@@ -66,6 +66,8 @@ public class RankingtonsFragment extends Fragment {
                     }
                 }
         );
+        nombreUsu =(TextView) root.findViewById(R.id.Buscarpor);
+        updateUi(nombreUsu.getText().toString());
         lista = (ListView) root.findViewById(R.id.lista_rankington);
         //Jalar datos de bd
 
@@ -177,7 +179,7 @@ public class RankingtonsFragment extends Fragment {
                         sesion.sethFin(document.getData().get("hFin").toString());
                         sesion.sethInicio(document.getData().get("hInicio").toString());
                         //lista.add(sesion);
-                        mat.addSesionClase(sesion);
+                        //mat.addSesionClase(sesion);
                         //updateUi(String.valueOf(mat.getSesiones_clase().size()));
                         profe.addMateria(mat);
                         //updateUi(profe.toString());
