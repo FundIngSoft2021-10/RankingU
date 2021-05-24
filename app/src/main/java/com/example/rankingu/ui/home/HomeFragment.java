@@ -48,18 +48,18 @@ public class HomeFragment extends Fragment {
     private ImageView imagenprofesor;
     private TextView materiaprofesor;
     private TableLayout tablaprofesor;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-    FragmentTransaction transaction;
-    Fragment HorarioFragment;
+    private FragmentTransaction transaction;
+    private Fragment HorarioFragment;
 
     //HorarioAtributos
-    ControllerHorario controladorHorario = new ControllerHorario();
+    private ControllerHorario controladorHorario = new ControllerHorario();
 
-    TableLayout tablaHorario;
-    TableRow fila;
-    TextView textoCelda;
+    private TableLayout tablaHorario;
+    private TableRow fila;
+    private TextView textoCelda;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -166,7 +166,7 @@ public class HomeFragment extends Fragment {
 
     public void busquedaHorarioEst(final FirebaseFirestore db, final TableLayout tablaHorario, final TableRow fila, final TextView textoCelda, final View vista){
         final ArrayList<Materia> array = new ArrayList<>();
-        db.collection("Usuarios").document("aux@javeriana.edu.co").collection("materias").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("Usuarios").document(user.getEmail()).collection("materias").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 ArrayList<Materia> arrayAux = new ArrayList<>();
@@ -225,18 +225,11 @@ public class HomeFragment extends Fragment {
                         updateUi("array size inside "+arrayAux.size());
                         updateUi("size of sesion "+arrayAux.get(0).getSesiones_clase().size());
                         construirHorario(tablaHorario,fila,textoCelda,vista,  arrayAux);
-
-
-
-
                     }
-                    //array = arrayAux;
-
                 }
 
             }
         });
-
     }
 
     //Metodos Horario

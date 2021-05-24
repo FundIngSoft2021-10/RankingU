@@ -25,6 +25,12 @@ public class Profesor implements Serializable {
                  materiasList;
     }
 
+
+
+
+
+
+
     public void addMateria(Materia materia){
         this.materiasList.add(materia);
     }

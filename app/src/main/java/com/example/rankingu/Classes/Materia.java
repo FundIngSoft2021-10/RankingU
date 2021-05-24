@@ -13,12 +13,27 @@ public class Materia implements Serializable {
 
     public Materia() {
     }
+    /*
+    @Override
+    public String toString() {
+        String resul = nombre+"\n";
+        for(SesionClase s:this.getSesiones_clase())
+        {
+            resul+= s.toString()+"\n";
+        }
+        return resul;
+    }
+
+     */
+
 
     @Override
     public String toString() {
         return "\nMateria: " +
                 nombre;
     }
+
+
 
     public Materia(String nombre, String descripcion, Integer semestre, Double puntaje, List<SesionClase> sesiones_clase, String profesores) {
         this.nombre = nombre;
