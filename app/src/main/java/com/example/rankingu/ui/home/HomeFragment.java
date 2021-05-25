@@ -1,10 +1,15 @@
 package com.example.rankingu.ui.home;
 
+import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TableLayout;
@@ -20,11 +25,15 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.bumptech.glide.Glide;
 import com.example.rankingu.Classes.Materia;
 import com.example.rankingu.Classes.SesionClase;
 import com.example.rankingu.Controller.ControllerHorario;
 import com.example.rankingu.R;
+import com.example.rankingu.ui.Enroll.ConflictActivity;
 import com.example.rankingu.ui.Horario.HorarioFragment;
+import com.example.rankingu.ui.Horario.eliminarMateria;
+import com.example.rankingu.ui.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -177,8 +186,7 @@ public class HomeFragment extends Fragment {
                         //updateUi(document.getData().toString());
                         Materia m = new Materia();
                         List<SesionClase> sesiones = new ArrayList<>();
-
-
+                        m.setProfesores(document.getData().get("profesores").toString());
                         String dia = document.getData().get("dia").toString();
                         String diaCons ="",hInicio ="", hFin="", cupos ="";
                         hInicio = document.getData().get("hInicio").toString();
@@ -231,45 +239,16 @@ public class HomeFragment extends Fragment {
                     updateUi("Error");
                     Log.d(TAG, "Error en la BD: ", task.getException());
                 }
-
             }
         });
     }
 
     //Metodos Horario
-    private void construirHorario(TableLayout tablaHorario, TableRow fila, TextView textoCelda,View vista,ArrayList<Materia> arr)
+    private void construirHorario(TableLayout tablaHorario, TableRow fila, TextView textoCelda, final View vista, final ArrayList<Materia> arr)
     {
         List<Integer> dias = new ArrayList<>();
         List<Integer> horasInicio= new ArrayList<>();
         List<Integer> horasFin= new ArrayList<>();
-        /*
-        Materia m1;
-        Materia m2;
-        List<Materia> materiaLista = new ArrayList<>();
-        List<Integer> dias = new ArrayList<>();
-        List<Integer> horasInicio= new ArrayList<>();
-        List<Integer> horasFin= new ArrayList<>();
-
-        SesionClase s1_7a9, s2_2a4, s3_Viernes;
-        List<SesionClase> sesionesClase = new ArrayList<>();
-        List<SesionClase> sesion2 = new ArrayList<>();
-        s1_7a9 = new SesionClase("lunes","7:00","9:00","20");
-        s2_2a4 = new SesionClase("miercoles","14:00","16:00","20");
-        s3_Viernes = new SesionClase("domingo", "13:00","15:00","20");
-        sesionesClase.add(s1_7a9);
-
-        sesionesClase.add(s2_2a4);
-        sesion2.add(s3_Viernes);
-
-
-        m1 = new Materia("Calculo",sesionesClase);
-        m2 = new Materia("Etica en la ingenieria", sesion2);
-        materiaLista.add(m1);
-        materiaLista.add(m2);
-
-        //updateUi(String.valueOf(materiaLista.size()));
-
-         */
         for(int j = 0;j<arr.size();j++)
         {
             dias =  controladorHorario.getDiaHorario(arr.get(j));
@@ -278,36 +257,43 @@ public class HomeFragment extends Fragment {
             for(int i = 0; i<dias.size();i++)
             {
                 fila = (TableRow) vista.findViewById(tablaHorario.getChildAt(horasInicio.get(i)).getId());
+                final Materia m = arr.get(j);
                 textoCelda =  (TextView) vista.findViewById(fila.getChildAt(dias.get(i)).getId());
-                textoCelda.setBackgroundColor(30);
+                textoCelda.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        eliminarMateriaHorario(m);
+
+                    }
+                });
+                textoCelda.setBackgroundColor(R.drawable.celdahorario);
                 textoCelda.setTextSize(1,11);
                 //textoCelda.setText(materiaLista.get(j).toString());
                 fila = (TableRow) vista.findViewById(tablaHorario.getChildAt(horasFin.get(i)).getId());
                 textoCelda =  (TextView) vista.findViewById(fila.getChildAt(dias.get(i)).getId());
-                textoCelda.setText(arr.get(j).toString());
-                textoCelda.setBackgroundColor(30);
+                textoCelda.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        eliminarMateriaHorario(m);
+
+                    }
+                });
+                //textoCelda.setText(arr.get(j).toString());
+                textoCelda.setText(arr.get(j).getNombre()+"\n"+arr.get(j).getProfesores()+"\n"+arr.get(j).getSesiones_clase().get(j).gethInicio()+"-"+arr.get(j).getSesiones_clase().get(j).gethFin());
+                textoCelda.setBackgroundColor(R.drawable.celdahorario);
                 textoCelda.setTextSize(1,11);
+                textoCelda.setBackgroundColor(R.drawable.celdahorario);
             }
         }
     }
 
-    private void cleanHorario(TableLayout tablaHorario, TableRow fila, TextView textoCelda, View vista)
+
+    private void eliminarMateriaHorario(Materia m)
     {
-        for(int i = 0;i<tablaHorario.getChildCount();i++)
-        {
-            fila = (TableRow) vista.findViewById(tablaHorario.getChildAt(i).getId());
-            for(int j=1;j<fila.getChildCount();j++)
-            {
-
-                //textoCelda =  (TextView) vista.findViewById();
-
-                //textoCelda.setTextSize(TypedValue.COMPLEX_UNIT_SP,14);
-                //textoCelda.setText("");
-            }
-        }
-
+        Intent intent = new Intent(getActivity(), eliminarMateria.class);
+        intent.putExtra("materia", m);
+        startActivity(intent);
     }
-
 
     private void updateUi(String msg) {
         Toast.makeText(getContext(), msg, Toast.LENGTH_LONG).show();
