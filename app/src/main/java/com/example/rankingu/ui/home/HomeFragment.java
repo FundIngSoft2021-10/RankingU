@@ -35,6 +35,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
@@ -47,18 +48,18 @@ public class HomeFragment extends Fragment {
     private ImageView imagenprofesor;
     private TextView materiaprofesor;
     private TableLayout tablaprofesor;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-    FragmentTransaction transaction;
-    Fragment HorarioFragment;
+    private FragmentTransaction transaction;
+    private Fragment HorarioFragment;
 
     //HorarioAtributos
-    ControllerHorario controladorHorario = new ControllerHorario();
+    private ControllerHorario controladorHorario = new ControllerHorario();
 
-    TableLayout tablaHorario;
-    TableRow fila;
-    TextView textoCelda;
+    private TableLayout tablaHorario;
+    private TableRow fila;
+    private TextView textoCelda;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -72,7 +73,8 @@ public class HomeFragment extends Fragment {
             root = inflater.inflate(R.layout.fragment_home_estudiante, container, false);
             tablaHorario = (TableLayout) root.findViewById(R.id.horarioTable);
             //cleanHorario(tablaHorario,fila,textoCelda);
-            construirHorario(tablaHorario,fila,textoCelda,root);
+            //construirHorario(tablaHorario,fila,textoCelda,root);
+            busquedaHorarioEst(db,tablaHorario,fila,textoCelda,root);
 
 
             //tipovista.setText("Estudiante");
@@ -162,10 +164,81 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    //Metodos Horario
-    private void construirHorario(TableLayout tablaHorario, TableRow fila, TextView textoCelda,View vista)
-    {
+    public void busquedaHorarioEst(final FirebaseFirestore db, final TableLayout tablaHorario, final TableRow fila, final TextView textoCelda, final View vista){
+        final ArrayList<Materia> array = new ArrayList<>();
+        db.collection("Usuarios").document(user.getEmail()).collection("materias").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                ArrayList<Materia> arrayAux = new ArrayList<>();
+                if(task.isSuccessful())
+                {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        //updateUi(document.getData().toString());
+                        Materia m = new Materia();
+                        List<SesionClase> sesiones = new ArrayList<>();
 
+
+                        String dia = document.getData().get("dia").toString();
+                        String diaCons ="",hInicio ="", hFin="", cupos ="";
+                        hInicio = document.getData().get("hInicio").toString();
+                        hFin = document.getData().get("hFin").toString();
+                        cupos = document.getData().get("cupos").toString();
+
+
+                        StringTokenizer st = new StringTokenizer(dia,"-");
+                        while(st.hasMoreTokens())
+                        {
+                            //updateUi(st.nextToken());
+                            switch(st.nextToken())
+                            {
+                                case "L":
+                                    diaCons = "lunes";
+                                    break;
+                                case "M":
+                                    diaCons = "martes";
+                                    break;
+                                case "X":
+                                    diaCons = "miercoles";
+                                    break;
+                                case "J":
+                                    diaCons = "jueves";
+                                    break;
+                                case "V":
+                                    diaCons = "viernes";
+                                    break;
+                                case "S":
+                                    diaCons = "sabado";
+                                    break;
+                                case "D":
+                                    diaCons = "domingo";
+                                    break;
+                                default:
+                                    break;
+
+                            }
+                            sesiones.add(new SesionClase(diaCons,hInicio,hFin,cupos));
+                            updateUi("sesiones switch "+sesiones.size());
+                        }
+                        m.setNombre(document.getData().get("nombre").toString());
+                        m.setSesiones_clase(sesiones);
+                        arrayAux.add(m);
+                        updateUi("array size inside "+arrayAux.size());
+                        updateUi("size of sesion "+arrayAux.get(0).getSesiones_clase().size());
+                        construirHorario(tablaHorario,fila,textoCelda,vista,  arrayAux);
+                    }
+                }
+
+            }
+        });
+    }
+
+    //Metodos Horario
+    private void construirHorario(TableLayout tablaHorario, TableRow fila, TextView textoCelda,View vista,ArrayList<Materia> arr)
+    {
+        List<Integer> dias = new ArrayList<>();
+        List<Integer> horasInicio= new ArrayList<>();
+        List<Integer> horasFin= new ArrayList<>();
+        /*
         Materia m1;
         Materia m2;
         List<Materia> materiaLista = new ArrayList<>();
@@ -191,11 +264,13 @@ public class HomeFragment extends Fragment {
         materiaLista.add(m2);
 
         //updateUi(String.valueOf(materiaLista.size()));
-        for(int j = 0;j<materiaLista.size();j++)
+
+         */
+        for(int j = 0;j<arr.size();j++)
         {
-            dias =  controladorHorario.getDiaHorario(materiaLista.get(j));
-            horasInicio = controladorHorario.getHoraInicioHorario(materiaLista.get(j));
-            horasFin = controladorHorario.getHoraFinHorario(materiaLista.get(j));
+            dias =  controladorHorario.getDiaHorario(arr.get(j));
+            horasInicio = controladorHorario.getHoraInicioHorario(arr.get(j));
+            horasFin = controladorHorario.getHoraFinHorario(arr.get(j));
             for(int i = 0; i<dias.size();i++)
             {
                 fila = (TableRow) vista.findViewById(tablaHorario.getChildAt(horasInicio.get(i)).getId());
@@ -205,7 +280,7 @@ public class HomeFragment extends Fragment {
                 //textoCelda.setText(materiaLista.get(j).toString());
                 fila = (TableRow) vista.findViewById(tablaHorario.getChildAt(horasFin.get(i)).getId());
                 textoCelda =  (TextView) vista.findViewById(fila.getChildAt(dias.get(i)).getId());
-                textoCelda.setText(materiaLista.get(j).toString());
+                textoCelda.setText(arr.get(j).toString());
                 textoCelda.setBackgroundColor(30);
                 textoCelda.setTextSize(1,11);
             }
