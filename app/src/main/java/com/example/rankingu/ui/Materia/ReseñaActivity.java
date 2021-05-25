@@ -55,7 +55,7 @@ public class ReseñaActivity extends AppCompatActivity {
         final Profesor x = (Profesor) myBundleRecibir.getSerializable("materia");
 
         materia.setText(x.getMateriasList().get(0).getNombre());
-        docente.setText(x.getMateriasList().get(0).getProfesores());
+        docente.setText(x.getNombre());
 
         BtonDejar.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -69,10 +69,6 @@ public class MateriaActivity extends AppCompatActivity {
         adapatar = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sesiones);
         horario.setAdapter(adapatar);
 
-        /*if(horario.getSelectedItem().toString() != "") {
-            final String escogido = horario.getSelectedItem().toString();
-            seleccion.setText(horario.getSelectedItem().toString());
-        }*/
 
         rating.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,10 +117,8 @@ public class MateriaActivity extends AppCompatActivity {
         db.collection("Materias").document(materia).collection("profesores").document(profesor).collection("horarios").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                System.out.println("entro");
 
                 if (task.isSuccessful()) {
-                    System.out.println("si tuvo resultados" + task.getResult().size() + " " + task.getResult().toString());
 
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         SesionClase ses = new SesionClase();
