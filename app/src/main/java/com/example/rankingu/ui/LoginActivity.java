@@ -57,7 +57,17 @@ public class LoginActivity extends AppCompatActivity {
         olvidoContraText = findViewById(R.id.textOlvido);
         crearCuentaText = findViewById(R.id.textCrear);
 
+        // CREAR NUEVA CUENTA
         crearCuentaText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ccc = new Intent(LoginActivity.this, SignUp.class);
+                startActivity(ccc);
+            }
+        });
+
+        // OLVIDE MI CONTRASEÑA
+        olvidoContraText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent ccc = new Intent(LoginActivity.this, SignUp.class);
@@ -129,19 +139,21 @@ public class LoginActivity extends AppCompatActivity {
 
         //LOGIN EMAIL PROPIO
         loginButton2.setOnClickListener(new View.OnClickListener() {
-                                           @Override
-                                           public void onClick(View v) {
-                                               CargaProc.setMessage("Verificando con la Base de datos...");
-                                               CargaProc.show();
-                                               if(!usernameEditText.getText().toString().trim().isEmpty() && !passwordEditText.getText().toString().trim().isEmpty()) {
-                                                   InicioUser(usernameEditText.getText().toString().trim(),
-                                                           passwordEditText.getText().toString().trim());
-                                               }else{
-                                                   CargaProc.setMessage("Datos incompletos");
-                                                   CargaProc.show();
-                                               }
-                                           }
-                                       }
+               @Override
+               public void onClick(View v) {
+                   CargaProc.setMessage("Verificando con la Base de datos...");
+                   CargaProc.show();
+                   if(!usernameEditText.getText().toString().trim().isEmpty() && !passwordEditText.getText().toString().trim().isEmpty()) {
+                       String usu = usernameEditText.getText().toString().trim();
+                       usu = usu.concat("@javeriana.edu.co");
+                       InicioUser(usu,
+                               passwordEditText.getText().toString().trim());
+                   }else{
+                       CargaProc.setMessage("Datos incompletos");
+                       CargaProc.show();
+                   }
+               }
+           }
         );
     }
 
@@ -186,7 +198,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     // LOGIN CON EMAIL Y PASSWORD
-    private void InicioUser(String email, String password){
+    private void InicioUser(final String email, String password){
         miAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -194,8 +206,12 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = miAuth.getCurrentUser();
-                            if(user != null) {
-                                GoMainScreen();
+                            if(!user.isEmailVerified()){
+                                Toast.makeText(LoginActivity.this,"Correo electronico no verificado",Toast.LENGTH_LONG).show();
+                            }else{
+                                if(user != null) {
+                                    GoMainScreen();
+                                }
                             }
                         } else {
                             // If sign in fails, display a message to the user.

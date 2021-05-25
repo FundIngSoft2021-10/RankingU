@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Ingreso_apellido"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.SignUp.SignUp_Estudiante">
@@ -34,10 +35,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="@string/nombre"
+        android:hint="Nombre"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/textView17"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+    <EditText
+        android:id="@+id/ingrese_apellido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Apellido"
+        android:inputType="textPersonName"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
     <TextView
         android:id="@+id/textView18"
@@ -49,35 +62,21 @@
         app:layout_constraintStart_toStartOf="@+id/editTextNombre"
         app:layout_constraintTop_toBottomOf="@+id/editTextNombre" />
 
-    <EditText
-        android:id="@+id/editTextApellido"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/apellido"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
     <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:text="@string/Carrera"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/editTextApellido"
-        app:layout_constraintTop_toBottomOf="@+id/editTextApellido" />
+        app:layout_constraintStart_toStartOf="@+id/ingrese_apellido"
+        app:layout_constraintTop_toBottomOf="@+id/ingrese_apellido" />
 
     <Spinner
         android:id="@+id/spinnerCarrera"
         android:layout_width="215dp"
         android:layout_height="28dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextApellido"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
@@ -113,7 +112,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinnerSemestre" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/Volver_login_estudiante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"

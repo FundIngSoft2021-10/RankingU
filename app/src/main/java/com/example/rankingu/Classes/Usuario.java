@@ -1,28 +1,39 @@
 package com.example.rankingu.Classes;
 
-public class Usuario {
+import java.io.Serializable;
 
-    String User, Tipo, Semestre, Correo, Carrera, Nombre, Apellido;
+public class Usuario implements Serializable {
+
+    String Usuario, Tipo, Semestre, Correo, Carrera, Nombre, Apellido, Foto;
 
     public Usuario() {
     }
 
-    public Usuario(String user, String tipo, String semestre, String correo, String carrera, String nombre, String apellido) {
-        User = user;
+    public Usuario(String usuario, String tipo, String semestre, String correo, String carrera, String nombre, String apellido, String foto) {
+        Usuario = usuario;
         Tipo = tipo;
         Semestre = semestre;
         Correo = correo;
         Carrera = carrera;
         Nombre = nombre;
         Apellido = apellido;
+        Foto = foto;
     }
 
-    public String getUser() {
-        return User;
+    public String getUsuario() {
+        return Usuario;
     }
 
-    public void setUser(String user) {
-        User = user;
+    public void setUsuario(String usuario) {
+        Usuario = usuario;
+    }
+
+    public String getFoto() {
+        return Foto;
+    }
+
+    public void setFoto(String foto) {
+        Foto = foto;
     }
 
     public String getTipo() {

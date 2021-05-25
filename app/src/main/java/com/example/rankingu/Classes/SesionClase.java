@@ -1,6 +1,8 @@
 package com.example.rankingu.Classes;
 
-public class SesionClase {
+import java.io.Serializable;
+
+public class SesionClase implements Serializable {
 
     private String dia, hInicio, hFin, cupos;
 
@@ -46,8 +48,13 @@ public class SesionClase {
         this.hFin = hFin;
     }
 
+    @Override
     public String toString()
     {
-        return this.dia+": "+this.hInicio+"-"+this.hFin;
+        if(this.dia != null)
+            return this.dia+": "+this.hInicio+"-"+this.hFin;
+        else
+            return "Seleccione";
     }
+
 }

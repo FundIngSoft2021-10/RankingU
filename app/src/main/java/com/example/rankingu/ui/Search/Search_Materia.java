@@ -50,19 +50,21 @@ public class Search_Materia extends AppCompatActivity {
         Bundle myBundle = this.getIntent().getExtras();
         currentSearchText = (String)myBundle.getSerializable("palabra");
 
-        consultaMateria(currentSearchText, profesores);
+        consultaMateria(currentSearchText.toLowerCase(), profesores);
         arrayAdaptar = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, profesores);
         listView.setAdapter(arrayAdaptar);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
                 Profesor x = (Profesor) adapterView.getItemAtPosition(i);
                 Intent intent = new Intent(Search_Materia.this, MateriaActivity.class);
                 Bundle myBundle = new Bundle();
                 myBundle.putSerializable("materia", x);
                 intent.putExtras(myBundle);
                 startActivity(intent);
+
             }
         });
 
@@ -93,8 +95,6 @@ public class Search_Materia extends AppCompatActivity {
                         aux.setPuntaje(p.getMateriasList().get(0).getPuntaje());
                         p.getMateriasList().get(0).setDescripcion(task.getResult().getData().get("descripcion").toString());
                         p.getMateriasList().get(0).setSemestre(Integer.parseInt(task.getResult().getData().get("semestre").toString()));
-                        ////////////////////agrege esto
-                        p.getMateriasList().get(0).setSesiones_clase((List<SesionClase>) task.getResult().getData().get("horarios"));
                     }
                 } else {
                     Log.d(TAG, "Error en la BD: ", task.getException());
@@ -113,7 +113,6 @@ public class Search_Materia extends AppCompatActivity {
                         Profesor profe = new Profesor();
                         Materia mat = new Materia();
                         ArrayList<SesionClase> listaSesion = (ArrayList<SesionClase>) document.getData().get("horarios");
-                        //System.out.println(listaSesion.toString());
                         profe.setNombre(document.getData().get("nombre").toString());
                         mat.setProfesores(profe.getNombre());
                         mat.setSesiones_clase(listaSesion);

@@ -29,27 +29,27 @@
 
     <TextView
         android:id="@+id/nombre_materia2"
-        android:layout_width="171dp"
+        android:layout_width="wrap_content"
         android:layout_height="36dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
-        android:text="Pre-requisitos:"
+        android:text="Ratings: "
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boton_inscribir_materia" />
+        app:layout_constraintTop_toBottomOf="@+id/nombre_materia5" />
 
     <TextView
         android:id="@+id/nombre_materia3"
         android:layout_width="98dp"
         android:layout_height="35dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:text="Horario:"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre_materia2" />
+        app:layout_constraintTop_toBottomOf="@+id/boton_inscribir_materia" />
 
     <TextView
         android:id="@+id/nombre_materia4"
@@ -65,11 +65,11 @@
 
     <TextView
         android:id="@+id/nombre_materia5"
-        android:layout_width="103dp"
-        android:layout_height="35dp"
+        android:layout_width="118dp"
+        android:layout_height="36dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
-        android:text="Ratings:"
+        android:text="Promedio:"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -108,21 +108,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:layout_width="392dp"
-        android:layout_height="251dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre_materia5">
+        android:layout_width="362dp"
+        android:layout_height="259dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombre_materia2">
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textView36"
-                android:layout_width="138dp"
+                android:id="@+id/enumeracion_ratings"
+                android:layout_width="49dp"
                 android:layout_height="match_parent"
-                android:text="TextView" />
+                android:text="1. "
+                android:textColor="#000000"
+                android:textSize="36sp" />
 
             <RatingBar
                 android:id="@+id/ratingBar"
@@ -133,8 +136,8 @@
 
     <TextView
         android:id="@+id/textView22"
-        android:layout_width="184dp"
-        android:layout_height="35dp"
+        android:layout_width="185dp"
+        android:layout_height="34dp"
         android:layout_marginTop="20dp"
         android:textColor="#000000"
         android:textSize="24sp"
@@ -142,13 +145,30 @@
         app:layout_constraintTop_toBottomOf="@+id/nombre_materia3" />
 
     <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/nombre_materia3"
+        app:layout_constraintTop_toBottomOf="@+id/boton_inscribir_materia2" />
+
+    <TextView
         android:id="@+id/textView23"
-        android:layout_width="193dp"
-        android:layout_height="35dp"
+        android:layout_width="192dp"
+        android:layout_height="37dp"
         android:layout_marginTop="20dp"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/nombre_materia5"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+    <Spinner
+        android:id="@+id/spinner_horario"
+        android:layout_width="167dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toEndOf="@+id/nombre_materia3"
+        app:layout_constraintTop_toBottomOf="@+id/boton_inscribir_materia" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
