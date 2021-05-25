@@ -30,8 +30,8 @@
 
                     <TableLayout
                         android:id="@+id/horarioTable"
-                        android:layout_width="533dp"
-                        android:layout_height="329dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="731dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 

@@ -70,7 +70,8 @@ public class HomeFragment extends Fragment {
         HorarioFragment = new HorarioFragment();
         if(aux.equalsIgnoreCase("Estudiante")){
 
-            root = inflater.inflate(R.layout.fragment_home_estudiante, container, false);
+            root = inflater.inflate(R.layout.fragment_home_estudiante,null);
+
             tablaHorario = (TableLayout) root.findViewById(R.id.horarioTable);
             //cleanHorario(tablaHorario,fila,textoCelda);
             //construirHorario(tablaHorario,fila,textoCelda,root);
@@ -217,15 +218,18 @@ public class HomeFragment extends Fragment {
 
                             }
                             sesiones.add(new SesionClase(diaCons,hInicio,hFin,cupos));
-                            updateUi("sesiones switch "+sesiones.size());
+
                         }
                         m.setNombre(document.getData().get("nombre").toString());
                         m.setSesiones_clase(sesiones);
                         arrayAux.add(m);
-                        updateUi("array size inside "+arrayAux.size());
-                        updateUi("size of sesion "+arrayAux.get(0).getSesiones_clase().size());
+
                         construirHorario(tablaHorario,fila,textoCelda,vista,  arrayAux);
                     }
+                }
+                else {
+                    updateUi("Error");
+                    Log.d(TAG, "Error en la BD: ", task.getException());
                 }
 
             }
