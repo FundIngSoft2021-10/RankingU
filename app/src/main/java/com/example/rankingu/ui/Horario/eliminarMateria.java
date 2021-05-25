@@ -66,7 +66,7 @@ public class eliminarMateria extends AppCompatActivity {
                         {
                             if(document.getData().get("nombre").toString().equalsIgnoreCase(txtNombreMateria.getText().toString()))
                             {
-                                updateUi("entro if");
+
                                 db.collection("Usuarios").document(user.getEmail()).collection("materias").document(document.getId()).delete();
 
 
