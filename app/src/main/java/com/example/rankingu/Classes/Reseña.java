@@ -11,7 +11,14 @@ public class Reseña {
         this.rating = rating;
     }
 
-
+    @Override
+    public String toString() {
+        return "Reseña{" +
+                "usuario='" + usuario + '\'' +
+                ", reseña='" + reseña + '\'' +
+                ", rating=" + rating +
+                '}';
+    }
 
     public Reseña() {
     }

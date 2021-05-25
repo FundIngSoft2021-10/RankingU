@@ -177,7 +177,8 @@ public class HomeFragment extends Fragment {
                         Materia m = new Materia();
                         List<SesionClase> sesiones = new ArrayList<>();
 
-
+                        //SesionClase aux = new SesionClase();
+                        //aux = document.getData().get("sesiones_clase").;
                         String dia = document.getData().get("dia").toString();
                         String diaCons ="",hInicio ="", hFin="", cupos ="";
                         hInicio = document.getData().get("hInicio").toString();

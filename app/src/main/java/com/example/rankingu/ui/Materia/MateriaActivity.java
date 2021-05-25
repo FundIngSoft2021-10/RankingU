@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rankingu.Classes.Materia;
 import com.example.rankingu.Classes.Profesor;
+import com.example.rankingu.Classes.Reseña;
 import com.example.rankingu.Classes.SesionClase;
 import com.example.rankingu.R;
 import com.example.rankingu.ui.Enroll.EnrollActivity;
@@ -25,6 +28,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.protobuf.StringValue;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -35,9 +39,11 @@ public class MateriaActivity extends AppCompatActivity {
 
     private Button rating;
     private Button inscribir;
-    private TextView materia, docente, ratingV,seleccion;
-    private String mater, profe;
+    private TextView materia, docente, ratingV;
     private Spinner horario;
+    private ListView calificaciones;
+    private ArrayList<Reseña> estrellas = new ArrayList<>();
+    ArrayAdapter<Reseña> adapter;
     ArrayAdapter<SesionClase> adapatar;
     private ArrayList<SesionClase> sesiones= new ArrayList<>();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -54,7 +60,7 @@ public class MateriaActivity extends AppCompatActivity {
         docente = findViewById(R.id.textView22);
         ratingV = findViewById(R.id.textView23);
         horario = findViewById(R.id.spinner_horario);
-        //seleccion = findViewById(R.id.horario_spinner);
+        calificaciones = findViewById(R.id.Lista_rating);
 
         Bundle myBundle = this.getIntent().getExtras();
         final Profesor x = (Profesor) myBundle.getSerializable("materia");
@@ -65,9 +71,17 @@ public class MateriaActivity extends AppCompatActivity {
 
         SesionClase aux = new SesionClase();
         sesiones.add(aux);
-        consultarHorarios(x.getMateriasList().get(0).getNombre(),sesiones,x.getMateriasList().get(0).getProfesores());
+        consultarHorarios(x.getMateriasList().get(0).getNombre(),sesiones,x.getNombre());
         adapatar = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sesiones);
         horario.setAdapter(adapatar);
+
+        Reseña aux2 = new Reseña();
+        estrellas.add(aux2);
+        consultarRatings(x.getMateriasList().get(0).getNombre(),estrellas,x.getNombre());
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,estrellas);
+        calificaciones.setAdapter(adapter);
+
+
 
 
         rating.setOnClickListener(new View.OnClickListener() {
@@ -135,4 +149,34 @@ public class MateriaActivity extends AppCompatActivity {
         });
 
     }
+    ///Consultar estrellas
+    public void consultarRatings(final String materia, final ArrayList<Reseña> estrellas, final String profesor){
+
+        db.collection("Materias").document(materia).collection("profesores").document(profesor).collection("ratings").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                if (task.isSuccessful()) {
+                    String aux;
+                    Float aux2;
+
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Reseña rese = new Reseña();
+                        aux = String.valueOf(document.getData().get("rating"));
+                        rese.setRating(Float.parseFloat(aux));
+                        rese.setReseña(document.getData().get("reseña").toString());
+                        rese.setUsuario(document.getData().get("usuario").toString());
+
+                        estrellas.add(rese);
+                    }
+                } else {
+                    Log.d(TAG, "Error en la BD: ", task.getException());
+                }
+            }
+        });
+
+
+    }
+
+
 }
