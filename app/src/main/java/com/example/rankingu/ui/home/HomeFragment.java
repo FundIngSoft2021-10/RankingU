@@ -180,59 +180,57 @@ public class HomeFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 ArrayList<Materia> arrayAux = new ArrayList<>();
+                ArrayList<SesionClase> sesiones = new ArrayList<>();
+                String diaCons, hInicio, hFin, cupos;
                 if(task.isSuccessful())
                 {
+                    diaCons = "";
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        //updateUi(document.getData().toString());
-                        Materia m = new Materia();
-                        List<SesionClase> sesiones = new ArrayList<>();
-                        m.setProfesores(document.getData().get("profesores").toString());
-                        String dia = document.getData().get("dia").toString();
-                        String diaCons ="",hInicio ="", hFin="", cupos ="";
-                        hInicio = document.getData().get("hInicio").toString();
-                        hFin = document.getData().get("hFin").toString();
-                        cupos = document.getData().get("cupos").toString();
+                        Materia m = document.toObject(Materia.class);
 
-
-                        StringTokenizer st = new StringTokenizer(dia,"-");
-                        while(st.hasMoreTokens())
+                        for(int i =0;i<m.getSesiones_clase().size();i++)
                         {
-                            //updateUi(st.nextToken());
-                            switch(st.nextToken())
+                            StringTokenizer st = new StringTokenizer(m.getSesiones_clase().get(i).getDia(),"-");
+                            while(st.hasMoreTokens())
                             {
-                                case "L":
-                                    diaCons = "lunes";
-                                    break;
-                                case "M":
-                                    diaCons = "martes";
-                                    break;
-                                case "X":
-                                    diaCons = "miercoles";
-                                    break;
-                                case "J":
-                                    diaCons = "jueves";
-                                    break;
-                                case "V":
-                                    diaCons = "viernes";
-                                    break;
-                                case "S":
-                                    diaCons = "sabado";
-                                    break;
-                                case "D":
-                                    diaCons = "domingo";
-                                    break;
-                                default:
-                                    break;
+                                switch(st.nextToken())
+                                {
+                                    case "L":
+                                        diaCons = "lunes";
+                                        break;
+                                    case "M":
+                                        diaCons = "martes";
+                                        break;
+                                    case "X":
+                                        diaCons = "miercoles";
+                                        break;
+                                    case "J":
+                                        diaCons = "jueves";
+                                        break;
+                                    case "V":
+                                        diaCons = "viernes";
+                                        break;
+                                    case "S":
+                                        diaCons = "sabado";
+                                        break;
+                                    case "D":
+                                        diaCons = "domingo";
+                                        break;
+                                    default:
+                                        break;
+
+                                }
+                                sesiones.add(new SesionClase(diaCons,m.getSesiones_clase().get(0).gethInicio(),m.getSesiones_clase().get(0).gethFin(),m.getSesiones_clase().get(0).getCupos()));
 
                             }
-                            sesiones.add(new SesionClase(diaCons,hInicio,hFin,cupos));
 
                         }
-                        m.setNombre(document.getData().get("nombre").toString());
                         m.setSesiones_clase(sesiones);
-                        arrayAux.add(m);
 
+                        arrayAux.add(m);
                         construirHorario(tablaHorario,fila,textoCelda,vista,  arrayAux);
+
+
                     }
                 }
                 else {
