@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".ui.Horario.eliminarMateria" />
         <activity android:name=".ui.Settings.EditPasswActivity" />
         <activity android:name=".ui.Materia.GraciasActivity" />
         <activity android:name=".ui.Materia.ReseñaActivity" />

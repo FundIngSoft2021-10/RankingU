@@ -58,7 +58,6 @@ public class RankingtonsFragment extends Fragment {
     private ArrayList<Materia> materias = new ArrayList<>();
     private ArrayList<String> resultados = new ArrayList<>();
     private ArrayAdapter<Profesor>adaptador;
-    private ArrayAdapter<Materia>adaptadorAux;
     //private ControllerHorario controladorHorario = new ControllerHorario();
 
     private TableLayout tablaHorario;
@@ -84,16 +83,12 @@ public class RankingtonsFragment extends Fragment {
         tablaHorario = (TableLayout) root.findViewById(R.id.horarioTable);
         lista = (ListView) root.findViewById(R.id.lista_rankington);
 
-        //adaptador = new ArrayAdapter<Profesor>(getActivity().getBaseContext(), android.R.layout.simple_list_item_1, android.R.id.text1, profesores);
-        adaptadorAux = new ArrayAdapter<Materia>(getActivity().getBaseContext(), android.R.layout.simple_list_item_1,android.R.id.text1,materias );
+        adaptador = new ArrayAdapter<Profesor>(getActivity().getBaseContext(), android.R.layout.simple_list_item_1, android.R.id.text1, profesores);
 
         Profesor pr = new Profesor();
 
-
-
-
+        buscarTodas(db,adaptador);
         lista.setAdapter(adaptador);
-        buscarTodas(db,adaptadorAux);
 
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -112,7 +107,7 @@ public class RankingtonsFragment extends Fragment {
         return root;
     }
 
-    public void buscarTodas(final FirebaseFirestore db,  final ArrayAdapter<Materia> adapt)
+    public void buscarTodas(final FirebaseFirestore db,  final ArrayAdapter<Profesor> adapt)
     {
 
         db.collection("Materias").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -120,21 +115,24 @@ public class RankingtonsFragment extends Fragment {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 for (QueryDocumentSnapshot document : task.getResult())
                 {
-                    materiaDB(db,document.getData().get("nombre").toString(),adapt);
+                    updateUi("buscando "+document.getId().toString());
+                    materiaDB(db,document.getId().toString(),adapt);
+
                 }
             }
         });
 
     }
 
-    public void materiaDB(final FirebaseFirestore db, final String nombreMateria, final ArrayAdapter<Materia> adapt)
+    public void materiaDB(final FirebaseFirestore db, final String nombreMateria, final ArrayAdapter<Profesor> adapt)
     {
        // nombreMateria = "poo";
 
        // final String finalNombreMateria = nombreMateria;
-        db.collection("Materias").document(nombreMateria).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+        db.collection("Materias").document(nombreMateria).collection("profesores").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 Materia m = new Materia();
                 if(task.isSuccessful())
                 {
@@ -144,12 +142,16 @@ public class RankingtonsFragment extends Fragment {
                     busca2(db,m.getNombre(),m,adapt);
 
                 }
+                else
+                    {
+                        Log.d(TAG, "Error en la BD: ", task.getException());
+                    }
 
             }
         });
     }
 
-    public void busca2(final FirebaseFirestore db, String nombreMateria, final Materia m, final ArrayAdapter<Materia> adapt)
+    public void busca2(final FirebaseFirestore db, String nombreMateria, final Materia m, final ArrayAdapter<Profesor> adapt)
     {
         db.collection("Materias").document(nombreMateria).collection("profesores").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -160,11 +162,25 @@ public class RankingtonsFragment extends Fragment {
                     Profesor p = new Profesor();
                     p.setNombre(document.getData().get("nombre").toString());
                     m.setProfesores(p.getNombre());
-                    adapt.add(m);
+                    updateUi(m.toString());
+                    //adapt.add(m);
                 }
             }
         });
 
+    }
+
+    public void ultimaFuncion(String nombreMateria,String descripcion,String nombreProfe, Integer semestre, Double puntaje)
+    {
+        ArrayList<SesionClase> sesiones = new ArrayList<>();
+        ArrayList<Materia> materias = new ArrayList<>();
+        Materia m = new Materia(nombreMateria,descripcion,semestre,puntaje,sesiones,nombreProfe);
+        materias.add(m);
+        Profesor p = new Profesor(nombreProfe, materias);
+
+       // SesionClase s = new SesionClase(dia,hInicio,hFin,cupos);
+
+        //sesiones.add(s);
     }
 
 

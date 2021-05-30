@@ -41,7 +41,8 @@ public class ConflictActivity extends AppCompatActivity {
         Bundle myBundle = this.getIntent().getExtras();
         final Materia x = (Materia) myBundle.getSerializable("decidir");
         final Materia y = (Materia) myBundle.getSerializable("eliminar");
-
+        updateUi("Materia x "+x.toString());
+        updateUi("Materia y "+y.toString());
         materia1.setText("Actual: "+ y.getNombre());
         materia1.setText("A inscribir: "+ x.getNombre());
 
@@ -86,6 +87,10 @@ public class ConflictActivity extends AppCompatActivity {
                         Toast.makeText(ConflictActivity.this, "Vuelta a intentar", Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+
+    private void updateUi(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
 }

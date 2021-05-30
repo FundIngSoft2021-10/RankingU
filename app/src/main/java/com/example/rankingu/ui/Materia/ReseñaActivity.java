@@ -1,6 +1,5 @@
 package com.example.rankingu.ui.Materia;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,15 +7,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rankingu.Classes.Profesor;
 import com.example.rankingu.R;
 import com.example.rankingu.ui.Enroll.ConflictActivity;
-import com.example.rankingu.ui.Enroll.EnrollActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -42,14 +38,14 @@ public class ReseñaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atributos_calificar);
 
-        BtonDejar = findViewById(R.id.boton_dejar_reseña);
+        BtonDejar = findViewById(R.id.boton_eliminar_horario);
         ratingStar1 = findViewById(R.id.ratingBar_metodologia);
         ratingStar2 = findViewById(R.id.ratingBar_puntualidad);
         ratingStar3 = findViewById(R.id.ratingBar_actitud);
         ratingStar4 = findViewById(R.id.ratingBar_organizado);
         comentarios = (EditText)findViewById(R.id.Comentarios_reseña);
-        materia = findViewById(R.id.materia_calificar_atributos);
-        docente = findViewById(R.id.docente_calificar_atributos);
+        materia = findViewById(R.id.borrar_horario_materianombre);
+        docente = findViewById(R.id.borrar_horario_docente);
 
         Bundle myBundleRecibir = this.getIntent().getExtras();
         final Profesor x = (Profesor) myBundleRecibir.getSerializable("materia");
