@@ -74,13 +74,21 @@ public class EnrollActivity extends AppCompatActivity{
         final ArrayList<String> opciones = new ArrayList<>();
         final ArrayList<String> ratins = new ArrayList<>();
         final ArrayList<Materia> materiaCruce = new ArrayList<>();
+
+        final ArrayList<SesionClase> sesRecibido = new ArrayList<>();
+        sesRecibido.add(horarioRecibido);
         materiaCruce.add(elim);
         //ratins.add("5");
         opciones.add(x.getNombre());
+        updateUi("Horario info");
+        updateUi(horarioRecibido.getDia());
+        updateUi(horarioRecibido.getCupos());
+        updateUi(horarioRecibido.gethFin());
+        updateUi(horarioRecibido.gethInicio());
 
-        consultaMateria("poo",opciones, ratins, x.getNombre());
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, opciones);
-        profesor.setAdapter(adapter);
+        consultaMateria("poo",opciones, ratins, x.getNombre(),sesRecibido);
+       ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, opciones);
+       profesor.setAdapter(adapter);
 
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,7 +140,49 @@ public class EnrollActivity extends AppCompatActivity{
     }
 
     //Consulta
-    public void consultaMateria(final String materiae, final ArrayList<String> opciones, final ArrayList<String> ratins, final String x){
+    public void consultaMateria(final String materiae, final ArrayList<String> opciones, final ArrayList<String> ratins, final String x, final ArrayList<SesionClase> sesRecibido){
+
+        final Materia matReturn = new Materia();
+
+        db.collection("Materias").whereEqualTo("nombre",materiae).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+
+                for(final QueryDocumentSnapshot document: task.getResult()){
+
+                    matReturn.setSemestre(Integer.valueOf(document.getData().get("semestre").toString()));
+                    matReturn.setDescripcion(document.getData().get("descripcion").toString());
+                    matReturn.setProfesores(x);
+                    matReturn.setSesiones_clase(sesRecibido);
+
+                    db.collection("Materias").document(document.getId()).collection("profesores").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+
+                            for(QueryDocumentSnapshot document2: task.getResult()){
+
+                               //updateUi(document2.getData().toString());
+
+                                if(x.equals(document2.getData().get("nombre").toString())){
+
+                                    matReturn.setNombre(document2.getData().get("nombre").toString());
+                                    matReturn.setPuntaje((Double) document2.getData().get("rating"));
+
+
+
+                                    db.collection("Usuarios").document(user.getEmail()).collection("materias").add(matReturn);
+                                }
+                            }
+
+                        }
+                    });
+                }
+            }
+        });
+
+        /*
         db.collection("Materias").document(materiae).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -146,6 +196,39 @@ public class EnrollActivity extends AppCompatActivity{
                         }
                     }
                 });
+                */
+
+    }
+
+
+    public boolean conflictos(final Materia matRetur )
+    {
+        final boolean[] flag = new boolean[1];
+        db.collection("Usuarios").document(user.getEmail()).collection("materias").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                for(DocumentSnapshot document : task.getResult())
+                {
+
+                    Materia m = document.toObject(Materia.class);
+
+                    if(m.getSesiones_clase().get(0).getDia().equals(matRetur.getSesiones_clase().get(0).getDia()))
+                    {
+                        if(m.getSesiones_clase().get(0).gethInicio().equals(matRetur.getSesiones_clase().get(0).gethInicio())){
+
+                            flag[0] =  false;
+                            break;
+
+                        }
+                        if(m.getSesiones_clase().get(0).)
+                    }
+
+                }
+
+            }
+        });
+
     }
 
     //Cargar inscripción a la Base de datos
@@ -230,5 +313,9 @@ public class EnrollActivity extends AppCompatActivity{
                         }
                     }
                 });
+    }
+
+    private void updateUi(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 }

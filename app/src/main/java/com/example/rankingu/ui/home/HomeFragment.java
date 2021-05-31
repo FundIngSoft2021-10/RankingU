@@ -88,14 +88,17 @@ public class HomeFragment extends Fragment {
             refrescar = (SwipeRefreshLayout) root.findViewById(R.id.refrescarSwipe);
             //cleanHorario(tablaHorario,fila,textoCelda);
             //construirHorario(tablaHorario,fila,textoCelda,root);
+            updateUi("tamanio horario: "+tablaHorario.getChildCount());
 
-                busquedaHorarioEst(db,tablaHorario,fila,textoCelda,root);
+            busquedaHorarioEst(db,tablaHorario,fila,textoCelda,root);
 
             final View finalRoot = root;
             refrescar.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
                     public void onRefresh() {
+                        cleanHorario( tablaHorario,  fila,  textoCelda,   finalRoot);
                         busquedaHorarioEst(db,tablaHorario,fila,textoCelda, finalRoot);
+
                         refrescar.setRefreshing(false);
                     }
                 });
@@ -195,7 +198,7 @@ public class HomeFragment extends Fragment {
         db.collection("Usuarios").document(user.getEmail()).collection("materias").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                updateUi("actualizando horario");
+               // updateUi("actualizando horario");
                 ArrayList<Materia> arrayAux = new ArrayList<>();
                 ArrayList<SesionClase> sesiones = new ArrayList<>();
                 String diaCons, hInicio, hFin, cupos;
@@ -204,6 +207,7 @@ public class HomeFragment extends Fragment {
                     diaCons = "";
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         Materia m = document.toObject(Materia.class);
+                        updateUi(m.toString());
 
                         if(m.getSesiones_clase() !=null)
                         {
@@ -250,10 +254,10 @@ public class HomeFragment extends Fragment {
                             construirHorario(tablaHorario,fila,textoCelda,vista,  arrayAux);
 
                         }
+                        else
+                            {
 
-
-
-
+                            }
                     }
                 }
                 else {
@@ -270,6 +274,7 @@ public class HomeFragment extends Fragment {
         List<Integer> dias = new ArrayList<>();
         List<Integer> horasInicio= new ArrayList<>();
         List<Integer> horasFin= new ArrayList<>();
+
         for(int j = 0;j<arr.size();j++)
         {
             dias =  controladorHorario.getDiaHorario(arr.get(j));
@@ -278,6 +283,7 @@ public class HomeFragment extends Fragment {
             for(int i = 0; i<dias.size();i++)
             {
                 fila = (TableRow) vista.findViewById(tablaHorario.getChildAt(horasInicio.get(i)).getId());
+                updateUi("tamanio fila "+ fila.getChildCount());
                 final Materia m = arr.get(j);
                 textoCelda =  (TextView) vista.findViewById(fila.getChildAt(dias.get(i)).getId());
                 textoCelda.setOnClickListener(new View.OnClickListener() {
@@ -304,6 +310,25 @@ public class HomeFragment extends Fragment {
                 textoCelda.setBackgroundColor(R.drawable.celdahorario);
                 textoCelda.setTextSize(1,11);
                 textoCelda.setBackgroundColor(R.drawable.celdahorario);
+            }
+        }
+    }
+
+    private void cleanHorario(TableLayout tablaHorario, TableRow fila, TextView textoCelda, final View vista)
+    {
+
+
+        for(int j = 1;j<tablaHorario.getChildCount();j++)
+        {
+            for(int i = 1; i<8;i++)
+            {
+
+                fila = (TableRow) vista.findViewById(tablaHorario.getChildAt(j).getId());
+
+                textoCelda =  (TextView) vista.findViewById(fila.getChildAt(i).getId());
+                textoCelda.setText("");
+                textoCelda.setBackground(vista.getResources().getDrawable(R.drawable.cell_shape));
+
             }
         }
     }
