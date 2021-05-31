@@ -249,7 +249,7 @@ public class HomeFragment extends Fragment {
                             m.setSesiones_clase(sesiones);
 
                             arrayAux.add(m);
-                            construirHorario(tablaHorario,fila,textoCelda,vista,  arrayAux);
+                            construirHorario(tablaHorario,fila,textoCelda,vista,  arrayAux,document.getId());
 
                         }
                         else
@@ -267,7 +267,7 @@ public class HomeFragment extends Fragment {
     }
 
     //Metodos Horario
-    private void construirHorario(TableLayout tablaHorario, TableRow fila, TextView textoCelda, final View vista, final ArrayList<Materia> arr)
+    private void construirHorario(TableLayout tablaHorario, TableRow fila, TextView textoCelda, final View vista, final ArrayList<Materia> arr, final String id)
     {
         List<Integer> dias = new ArrayList<>();
         List<Integer> horasInicio= new ArrayList<>();
@@ -283,10 +283,11 @@ public class HomeFragment extends Fragment {
                 fila = (TableRow) vista.findViewById(tablaHorario.getChildAt(horasInicio.get(i)).getId());
                 final Materia m = arr.get(j);
                 textoCelda =  (TextView) vista.findViewById(fila.getChildAt(dias.get(i)).getId());
+
                 textoCelda.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        eliminarMateriaHorario(m);
+                        eliminarMateriaHorario(m,id);
 
                     }
                 });
@@ -298,7 +299,7 @@ public class HomeFragment extends Fragment {
                 textoCelda.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        eliminarMateriaHorario(m);
+                        eliminarMateriaHorario(m,id);
 
                     }
                 });
@@ -331,10 +332,11 @@ public class HomeFragment extends Fragment {
     }
 
 
-    private void eliminarMateriaHorario(Materia m)
+    private void eliminarMateriaHorario(Materia m,String ident)
     {
         Intent intent = new Intent(getActivity(), eliminarMateria.class);
         intent.putExtra("materia", m);
+        intent.putExtra("id",ident);
         startActivity(intent);
     }
 

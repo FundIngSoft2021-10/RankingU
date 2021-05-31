@@ -44,7 +44,8 @@ public class eliminarMateria extends AppCompatActivity {
         txtHorario = (TextView) findViewById(R.id.borrar_horario_Horario);
         btnEliminar = (Button) findViewById(R.id.boton_eliminar_horario);
         Intent intent = getIntent();
-        Materia m =  (Materia) intent.getExtras().getSerializable("materia");
+        final Materia m =  (Materia) intent.getExtras().getSerializable("materia");
+        final String id = (String) intent.getExtras().getSerializable("id");
 
         txtNombreProfe.setText(m.getProfesores());
         txtNombreMateria.setText(m.getNombre());
@@ -64,13 +65,31 @@ public class eliminarMateria extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         for(QueryDocumentSnapshot document:task.getResult())
                         {
-                            if(document.getData().get("nombre").toString().equalsIgnoreCase(txtNombreMateria.getText().toString()))
-                            {
+                            Materia mat = document.toObject(Materia.class);
+
+                            if(document.getId().equals(id)){
 
                                 db.collection("Usuarios").document(user.getEmail()).collection("materias").document(document.getId()).delete();
+                            }
+
+                            /*
+                            if(mat.getNombre().equals(m.getNombre()))
+                            {
+                                updateUi("primer if");
+                                if(mat.getProfesores().equals(m.getNombre()))
+                                {
+                                    updateUi("segundo if");
+                                    if(mat.getSesiones_clase().get(0).getDia().equals(m.getSesiones_clase().get(0).getDia()))
+                                    {
+                                        updateUi("tercer if");
+
+                                        db.collection("Usuarios").document(user.getEmail()).collection("materias").document(document.getId()).delete();
+                                    }
+                                }
 
 
                             }
+                            */
                         }
                     }
                 });
