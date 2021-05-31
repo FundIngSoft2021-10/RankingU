@@ -221,13 +221,15 @@ public class EnrollActivity extends AppCompatActivity{
                             break;
 
                         }
-                        if(m.getSesiones_clase().get(0).)
+                        //if(m.getSesiones_clase().get(0).)
                     }
 
                 }
 
             }
         });
+
+        return true;
 
     }
 
