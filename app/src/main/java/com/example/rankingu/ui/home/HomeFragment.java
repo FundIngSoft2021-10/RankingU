@@ -88,7 +88,6 @@ public class HomeFragment extends Fragment {
             refrescar = (SwipeRefreshLayout) root.findViewById(R.id.refrescarSwipe);
             //cleanHorario(tablaHorario,fila,textoCelda);
             //construirHorario(tablaHorario,fila,textoCelda,root);
-            updateUi("tamanio horario: "+tablaHorario.getChildCount());
 
             busquedaHorarioEst(db,tablaHorario,fila,textoCelda,root);
 
@@ -207,7 +206,6 @@ public class HomeFragment extends Fragment {
                     diaCons = "";
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         Materia m = document.toObject(Materia.class);
-                        updateUi(m.toString());
 
                         if(m.getSesiones_clase() !=null)
                         {
@@ -283,7 +281,6 @@ public class HomeFragment extends Fragment {
             for(int i = 0; i<dias.size();i++)
             {
                 fila = (TableRow) vista.findViewById(tablaHorario.getChildAt(horasInicio.get(i)).getId());
-                updateUi("tamanio fila "+ fila.getChildCount());
                 final Materia m = arr.get(j);
                 textoCelda =  (TextView) vista.findViewById(fila.getChildAt(dias.get(i)).getId());
                 textoCelda.setOnClickListener(new View.OnClickListener() {

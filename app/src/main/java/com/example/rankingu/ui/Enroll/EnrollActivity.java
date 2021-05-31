@@ -37,6 +37,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
@@ -80,19 +81,20 @@ public class EnrollActivity extends AppCompatActivity{
         materiaCruce.add(elim);
         //ratins.add("5");
         opciones.add(x.getNombre());
-        updateUi("Horario info");
-        updateUi(horarioRecibido.getDia());
-        updateUi(horarioRecibido.getCupos());
-        updateUi(horarioRecibido.gethFin());
-        updateUi(horarioRecibido.gethInicio());
+        //updateUi(x.getMateriasList().get(0).getNombre());
 
-        consultaMateria("poo",opciones, ratins, x.getNombre(),sesRecibido);
+        llenarCampos(x.getMateriasList().get(0).getNombre(),opciones, ratins, x.getNombre(),sesRecibido);
        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, opciones);
        profesor.setAdapter(adapter);
 
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                consultaMateria(x.getMateriasList().get(0).getNombre(),opciones, ratins, x.getNombre(),sesRecibido);
+                /*
+
+
                 boolean result = registrarInscripcion(x, materiaCruce, horarioRecibido);
                 if(result){
                     AlertDialog.Builder alerta = new AlertDialog.Builder(EnrollActivity.this);
@@ -124,6 +126,7 @@ public class EnrollActivity extends AppCompatActivity{
 
                     startActivity(intent);
                 }
+                */
             }
         });
 
@@ -140,7 +143,7 @@ public class EnrollActivity extends AppCompatActivity{
     }
 
     //Consulta
-    public void consultaMateria(final String materiae, final ArrayList<String> opciones, final ArrayList<String> ratins, final String x, final ArrayList<SesionClase> sesRecibido){
+    public void llenarCampos(final String materiae, final ArrayList<String> opciones, final ArrayList<String> ratins, final String x, final ArrayList<SesionClase> sesRecibido){
 
         final Materia matReturn = new Materia();
 
@@ -166,13 +169,12 @@ public class EnrollActivity extends AppCompatActivity{
                                //updateUi(document2.getData().toString());
 
                                 if(x.equals(document2.getData().get("nombre").toString())){
-
                                     matReturn.setNombre(document2.getData().get("nombre").toString());
                                     matReturn.setPuntaje((Double) document2.getData().get("rating"));
-
-
-
-                                    db.collection("Usuarios").document(user.getEmail()).collection("materias").add(matReturn);
+                                    materia.setText(materiae);
+                                    descripcion.setText(matReturn.getDescripcion());
+                                    calif.setRating(Float.parseFloat(String.valueOf(matReturn.getPuntaje())));
+                                    //db.collection("Usuarios").document(user.getEmail()).collection("materias").add(matReturn);
                                 }
                             }
 
@@ -181,6 +183,8 @@ public class EnrollActivity extends AppCompatActivity{
                 }
             }
         });
+
+
 
         /*
         db.collection("Materias").document(materiae).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -197,41 +201,175 @@ public class EnrollActivity extends AppCompatActivity{
                     }
                 });
                 */
-
     }
 
 
-    public boolean conflictos(final Materia matRetur )
-    {
-        final boolean[] flag = new boolean[1];
-        db.collection("Usuarios").document(user.getEmail()).collection("materias").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+    public void consultaMateria(final String materiae, final ArrayList<String> opciones, final ArrayList<String> ratins, final String x, final ArrayList<SesionClase> sesRecibido){
+
+        final Materia matReturn = new Materia();
+        final ArrayList<Materia> materiasHorario = new ArrayList<>();
+
+        db.collection("Materias").whereEqualTo("nombre",materiae).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
-                for(DocumentSnapshot document : task.getResult())
-                {
 
-                    Materia m = document.toObject(Materia.class);
+                for(final QueryDocumentSnapshot document: task.getResult()){
 
-                    if(m.getSesiones_clase().get(0).getDia().equals(matRetur.getSesiones_clase().get(0).getDia()))
-                    {
-                        if(m.getSesiones_clase().get(0).gethInicio().equals(matRetur.getSesiones_clase().get(0).gethInicio())){
+                    matReturn.setSemestre(Integer.valueOf(document.getData().get("semestre").toString()));
+                    matReturn.setDescripcion(document.getData().get("descripcion").toString());
+                    matReturn.setProfesores(x);
+                    matReturn.setSesiones_clase(sesRecibido);
 
-                            flag[0] =  false;
-                            break;
+                    db.collection("Materias").document(document.getId()).collection("profesores").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+
+                            for(QueryDocumentSnapshot document2: task.getResult()){
+
+                                //updateUi(document2.getData().toString());
+
+                                if(x.equals(document2.getData().get("nombre").toString())){
+                                    matReturn.setNombre(document2.getData().get("nombre").toString());
+                                    matReturn.setPuntaje((Double) document2.getData().get("rating"));
+
+
+                                    materiasHorario.add(matReturn);
+
+
+
+                                    //db.collection("Usuarios").document(user.getEmail()).collection("materias").add(matReturn);
+                                }
+                            }
+                            //updateUi(String.valueOf(materiasHorario.size()));
+                            db.collection("Usuarios").document(user.getEmail()).collection("materias").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                   // updateUi("Entre antes del for");
+
+                                    if(task.getResult().size()==0)
+                                    {
+                                        db.collection("Usuarios").document(user.getEmail()).collection("materias").add(matReturn);
+                                        Intent intent = new Intent(EnrollActivity.this, MainActivity.class);
+                                        startActivity(intent);
+                                        updateUi("Materia agregada exitosamente!");
+
+                                    }
+                                    else{
+                                        for (QueryDocumentSnapshot document3 : task.getResult()) {
+
+                                            Materia m = document3.toObject(Materia.class);
+                                            if (conflictos(materiasHorario, m) == true) {
+
+                                                Intent intent = new Intent(EnrollActivity.this, MainActivity.class);
+                                                startActivity(intent);
+
+                                                db.collection("Usuarios").document(user.getEmail()).collection("materias").add(matReturn);
+                                                updateUi("Materia agregada exitosamente!");
+                                            } else {
+
+                                                Intent intent = new Intent(EnrollActivity.this, MainActivity.class);
+                                                startActivity(intent);
+                                                updateUi("Error: conflicto de horarios");
+                                            }
+
+                                        }
+
+                                    }
+
+                                }
+
+
+                            });
 
                         }
-                        //if(m.getSesiones_clase().get(0).)
-                    }
-
+                    });
                 }
-
             }
         });
 
+
+
+        /*
+        db.collection("Materias").document(materiae).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                               descripcion.setText(task.getResult().getData().get("descripcion").toString());
+                               materia.setText(materiae);
+                               semestre = task.getResult().getData().get("semestre").toString();
+                               consultaProfes(materiae ,opciones, ratins, x);
+                        } else {
+                            Log.d(TAG, "Error en la BD: ", task.getException());
+                        }
+                    }
+                });
+                */
+    }
+
+    public boolean conflictos(ArrayList<Materia> materiasHorario, Materia materiaEntrada){
+
+        Integer rangoInicio,rangoFin, valorClaveInicio, valorClaveFinal;
+
+        String dia1,dia2,dia1clave,dia2clave;
+
+
+
+
+
+       // updateUi("Entre a la funcion");
+
+        rangoInicio = valorHora(materiaEntrada.getSesiones_clase().get(0).gethInicio());
+        rangoFin = valorHora(materiaEntrada.getSesiones_clase().get(0).gethFin());
+        for(Materia m : materiasHorario){
+
+            StringTokenizer st = new StringTokenizer(m.getSesiones_clase().get(0).getDia(),"-");
+            dia1=st.nextToken();
+            dia2=st.nextToken();
+            StringTokenizer st1 = new StringTokenizer(materiaEntrada.getSesiones_clase().get(0).getDia(),"-");
+            dia1clave = st1.nextToken();
+            dia2clave = st1.nextToken();
+
+         //   updateUi("Horario base "+dia1+" "+dia2+"Horarioclave "+dia1clave+" "+dia2clave);
+
+
+
+            valorClaveInicio = valorHora(m.getSesiones_clase().get(0).gethInicio());
+            valorClaveFinal = valorHora(m.getSesiones_clase().get(0).gethFin());
+           // updateUi("Hora inicial"+rangoInicio+" hora final "+rangoFin+" valor clave "+valorClaveInicio);
+            if(dia1.equals(dia1clave)||dia1.equals(dia2clave)||dia2.equals(dia1clave)||dia2.equals(dia2clave))
+            {
+
+                    if(valorClaveInicio>=rangoInicio&&valorClaveFinal<=rangoFin)
+                    {
+                       // updateUi("oh no, conflicto");
+                        return false;
+                    }
+
+            }
+
+        }
+        //updateUi("deberia retornar true");
         return true;
 
     }
+
+
+    public Integer valorHora(String hora)
+    {
+        String temp = hora;
+        StringTokenizer st = new StringTokenizer(temp,":");
+        return Integer.parseInt(st.nextToken());
+
+    }
+
+
+
+
+
+
 
     //Cargar inscripción a la Base de datos
     public boolean registrarInscripcion(Profesor x, ArrayList<Materia> cruce, SesionClase horarioRecibido){
