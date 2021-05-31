@@ -250,11 +250,11 @@ public class EnrollActivity extends AppCompatActivity{
     }
 
     public boolean validarInscripcion(ArrayList<Materia> cruce, SesionClase horarioRecibido){
-        consultaCruces(cruce, horarioRecibido);
-        if(cruce.get(0) != null)
+        //consultaCruces(cruce, horarioRecibido);
+        //if(cruce.get(0) != null)
             return true;
-        else
-            return false;
+        //else
+        //    return false;
     }
 
     //Consulta
