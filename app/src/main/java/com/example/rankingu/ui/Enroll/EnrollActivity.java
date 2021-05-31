@@ -232,7 +232,7 @@ public class EnrollActivity extends AppCompatActivity{
                                 //updateUi(document2.getData().toString());
 
                                 if(x.equals(document2.getData().get("nombre").toString())){
-                                    matReturn.setNombre(document2.getData().get("nombre").toString());
+                                    matReturn.setNombre(materiae);
                                     matReturn.setPuntaje((Double) document2.getData().get("rating"));
 
 
