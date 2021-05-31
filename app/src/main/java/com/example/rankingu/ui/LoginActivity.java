@@ -207,7 +207,7 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = miAuth.getCurrentUser();
                             if(!user.isEmailVerified()){
-                                Toast.makeText(LoginActivity.this,"Correo electronico no verificado",Toast.LENGTH_LONG).show();
+                                //Toast.makeText(LoginActivity.this,"Correo electronico no verificado",Toast.LENGTH_LONG).show();
                             }else{
                                 if(user != null) {
                                     GoMainScreen();
