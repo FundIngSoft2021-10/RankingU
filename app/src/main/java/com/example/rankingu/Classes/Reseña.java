@@ -1,6 +1,8 @@
 package com.example.rankingu.Classes;
 
-public class Reseña {
+import java.io.Serializable;
+
+public class Reseña implements Serializable {
 
     private String usuario, reseña;
     private float rating;
@@ -13,11 +15,7 @@ public class Reseña {
 
     @Override
     public String toString() {
-        return "Reseña{" +
-                "usuario='" + usuario + '\'' +
-                ", reseña='" + reseña + '\'' +
-                ", rating=" + rating +
-                '}';
+        return  usuario + ": " + rating ;
     }
 
     public Reseña() {

@@ -53,15 +53,30 @@ public class GraciasActivity extends AppCompatActivity {
 
         Profesor x = (Profesor) myBundle.getSerializable("materia");
         materia.setText(x.getMateriasList().get(0).getNombre());
+        Float val = (Float) myBundle.getSerializable("num");
 
-        String coment = myBundle.getString("comentario");
-        float calificacion = myBundle.getFloat("calificacion");
+        if(val == 0){
 
-        subirReseña(x,coment,calificacion);
+            String coment = myBundle.getString("comentario");
+            float calificacion = myBundle.getFloat("calificacion");
+
+            subirReseña(x, coment, calificacion);
 
 
-        mensaje.setText(coment);
-        ratingStar.setRating(calificacion);
+            mensaje.setText(coment);
+            ratingStar.setRating(calificacion);
+        }else if(val == 1){
+            Reseña rese = (Reseña) myBundle.getSerializable("usuari");
+
+
+            ratingStar.setRating(rese.getRating());
+            mensaje.setText(rese.getReseña());
+        }
+
+
+
+
+
 
         volverPrincipio.setOnClickListener(new View.OnClickListener() {
             @Override

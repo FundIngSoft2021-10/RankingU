@@ -75,11 +75,29 @@ public class MateriaActivity extends AppCompatActivity {
         adapatar = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sesiones);
         horario.setAdapter(adapatar);
 
-        Reseña aux2 = new Reseña();
-        estrellas.add(aux2);
-        consultarRatings(x.getMateriasList().get(0).getNombre(),estrellas,x.getNombre());
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,estrellas);
+
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
+
+        consultarRatings(x.getMateriasList().get(0).getNombre(),x.getNombre(), adapter);
+
         calificaciones.setAdapter(adapter);
+
+        calificaciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                float nume = 1;
+                Reseña usu = (Reseña) adapterView.getItemAtPosition(i);
+                Intent intent = new Intent(MateriaActivity.this, GraciasActivity.class);
+                Bundle myBundle = new Bundle();
+                myBundle.putSerializable("materia", x);
+                myBundle.putSerializable("usuari",usu);
+                myBundle.putFloat("num",nume);
+                intent.putExtras(myBundle);
+                startActivity(intent);
+
+            }
+        });
 
 
 
@@ -150,7 +168,7 @@ public class MateriaActivity extends AppCompatActivity {
 
     }
     ///Consultar estrellas
-    public void consultarRatings(final String materia, final ArrayList<Reseña> estrellas, final String profesor){
+    public void consultarRatings(final String materia, final String profesor, final ArrayAdapter<Reseña> adapter){
 
         db.collection("Materias").document(materia).collection("profesores").document(profesor).collection("ratings").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -166,9 +184,10 @@ public class MateriaActivity extends AppCompatActivity {
                         rese.setRating(Float.parseFloat(aux));
                         rese.setReseña(document.getData().get("reseña").toString());
                         rese.setUsuario(document.getData().get("usuario").toString());
-
-                        estrellas.add(rese);
+                        System.out.println(rese.toString());
+                        adapter.add(rese);
                     }
+
                 } else {
                     Log.d(TAG, "Error en la BD: ", task.getException());
                 }
